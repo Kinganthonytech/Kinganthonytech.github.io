@@ -1,0 +1,12 @@
+title: King Anthony
+email: hello@kinganthony.tech
+description: >-  M365 Administration, Technical Documentation, and PowerShell —  documented with receipts.
+url: "https://kinganthony.tech"
+permalink: /blog/:title/
+markdown: kramdown
+theme: minima
+plugins:  
+ - jekyll-sitemap 
+ - jekyll-seo-tag  
+ - jekyll-feed
+
