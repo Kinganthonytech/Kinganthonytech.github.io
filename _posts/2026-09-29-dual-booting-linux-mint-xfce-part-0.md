@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dual Booting Linux on a Machine That Barely Runs Windows — Part 0: A Series Introduction"
-date: 2026-09-29 20:15:00 +0100
+date: 2026-09-28
 description: "Why I dual booted Linux Mint XFCE on a Pentium N3710 laptop in Nigeria, and what the process actually felt like."
 tags: [linux, dual-boot, linux-mint, xfce, beginner]
 ---
