@@ -538,7 +538,7 @@ copied the Linux Mint XFCE 22.3 ISO onto it.
   <a href="/images/tecno-transfer-speed.png" target="_blank">
     <img src="/images/tecno-transfer-speed.png" alt="Tecno T455 file transfer">
   </a>
-  <figcaption>File transfer via Tecno T455 — 434 KB/s, 90+ minutes for 2.82GB</figcaption>
+  <figcaption>File transfer via Tecno T455 — 434 KB/s, 100+ minutes for 2.82GB</figcaption>
 </figure>
 
 
