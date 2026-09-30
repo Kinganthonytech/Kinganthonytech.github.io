@@ -74,10 +74,11 @@ the tools I already had.
 
 **Why not downgrade to Windows 10?**
 
-Windows 10 reaches end of support on October 14, 2025. Even 
+Windows 10 reached end of support on October 14, 2025. Even 
 if it would have run lighter than Windows 11, installing it 
-now would mean moving onto an operating system with a fixed 
-expiration date. I wasn't willing to trade a performance 
+now would mean moving onto an operating system that
+ no longer recieves security updates.
+I wasn't willing to trade a performance 
 problem for a security problem later.
 
 **Why not optimize Windows 11?**
