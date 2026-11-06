@@ -30,15 +30,15 @@ hardware. So I had to change the software.
 This is the  machine I was making these decisions on.
 
 <figure>
-  <a href="/images/hp-laptop-physical.png" target="_blank">
-    <img src="/images/hp-laptop-physical.png" alt="HP laptop used for the dual boot">
+  <a href="/images/hp-laptop-physical.webp" target="_blank">
+    <img src="/images/hp-laptop-physical.webp" alt="HP laptop used for the dual boot">
   </a>
   <figcaption>The machine — HP laptop with Intel Pentium N3710, 8GB RAM, 256GB SSD</figcaption>
 </figure>
 
 <figure>
-  <a href="/images/hp-laptop-about-page.png" target="_blank">
-    <img src="/images/hp-laptop-about-page.png" alt="Windows About page">
+  <a href="/images/hp-laptop-about-page.webp" target="_blank">
+    <img src="/images/hp-laptop-about-page.webp" alt="Windows About page">
   </a>
   <figcaption>System specifications from the Windows About page</figcaption>
 </figure>
@@ -143,8 +143,8 @@ installation.
 The recommendation held up, so I committed to it.
 
 <figure>
-  <a href="/images/linux-mint-xfce-download-page.png" target="_blank">
-    <img src="/images/linux-mint-xfce-download-page.png" alt="Linux Mint XFCE download page">
+  <a href="/images/linux-mint-xfce-download-page.webp" target="_blank">
+    <img src="/images/linux-mint-xfce-download-page.webp" alt="Linux Mint XFCE download page">
   </a>
   <figcaption>Linux Mint XFCE 22.3 official download page</figcaption>
 </figure>
@@ -189,8 +189,8 @@ I reduced the Windows partition to **120GB** and left
 installation.
 
 <figure>
-  <a href="/images/disk-management-after-shrink.png" target="_blank">
-    <img src="/images/disk-management-after-shrink.png" alt="Disk Management after shrinking C:">
+  <a href="/images/disk-management-after-shrink.webp" target="_blank">
+    <img src="/images/disk-management-after-shrink.webp" alt="Disk Management after shrinking C:">
   </a>
   <figcaption>Disk Management showing the 120GB Windows partition and 117GB unallocated space</figcaption>
 </figure>
@@ -203,8 +203,8 @@ installation.
 | **EFI / Recovery / Reserved** | Remaining space | Windows boot and recovery partitions |
 
 <figure>
-  <a href="/images/file-manager-after-shrink.png" target="_blank">
-    <img src="/images/file-manager-after-shrink.png" alt="File Explorer showing reduced C: drive">
+  <a href="/images/file-manager-after-shrink.webp" target="_blank">
+    <img src="/images/file-manager-after-shrink.webp" alt="File Explorer showing reduced C: drive">
   </a>
   <figcaption>Windows File Explorer showing the reduced C: drive after shrinking</figcaption>
 </figure>
@@ -261,8 +261,8 @@ mirrors — servers in different countries that host copies of
 the same file.
 
 <figure>
-  <a href="/images/linux-mint-mirror-list.png" target="_blank">
-    <img src="/images/linux-mint-mirror-list.png" alt="Linux Mint mirror list">
+  <a href="/images/linux-mint-mirror-list.webp" target="_blank">
+    <img src="/images/linux-mint-mirror-list.webp" alt="Linux Mint mirror list">
   </a>
   <figcaption>The mirror selection page — no Nigerian mirror available</figcaption>
 </figure>
@@ -342,8 +342,8 @@ and added additional trackers to improve peer discovery.
 After that, the download improved.
 
 <figure>
-  <a href="/images/qbittorrent-completed-download.png" target="_blank">
-    <img src="/images/qbittorrent-completed-download.png" alt="qBittorrent completed ISO download">
+  <a href="/images/qbittorrent-completed-download.webp" target="_blank">
+    <img src="/images/qbittorrent-completed-download.webp" alt="qBittorrent completed ISO download">
   </a>
   <figcaption>qBittorrent showing the completed 2.82GB ISO download</figcaption>
 </figure>
@@ -391,8 +391,8 @@ certutil -hashfile "C:\Users\HP\Downloads\linuxmint-22.3-xfce-64bit.iso" SHA256
 The command returned the following hash:
 
 <figure>
-  <a href="/images/sha256-verification-downloads.png" target="_blank">
-    <img src="/images/sha256-verification-downloads.png" alt="SHA256 checksum verification">
+  <a href="/images/sha256-verification-downloads.webp" target="_blank">
+    <img src="/images/sha256-verification-downloads.webp" alt="SHA256 checksum verification">
   </a>
   <figcaption>SHA256 checksum verification of the original ISO in the Downloads folder</figcaption>
 </figure>
@@ -454,8 +454,8 @@ cleaner long-term option than reflashing the same device
 every time you want to try another ISO.
 
 <figure>
-  <a href="/images/ventoy-interface.png" target="_blank">
-    <img src="/images/ventoy-interface.png" alt="Ventoy interface">
+  <a href="/images/ventoy-interface.webp" target="_blank">
+    <img src="/images/ventoy-interface.webp" alt="Ventoy interface">
   </a>
   <figcaption>Ventoy interface showing the prepared 16GB SD card</figcaption>
 </figure>
@@ -467,8 +467,8 @@ My first idea was to use my **1TB external hard drive** as
 the boot device.
 
 <figure>
-  <a href="/images/external-hdd-1tb.png" target="_blank">
-    <img src="/images/external-hdd-1tb.png" alt="1TB external HDD">
+  <a href="/images/external-hdd-1tb.webp" target="_blank">
+    <img src="/images/external-hdd-1tb.webp" alt="1TB external HDD">
   </a>
   <figcaption>The 1TB external HDD I originally planned to use as boot media</figcaption>
 </figure>
@@ -483,8 +483,8 @@ data partition. That means everything already on the drive
 gets wiped during setup.
 
 <figure>
-  <a href="/images/ventoy-format-warning.png" target="_blank">
-    <img src="/images/ventoy-format-warning.png" alt="Ventoy format warning dialog">
+  <a href="/images/ventoy-format-warning.webp" target="_blank">
+    <img src="/images/ventoy-format-warning.webp" alt="Ventoy format warning dialog">
   </a>
   <figcaption>Ventoy's format warning — all data on the target device would be erased</figcaption>
 </figure>
@@ -505,8 +505,8 @@ the card and prepared it successfully. The SD card was now a
 boot device ready to accept ISO files.
 
 <figure>
-  <a href="/images/sd-card-16gb.png" target="_blank">
-    <img src="/images/sd-card-16gb.png" alt="16GB SD card">
+  <a href="/images/sd-card-16gb.webp" target="_blank">
+    <img src="/images/sd-card-16gb.webp" alt="16GB SD card">
   </a>
   <figcaption>The 16GB SD card I pivoted to after the HDD was ruled out</figcaption>
 </figure>
@@ -524,8 +524,8 @@ as a bridge to transfer the Linux Mint ISO file from my
 laptop onto the Ventoy-prepared SD card.
 
 <figure>
-  <a href="/images/tecno-t455-bridge-setup.png" target="_blank">
-    <img src="/images/tecno-t455-bridge-setup.png" alt="Tecno T455 as SD card bridge">
+  <a href="/images/tecno-t455-bridge-setup.webp" target="_blank">
+    <img src="/images/tecno-t455-bridge-setup.webp" alt="Tecno T455 as SD card bridge">
   </a>
   <figcaption>Tecno T455 phone used as a transfer bridge for the SD card</figcaption>
 </figure>
@@ -535,8 +535,8 @@ Ventoy recognized the storage through that connection, and I
 copied the Linux Mint XFCE 22.3 ISO onto it.
 
 <figure>
-  <a href="/images/tecno-transfer-speed.png" target="_blank">
-    <img src="/images/tecno-transfer-speed.png" alt="Tecno T455 file transfer">
+  <a href="/images/tecno-transfer-speed.webp" target="_blank">
+    <img src="/images/tecno-transfer-speed.webp" alt="Tecno T455 file transfer">
   </a>
   <figcaption>File transfer via Tecno T455 — 434 KB/s, 100+ minutes for 2.82GB</figcaption>
 </figure>

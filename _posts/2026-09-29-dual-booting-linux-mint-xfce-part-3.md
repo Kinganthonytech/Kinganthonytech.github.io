@@ -35,8 +35,8 @@ immediately stood out because that was the entire reason I
 was there.
 
 <figure>
-  <a href="/images/linux-mint-live-desktop-install.png" target="_blank">
-    <img src="/images/linux-mint-live-desktop-install.png" alt="Linux Mint live desktop with Install icon">
+  <a href="/images/linux-mint-live-desktop-install.webp" target="_blank">
+    <img src="/images/linux-mint-live-desktop-install.webp" alt="Linux Mint live desktop with Install icon">
   </a>
   <figcaption>Linux Mint live environment with the Install icon in the top left corner</figcaption>
 </figure>
@@ -74,24 +74,24 @@ option to install multimedia codecs for MP3 and MP4 support.
 I accepted the codec option.
 
 <figure>
-  <a href="/images/install-language-selection.png" target="_blank">
-    <img src="/images/install-language-selection.png" alt="Linux Mint installer language selection">
+  <a href="/images/install-language-selection.webp" target="_blank">
+    <img src="/images/install-language-selection.webp" alt="Linux Mint installer language selection">
   </a>
   <figcaption>Installation step 1 — Language selection</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/install-keyboard-layout.png" target="_blank">
-    <img src="/images/install-keyboard-layout.png" alt="Linux Mint installer keyboard layout">
+  <a href="/images/install-keyboard-layout.webp" target="_blank">
+    <img src="/images/install-keyboard-layout.webp" alt="Linux Mint installer keyboard layout">
   </a>
   <figcaption>Installation step 2 — Keyboard layout selection</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/install-multimedia-codecs.png" target="_blank">
-    <img src="/images/install-multimedia-codecs.png" alt="Linux Mint installer multimedia codecs option">
+  <a href="/images/install-multimedia-codecs.webp" target="_blank">
+    <img src="/images/install-multimedia-codecs.webp" alt="Linux Mint installer multimedia codecs option">
   </a>
   <figcaption>Installation step 3 — Multimedia codecs option</figcaption>
 </figure>
@@ -110,8 +110,8 @@ Then I got a pop-up message that made me pause:
 > continuing?
 
 <figure>
-  <a href="/images/install-unmount-warning.png" target="_blank">
-    <img src="/images/install-unmount-warning.png" alt="Installer unmount warning popup">
+  <a href="/images/install-unmount-warning.webp" target="_blank">
+    <img src="/images/install-unmount-warning.webp" alt="Installer unmount warning popup">
   </a>
   <figcaption>Unmount warning popup for /dev/sda mounted partitions</figcaption>
 </figure>
@@ -144,8 +144,8 @@ prepared earlier in Windows and offered the option to
 **Install Linux Mint alongside Windows Boot Manager**.
 
 <figure>
-  <a href="/images/install-alongside-windows.png" target="_blank">
-    <img src="/images/install-alongside-windows.png" alt="Install alongside Windows option">
+  <a href="/images/install-alongside-windows.webp" target="_blank">
+    <img src="/images/install-alongside-windows.webp" alt="Install alongside Windows option">
   </a>
   <figcaption>Installation type — Install Linux Mint alongside Windows Boot Manager</figcaption>
 </figure>
@@ -173,8 +173,8 @@ copying files, configuring the system, and setting up Linux
 Mint in the unallocated space.
 
 <figure>
-  <a href="/images/install-progress.png" target="_blank">
-    <img src="/images/install-progress.png" alt="Linux Mint installation progress bar">
+  <a href="/images/install-progress.webp" target="_blank">
+    <img src="/images/install-progress.webp" alt="Linux Mint installation progress bar">
   </a>
   <figcaption>Installation progress bar during file copy and configuration</figcaption>
 </figure>
@@ -216,8 +216,8 @@ GRUB now showed both operating systems as boot options:
 - **Windows Boot Manager**
 
 <figure>
-  <a href="/images/grub-dual-boot-menu.png" target="_blank">
-    <img src="/images/grub-dual-boot-menu.png" alt="GRUB dual-boot menu">
+  <a href="/images/grub-dual-boot-menu.webp" target="_blank">
+    <img src="/images/grub-dual-boot-menu.webp" alt="GRUB dual-boot menu">
   </a>
   <figcaption>GRUB dual-boot menu showing Linux Mint 22.3 and Windows Boot Manager</figcaption>
 </figure>
@@ -272,16 +272,16 @@ boot**, with no applications open.
 | **Linux Mint XFCE** | 993.6MiB (~1.0GB) / 7.7GiB |
 
 <figure>
-  <a href="/images/windows-idle-ram-3min.png" target="_blank">
-    <img src="/images/windows-idle-ram-3min.png" alt="Windows 11 idle RAM usage">
+  <a href="/images/windows-idle-ram-3min.webp" target="_blank">
+    <img src="/images/windows-idle-ram-3min.webp" alt="Windows 11 idle RAM usage">
   </a>
   <figcaption>Windows 11 Task Manager — 3.0GB idle RAM at the 3-minute mark</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/linux-idle-ram-3min.png" target="_blank">
-    <img src="/images/linux-idle-ram-3min.png" alt="Linux Mint idle RAM usage">
+  <a href="/images/linux-idle-ram-3min.webp" target="_blank">
+    <img src="/images/linux-idle-ram-3min.webp" alt="Linux Mint idle RAM usage">
   </a>
   <figcaption>Linux Mint System Monitor — 993.6MiB idle RAM at the 3-minute mark</figcaption>
 </figure>
@@ -342,32 +342,32 @@ load:
 | **Battery** | Drained so fast I had to plug in to finish the test | Survived the entire test (95% to 45%) |
 
 <figure>
-  <a href="/images/windows-stress-task-manager.png" target="_blank">
-    <img src="/images/windows-stress-task-manager.png" alt="Windows Task Manager under stress test">
+  <a href="/images/windows-stress-task-manager.webp" target="_blank">
+    <img src="/images/windows-stress-task-manager.webp" alt="Windows Task Manager under stress test">
   </a>
   <figcaption>Windows Task Manager under stress — 100% CPU, 7.2GB RAM, 10.4GB committed, 14% GPU</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/linux-stress-system-monitor.png" target="_blank">
-    <img src="/images/linux-stress-system-monitor.png" alt="Linux System Monitor under stress test">
+  <a href="/images/linux-stress-system-monitor.webp" target="_blank">
+    <img src="/images/linux-stress-system-monitor.webp" alt="Linux System Monitor under stress test">
   </a>
   <figcaption>Linux System Monitor under stress — 50% CPU, 6.2GB RAM, 240MB swap</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/windows-browser-tabs-stress.png" target="_blank">
-    <img src="/images/windows-browser-tabs-stress.png" alt="Windows 11 with 20 browser tabs open">
+  <a href="/images/windows-browser-tabs-stress.webp" target="_blank">
+    <img src="/images/windows-browser-tabs-stress.webp" alt="Windows 11 with 20 browser tabs open">
   </a>
   <figcaption>20 browser tabs open on Windows 11 during the stress test</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/linux-browser-tabs-stress.png" target="_blank">
-    <img src="/images/linux-browser-tabs-stress.png" alt="Linux Mint with 20 browser tabs open">
+  <a href="/images/linux-browser-tabs-stress.webp" target="_blank">
+    <img src="/images/linux-browser-tabs-stress.webp" alt="Linux Mint with 20 browser tabs open">
   </a>
   <figcaption>20 browser tabs open on Linux Mint during the stress test</figcaption>
 </figure>
@@ -418,8 +418,8 @@ loaded.
 > include the GRUB selection for a real-world comparison.
 
 <figure>
-  <a href="/images/systemd-analyze-output.png" target="_blank">
-    <img src="/images/systemd-analyze-output.png" alt="systemd-analyze boot time output">
+  <a href="/images/systemd-analyze-output.webp" target="_blank">
+    <img src="/images/systemd-analyze-output.webp" alt="systemd-analyze boot time output">
   </a>
   <figcaption>systemd-analyze output showing firmware, loader, kernel, and userspace boot times</figcaption>
 </figure>
@@ -462,8 +462,8 @@ That was the entire reason I started this project. The
 numbers confirmed it.
 
 <figure>
-  <a href="/images/neofetch-output.png" target="_blank">
-    <img src="/images/neofetch-output.png" alt="Neofetch system info output">
+  <a href="/images/neofetch-output.webp" target="_blank">
+    <img src="/images/neofetch-output.webp" alt="Neofetch system info output">
   </a>
   <figcaption>Neofetch terminal output showing system specs and uptime</figcaption>
 </figure>

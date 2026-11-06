@@ -46,8 +46,8 @@ That alone felt like progress.
 So I selected it.
 
 <figure>
-  <a href="/images/bios-boot-menu.png" target="_blank">
-    <img src="/images/bios-boot-menu.png" alt="BIOS boot device menu">
+  <a href="/images/bios-boot-menu.webp" target="_blank">
+    <img src="/images/bios-boot-menu.webp" alt="BIOS boot device menu">
   </a>
   <figcaption>BIOS boot device selection menu showing the Tecno T455</figcaption>
 </figure>
@@ -60,8 +60,8 @@ Nothing meaningful to work with. The attempt stopped almost
 as soon as it began.
 
 <figure>
-  <a href="/images/bios-boot-decline.png" target="_blank">
-    <img src="/images/bios-boot-decline.png" alt="Boot failure screen">
+  <a href="/images/bios-boot-decline.webp" target="_blank">
+    <img src="/images/bios-boot-decline.webp" alt="Boot failure screen">
   </a>
   <figcaption>Boot failure screen after selecting the Tecno T455</figcaption>
 </figure>
@@ -133,8 +133,8 @@ BIOS layout, moving carefully but without fully
 understanding what each setting actually did.
 
 <figure>
-  <a href="/images/bios-configuration-menu.png" target="_blank">
-    <img src="/images/bios-configuration-menu.png" alt="BIOS Secure Boot settings">
+  <a href="/images/bios-configuration-menu.webp" target="_blank">
+    <img src="/images/bios-configuration-menu.webp" alt="BIOS Secure Boot settings">
   </a>
   <figcaption>BIOS configuration menu showing Secure Boot and Legacy Support settings</figcaption>
 </figure>
@@ -180,8 +180,8 @@ a numeric code shown on the display and press Enter to
 confirm that the action is deliberate.
 
 <figure>
-  <a href="/images/hp-bios-confirmation-code.png" target="_blank">
-    <img src="/images/hp-bios-confirmation-code.png" alt="HP BIOS confirmation code prompt">
+  <a href="/images/hp-bios-confirmation-code.webp" target="_blank">
+    <img src="/images/hp-bios-confirmation-code.webp" alt="HP BIOS confirmation code prompt">
   </a>
   <figcaption>HP BIOS confirmation screen requiring a numeric code to change Secure Boot</figcaption>
 </figure>
@@ -203,8 +203,8 @@ Ventoy loaded.
 That felt like a breakthrough.
 
 <figure>
-  <a href="/images/ventoy-boot-menu-iso.png" target="_blank">
-    <img src="/images/ventoy-boot-menu-iso.png" alt="Ventoy boot menu">
+  <a href="/images/ventoy-boot-menu-iso.webp" target="_blank">
+    <img src="/images/ventoy-boot-menu-iso.webp" alt="Ventoy boot menu">
   </a>
   <figcaption>Ventoy boot menu with Linux Mint XFCE 22.3 ISO highlighted</figcaption>
 </figure>
@@ -222,8 +222,8 @@ available option. I selected it, chose "Boot in normal mode"
 from the next menu, and landed at the GRUB bootloader.
 
 <figure>
-  <a href="/images/ventoy-boot-mode-selection.png" target="_blank">
-    <img src="/images/ventoy-boot-mode-selection.png" alt="Ventoy boot mode options">
+  <a href="/images/ventoy-boot-mode-selection.webp" target="_blank">
+    <img src="/images/ventoy-boot-mode-selection.webp" alt="Ventoy boot mode options">
   </a>
   <figcaption>Ventoy boot mode selection — "Boot in normal mode" highlighted</figcaption>
 </figure>
@@ -246,8 +246,8 @@ were:
 The first option was highlighted by default.
 
 <figure>
-  <a href="/images/grub-menu-first-attempt.png" target="_blank">
-    <img src="/images/grub-menu-first-attempt.png" alt="GRUB menu">
+  <a href="/images/grub-menu-first-attempt.webp" target="_blank">
+    <img src="/images/grub-menu-first-attempt.webp" alt="GRUB menu">
   </a>
   <figcaption>GRUB menu showing Linux Mint normal and compatibility mode options</figcaption>
 </figure>
@@ -309,8 +309,8 @@ I couldn't tell if the system was still trying or had
 already finished failing.
 
 <figure>
-  <a href="/images/kernel-text-flood-squashfs.png" target="_blank">
-    <img src="/images/kernel-text-flood-squashfs.png" alt="SQUASHFS kernel errors">
+  <a href="/images/kernel-text-flood-squashfs.webp" target="_blank">
+    <img src="/images/kernel-text-flood-squashfs.webp" alt="SQUASHFS kernel errors">
   </a>
   <figcaption>Kernel text flood showing repeated SQUASHFS I/O read errors</figcaption>
 </figure>
@@ -362,8 +362,8 @@ screen:
 The same I/O read failures. The same SQUASHFS errors.
 
 <figure>
-  <a href="/images/tty2-terminal-errors.png" target="_blank">
-    <img src="/images/tty2-terminal-errors.png" alt="TTY2 terminal with SQUASHFS errors">
+  <a href="/images/tty2-terminal-errors.webp" target="_blank">
+    <img src="/images/tty2-terminal-errors.webp" alt="TTY2 terminal with SQUASHFS errors">
   </a>
   <figcaption>TTY2 terminal showing the login prompt interrupted by SQUASHFS errors</figcaption>
 </figure>
@@ -391,24 +391,24 @@ from part 1 against both the orginal ISO in my Downloads folder
 and the copy on the Ventoy SD card.
 
 <figure>
-  <a href="/images/sha256-verify-original.png" target="_blank">
-    <img src="/images/sha256-verify-original.png" alt="SHA256 verification in terminal">
+  <a href="/images/sha256-verify-original.webp" target="_blank">
+    <img src="/images/sha256-verify-original.webp" alt="SHA256 verification in terminal">
   </a>
   <figcaption>Terminal output — SHA256 verification of the original ISO in Downloads</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/sha256-verify-ventoy.png" target="_blank">
-    <img src="/images/sha256-verify-ventoy.png" alt="SHA256 verification on Ventoy device">
+  <a href="/images/sha256-verify-ventoy.webp" target="_blank">
+    <img src="/images/sha256-verify-ventoy.webp" alt="SHA256 verification on Ventoy device">
   </a>
   <figcaption>Terminal output — SHA256 verification of the ISO copy on the Ventoy device</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/linux-mint-official-checksum.png" target="_blank">
-    <img src="/images/linux-mint-official-checksum.png" alt="Linux Mint checksum page">
+  <a href="/images/linux-mint-official-checksum.webp" target="_blank">
+    <img src="/images/linux-mint-official-checksum.webp" alt="Linux Mint checksum page">
   </a>
   <figcaption>Official Linux Mint SHA256 checksum page for side-by-side comparison</figcaption>
 </figure>
@@ -448,8 +448,8 @@ system boot operations.
 So I obtained a dedicated **SD card reader**.
 
 <figure>
-  <a href="/images/sd-card-reader.png" target="_blank">
-    <img src="/images/sd-card-reader.png" alt="USB SD card reader">
+  <a href="/images/sd-card-reader.webp" target="_blank">
+    <img src="/images/sd-card-reader.webp" alt="USB SD card reader">
   </a>
   <figcaption>The dedicated SD card reader that solved the boot problem</figcaption>
 </figure>
@@ -479,8 +479,8 @@ running cleanly. WiFi connected. The system was completely
 responsive.
 
 <figure>
-  <a href="/images/linux-mint-live-desktop.png" target="_blank">
-    <img src="/images/linux-mint-live-desktop.png" alt="Linux Mint XFCE live desktop">
+  <a href="/images/linux-mint-live-desktop.webp" target="_blank">
+    <img src="/images/linux-mint-live-desktop.webp" alt="Linux Mint XFCE live desktop">
   </a>
   <figcaption>Linux Mint XFCE live environment loaded successfully via card reader</figcaption>
 </figure>
@@ -530,16 +530,16 @@ dedicated card reader, it hit **7.87 MB/s** — an **18x
 increase** from changing nothing except the connection path.
 
 <figure>
-  <a href="/images/tecno-transfer-speed-comparison.png" target="_blank">
-    <img src="/images/tecno-transfer-speed-comparison.png" alt="Tecno T455 file transfer">
+  <a href="/images/tecno-transfer-speed-comparison.webp" target="_blank">
+    <img src="/images/tecno-transfer-speed-comparison.webp" alt="Tecno T455 file transfer">
   </a>
   <figcaption>File transfer via Tecno T455 — 434 KB/s for comparison</figcaption>
 </figure>
 
 
 <figure>
-  <a href="/images/card-reader-transfer-speed.png" target="_blank">
-    <img src="/images/card-reader-transfer-speed.png" alt="Card reader file transfer">
+  <a href="/images/card-reader-transfer-speed.webp" target="_blank">
+    <img src="/images/card-reader-transfer-speed.webp" alt="Card reader file transfer">
   </a>
   <figcaption>File transfer via dedicated card reader — 7.87 MB/s, 7 minutes</figcaption>
 </figure>
