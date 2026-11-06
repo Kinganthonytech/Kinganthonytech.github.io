@@ -603,7 +603,7 @@ Windows laptop without the detours, I wrote a clean
 companion guide that distills everything into a 
 step-by-step walkthrough.
 
-**[Link to Clean How-To Guide — coming soon]**
+[How to Install Linux Mint (All Editions) on a Windows 11 Laptop]({% post_url 2026-11-06-linux-mint-install %}).
 
 ---
 
