@@ -130,14 +130,26 @@ Neither system is "better." Most users end up with a mix of both, and Mint's too
    - Some apps appear twice — one of each. Search `firefox` and you'll see both. A **green check** on one of them means it's already installed.
 6. Click **Install**, enter your password, let it run.
 
-![Search results for vlc: the real application tile among a flood of component packages](/assets/images/first-hour/pkg-gui-search.png)
-*Figure 2: Searching `vlc` — one real tile in a flood of components.*
+<figure class="post-image">
+  <a href="/images/pkg-gui-search.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/pkg-gui-search.webp" loading="lazy" width="802" height="599" alt="Software Manager search results for vlc: the plain-named VLC tile (Multimedia player and streamer, 4.6 stars) sits top-left, ringed by hyphenated component packages — Vlc-plugin-fluiddynth, Vlc-plugin-notify, Vlc-plugin-svg, Vlc-plugin-jack, Gem-plugin-vlc, Phonon4qt5-backend-vlc, Python3-vlc, Vlc-bin, Vlc-plugin-access-extra, Vlc-plugin-base, and more.">
+  </a>
+  <figcaption>Figure 2: The flood, on screen. The tile you want is the plain name with a human description and a star rating — top-left here. Everything around it (-plugin-, -backend-, -bin, -bindings) is a component other programs depend on, not the program itself.</figcaption>
+</figure>
 
-![Two firefox entries in Software Manager: the installed system package with a green check, and the Flathub Flatpak](/assets/images/first-hour/pkg-dual-firefox.png)
-*Figure 3: The firefox twins — the installed .deb carries the green check; the Flathub entry is the Flatpak.*
+<figure class="post-image">
+  <a href="/images/pkg-dual-firefox.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/pkg-dual-firefox.webp" loading="lazy" width="797" height="596" alt="Software Manager search results for firefox: the top row holds two Firefox tiles — the left badged Flathub with a cube icon (4.5 stars), the middle carrying a green check with no Flathub badge (4.3 stars) — plus component and unrelated entries below (firefox-geckodriver, firefox-mozsymbols, Webext-* proxies, Add Water, Glate, Floorp, Datcord, Mozilla VPN, Plasma-browser-integration).">
+  </a>
+  <figcaption>Figure 3: The twins. Same app, two package systems. The green check marks the installed native .deb; the cube plus Flathub badge marks the sandboxed Flatpak. Some apps appear twice exactly like this — firefox being the obvious one.</figcaption>
+</figure>
 
-![An application detail page showing the System Package chip beneath the Install button](/assets/images/first-hour/pkg-detail-deb.png)
-*Figure 4: The "System Package" chip — a native .deb.*
+<figure class="post-image">
+  <a href="/images/pkg-detail-deb.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/pkg-detail-deb.webp" loading="lazy" width="802" height="599" alt="VLC detail page in Software Manager: a green Install button at top-right with the System Package chip directly beneath it; the body reads Name vlc, Version 3.0.20-3build6, Size 19 MB to download, 83 MB of disk space required, with a 4.6 star rating and 1753 reviews, and a plugin list (vlc-plugin-access-extra, vlc-plugin-fluiddynth, vlc-plugin-jack, and others) below the description.">
+  </a>
+  <figcaption>Figure 4: The chip, in place. System Package beneath the Install button means a native .deb; a cube plus Flathub badge here would mean a Flatpak. Note the size line — 19 MB to download, 83 MB of disk — the same figure the blockquote below unpacks, and the plugin list echoing the flood from Figure 2.</figcaption>
+</figure>
 
 > **Two numbers on the detail page:** "19 MB to download, 83 MB of disk space required." Not a contradiction — the download is the compressed package traveling over the wire; the disk size is what it occupies once unpacked and installed. Same program, measured before and after the squeeze.
 
@@ -216,6 +228,13 @@ E: Package 'snapd' has no installation candidate
 
 Nothing is broken — not the repository, not your setup. That line is distro policy speaking through apt's mouth: Mint chose Flatpak as its sandboxed format and dropped snap entirely. The refusal is the feature working.
 
+<figure class="post-image">
+  <a href="/images/pkg-snap-refusal.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/pkg-snap-refusal.webp" loading="lazy" width="656" height="479" alt="Terminal on the ASUS: flatpak remotes lists flathub; snap install hello-world returns Command 'snap' not found, but can be installed with sudo apt install snapd; sudo apt install snapd then reads package lists, builds the dependency tree, reads state information, and reports Package snapd is not available, closing with E: Package 'snapd' has no installation candidate in red.">
+  </a>
+  <figcaption>The whole session behind the fence's two lines. snap is missing, the system points you at snapd to fetch it, and snapd itself has no candidate — the red line is the fence's excerpt, shown here inside the chain that produced it. The door is welded shut from both sides.</figcaption>
+</figure>
+
 **What to do instead:** skip the `snap install` step and look the app up in the Software Manager — cube icon + Flathub badge means it's there in Mint's sanctioned sandbox. If it's genuinely not listed anywhere, the [Flathub site](https://flathub.org) is the authoritative source for what exists.
 
 </details>
@@ -229,6 +248,12 @@ Run an `apt` command while the Software Manager or Update Manager is mid-downloa
 Waiting for cache lock: Could not get lock /var/lib/dpkg/lock-frontend.
 It is held by process 6205 (aptk)
 ```
+<figure class="post-image">
+  <a href="/images/pkg-cache-lock-wall.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/pkg-cache-lock-wall.webp" loading="lazy" width="1268" height="559" alt="Terminal on the ASUS scrolled with roughly twenty identical lines: Waiting for cache lock: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 6205 (aptk) — the same holder repeated line after line.">
+  </a>
+  <figcaption>This wall, scroll past, made literal: the same line repeated twenty times, the same holder — 6205 (aptk) — every time. Read the first word, not the count: Waiting. apt is queuing behind the GUI, not refusing.</figcaption>
+</figure>
 
 Read the first word: **Waiting**. apt isn't refusing — it's queuing behind the GUI and resumes the moment the line moves. On our bench it waited 142 seconds, then carried on by itself. Beginners who've seen this wall have been panicking at a queue this whole time.
 
