@@ -305,8 +305,19 @@ Timeshift is Mint's built-in rollback tool — not a personal backup app. If an 
 6. Click **Finish**.
 7. Back in the main window, click **Create** to trigger your first snapshot now. Don't wait for the schedule — you want a baseline sitting there before you ever need one.
 
-![The Timeshift setup wizard: snapshot type, location, schedule, and home directory exclusion](/assets/images/first-hour/step03-timeshift-wizard.png)
-*Figure 5: The four wizard decisions — RSYNC, the root partition, the schedule, Exclude All.*
+<figure class="post-image">
+  <a href="/images/step03-timeshift-wizard.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step03-timeshift-wizard.webp" loading="lazy" width="1224" height="1270" alt="Two-by-two collage of the Timeshift setup wizard. Top-left, Select Snapshot Type: RSYNC selected, BTRFS greyed out. Top-right, Select Snapshot Location: only sda5 (ext4, 98 GB, 85 GB free) listed with no Windows partition, above the note that NTFS and FAT devices are unsupported. Bottom-left, Select Snapshot Levels: Daily checked at Keep 5 with the green Scheduled snapshots are enabled banner. Bottom-right, User Home Directories: root and asus both set to Exclude All Files.">
+  </a>
+  <figcaption>Figure 5: the four wizard decisions, on screen. RSYNC is the only live option because this is ext4; the location panel lists no Windows partition because the wizard blocks NTFS outright; Daily/Keep 5 is the default schedule; and both root and the user home are excluded — which is the whole point, Timeshift guards system state, not your files.</figcaption>
+</figure>
+
+<figure class="post-image">
+  <a href="/images/step03-timeshift-main-empty.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step03-timeshift-main-empty.webp" loading="lazy" width="800" height="600" alt="Timeshift main window with an empty snapshot list: toolbar buttons Create, Restore, Delete, Browse, Settings, Wizard across the top; columns Snapshot, System, Tags, Comments with no rows; footer shield reading Timeshift is active, Snapshots will be created at selected intervals, 0 Snapshots, rsync, 85.1 GB Available, /dev/sda5.">
+  </a>
+  <figcaption>The armed tool, before the first snapshot: zero entries, rsync active, Create and Restore waiting in the toolbar. This is the state at the end of setup — configured, forgotten, still working — and the only view that shows where Restore lives for the restore flow below.</figcaption>
+</figure>
 
 **Restoring a snapshot, if you ever need to:**
 
@@ -315,8 +326,12 @@ Timeshift is Mint's built-in rollback tool — not a personal backup app. If an 
 3. Review the **Confirm Actions** screen before confirming anything — it lists every file Timeshift is about to create, restore, or delete, in advance.
 4. Confirm. The system restores the files and reboots automatically.
 
-![The Timeshift Confirm Actions screen listing every file about to be created, restored, or deleted](/assets/images/first-hour/step03-timeshift-confirm-actions.png)
-*Figure 6: Confirm Actions — every file about to change, listed in advance.*
+<figure class="post-image">
+  <a href="/images/step03-timeshift-confirm-actions.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step03-timeshift-confirm-actions.webp" loading="lazy" width="500" height="526" alt="Timeshift Confirm Actions screen: a filter box and All Files dropdown above an Action / File (system) table. The first row is a green Create of /etc/motd; below it, orange Restore rows for fwupd device, metadata, quirks and pending files, NetworkManager internals, smartmontools attribution and smartd data, and systemd timer stamps and timesync clock — roughly forty-nine minutes of ordinary system drift queued to be restored, with no /home paths listed.">
+  </a>
+  <figcaption>Figure 6: the read-before-confirm screen. The very first line is the wound Timeshift found and named — Create /etc/motd — and everything under it is the drift a restore rolls back alongside it: firmware metadata, network state, disk logs, timer stamps. None of it is /home; the exclusion held. This is why you review this list before you click, not after.</figcaption>
+</figure>
 
 > **Know the limits before you rely on it:** snapshots live on the same disk they protect — if the drive fails, the snapshots fail with it. Restoring rolls back *everything* since that snapshot, not just the one thing you're trying to undo, so you'll lose any updates or changes made in between. Snapshot before you experiment, not after something breaks.
 
@@ -345,6 +360,13 @@ Run against *all* your snapshots in one command, and the sizes come back small. 
 sudo du -sh /timeshift/snapshots/<folder-name>
 ```
 Run it alone, pointed at a single snapshot folder, and the number jumps — because now you're measuring every file it points to, shared or not. That's not what it *cost* you. That's what it *contains*.
+
+<figure class="post-image">
+  <a href="/images/step03-timeshift-du-df.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step03-timeshift-du-df.webp" loading="lazy" width="657" height="434" alt="Terminal on the HP (king@king-HP-Laptop-15-bs0xx) demonstrating the three measurements. df -h / reports /dev/sda5 at 115G size, 58G used, 52G avail, 53%. sudo du -sh across all five snapshots returns their incremental costs — 21G, 2.3G, 941M, 1.6G, 2.3G. Four solo sudo du -sh runs on individual snapshots each return 21 to 22G, the total each contains. Same disk, three different true numbers depending on the question asked.">
+  </a>
+  <figcaption>Run it yourself and the rule becomes visible: df tells you what the disk holds, du across all snapshots tells you what each one cost, du on a single snapshot tells you what it contains. The combined figures stay small because RSYNC hardlinks unchanged files; the solo figures balloon because now you are counting shared data too. Neither number is wrong — they answer different questions.</figcaption>
+</figure>
 
 **The rule:** `df -h /` tells you what your disk actually holds. `du` across all snapshots tells you what each one cost. `du` on one snapshot alone tells you what it contains. Three different numbers, all true — pick the one that answers the question you're actually asking.
 
