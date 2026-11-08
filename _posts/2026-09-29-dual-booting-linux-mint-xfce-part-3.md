@@ -34,9 +34,9 @@ with a few system icons, but the install icon was what
 immediately stood out because that was the entire reason I 
 was there.
 
-<figure>
-  <a href="/images/linux-mint-live-desktop-install.webp" target="_blank">
-    <img src="/images/linux-mint-live-desktop-install.webp" alt="Linux Mint live desktop with Install icon">
+<figure class="post-image">
+  <a href="/images/linux-mint-live-desktop-install.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/linux-mint-live-desktop-install.webp" loading="lazy" width="1920" height="1080" alt="Linux Mint live desktop with Install icon">
   </a>
   <figcaption>Linux Mint live environment with the Install icon in the top left corner</figcaption>
 </figure>
@@ -73,25 +73,25 @@ WiFi connection for third-party software downloads, and the
 option to install multimedia codecs for MP3 and MP4 support. 
 I accepted the codec option.
 
-<figure>
-  <a href="/images/install-language-selection.webp" target="_blank">
-    <img src="/images/install-language-selection.webp" alt="Linux Mint installer language selection">
+<figure class="post-image">
+  <a href="/images/install-language-selection.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/install-language-selection.webp" loading="lazy" width="834" height="620" alt="Linux Mint installer language selection">
   </a>
   <figcaption>Installation step 1 — Language selection</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/install-keyboard-layout.webp" target="_blank">
-    <img src="/images/install-keyboard-layout.webp" alt="Linux Mint installer keyboard layout">
+<figure class="post-image">
+  <a href="/images/install-keyboard-layout.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/install-keyboard-layout.webp" loading="lazy" width="834" height="620" alt="Linux Mint installer keyboard layout">
   </a>
   <figcaption>Installation step 2 — Keyboard layout selection</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/install-multimedia-codecs.webp" target="_blank">
-    <img src="/images/install-multimedia-codecs.webp" alt="Linux Mint installer multimedia codecs option">
+<figure class="post-image">
+  <a href="/images/install-multimedia-codecs.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/install-multimedia-codecs.webp" loading="lazy" width="834" height="620" alt="Linux Mint installer multimedia codecs option">
   </a>
   <figcaption>Installation step 3 — Multimedia codecs option</figcaption>
 </figure>
@@ -109,9 +109,9 @@ Then I got a pop-up message that made me pause:
 > to try to unmount the partitions on these disks before 
 > continuing?
 
-<figure>
-  <a href="/images/install-unmount-warning.webp" target="_blank">
-    <img src="/images/install-unmount-warning.webp" alt="Installer unmount warning popup">
+<figure class="post-image">
+  <a href="/images/install-unmount-warning.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/install-unmount-warning.webp" loading="lazy" width="838" height="658" alt="Installer unmount warning popup">
   </a>
   <figcaption>Unmount warning popup for /dev/sda mounted partitions</figcaption>
 </figure>
@@ -143,9 +143,9 @@ The installer detected the 117GB of unallocated space I had
 prepared earlier in Windows and offered the option to 
 **Install Linux Mint alongside Windows Boot Manager**.
 
-<figure>
-  <a href="/images/install-alongside-windows.webp" target="_blank">
-    <img src="/images/install-alongside-windows.webp" alt="Install alongside Windows option">
+<figure class="post-image">
+  <a href="/images/install-alongside-windows.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/install-alongside-windows.webp" loading="lazy" width="834" height="620" alt="Install alongside Windows option">
   </a>
   <figcaption>Installation type — Install Linux Mint alongside Windows Boot Manager</figcaption>
 </figure>
@@ -172,9 +172,9 @@ Once I confirmed the installation type, the installer began
 copying files, configuring the system, and setting up Linux 
 Mint in the unallocated space.
 
-<figure>
-  <a href="/images/install-progress.webp" target="_blank">
-    <img src="/images/install-progress.webp" alt="Linux Mint installation progress bar">
+<figure class="post-image">
+  <a href="/images/install-progress.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/install-progress.webp" loading="lazy" width="790" height="596" alt="Linux Mint installation progress bar">
   </a>
   <figcaption>Installation progress bar during file copy and configuration</figcaption>
 </figure>
@@ -215,9 +215,9 @@ GRUB now showed both operating systems as boot options:
 - **Linux Mint 22.3 XFCE**
 - **Windows Boot Manager**
 
-<figure>
-  <a href="/images/grub-dual-boot-menu.webp" target="_blank">
-    <img src="/images/grub-dual-boot-menu.webp" alt="GRUB dual-boot menu">
+<figure class="post-image">
+  <a href="/images/grub-dual-boot-menu.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/grub-dual-boot-menu.webp" loading="lazy" width="4000" height="2402" alt="GRUB dual-boot menu">
   </a>
   <figcaption>GRUB dual-boot menu showing Linux Mint 22.3 and Windows Boot Manager</figcaption>
 </figure>
@@ -271,17 +271,17 @@ boot**, with no applications open.
 | **Windows 11** | 3.0GB / 7.9GB |
 | **Linux Mint XFCE** | 993.6MiB (~1.0GB) / 7.7GiB |
 
-<figure>
-  <a href="/images/windows-idle-ram-3min.webp" target="_blank">
-    <img src="/images/windows-idle-ram-3min.webp" alt="Windows 11 idle RAM usage">
+<figure class="post-image">
+  <a href="/images/windows-idle-ram-3min.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/windows-idle-ram-3min.webp" loading="lazy" width="1920" height="1079" alt="Windows 11 idle RAM usage">
   </a>
   <figcaption>Windows 11 Task Manager — 3.0GB idle RAM at the 3-minute mark</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/linux-idle-ram-3min.webp" target="_blank">
-    <img src="/images/linux-idle-ram-3min.webp" alt="Linux Mint idle RAM usage">
+<figure class="post-image">
+  <a href="/images/linux-idle-ram-3min.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/linux-idle-ram-3min.webp" loading="lazy" width="1920" height="1080" alt="Linux Mint idle RAM usage">
   </a>
   <figcaption>Linux Mint System Monitor — 993.6MiB idle RAM at the 3-minute mark</figcaption>
 </figure>
@@ -341,33 +341,33 @@ load:
 | **Thermal** | Hot, overheating | Warm, not hot |
 | **Battery** | Drained so fast I had to plug in to finish the test | Survived the entire test (95% to 45%) |
 
-<figure>
-  <a href="/images/windows-stress-task-manager.webp" target="_blank">
-    <img src="/images/windows-stress-task-manager.webp" alt="Windows Task Manager under stress test">
+<figure class="post-image">
+  <a href="/images/windows-stress-task-manager.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/windows-stress-task-manager.webp" loading="lazy" width="1920" height="1080" alt="Windows Task Manager under stress test">
   </a>
   <figcaption>Windows Task Manager under stress — 100% CPU, 7.2GB RAM, 10.4GB committed, 14% GPU</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/linux-stress-system-monitor.webp" target="_blank">
-    <img src="/images/linux-stress-system-monitor.webp" alt="Linux System Monitor under stress test">
+<figure class="post-image">
+  <a href="/images/linux-stress-system-monitor.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/linux-stress-system-monitor.webp" loading="lazy" width="1920" height="1080" alt="Linux System Monitor under stress test">
   </a>
   <figcaption>Linux System Monitor under stress — 50% CPU, 6.2GB RAM, 240MB swap</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/windows-browser-tabs-stress.webp" target="_blank">
-    <img src="/images/windows-browser-tabs-stress.webp" alt="Windows 11 with 20 browser tabs open">
+<figure class="post-image">
+  <a href="/images/windows-browser-tabs-stress.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/windows-browser-tabs-stress.webp" loading="lazy" width="1920" height="1080" alt="Windows 11 with 20 browser tabs open">
   </a>
   <figcaption>20 browser tabs open on Windows 11 during the stress test</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/linux-browser-tabs-stress.webp" target="_blank">
-    <img src="/images/linux-browser-tabs-stress.webp" alt="Linux Mint with 20 browser tabs open">
+<figure class="post-image">
+  <a href="/images/linux-browser-tabs-stress.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/linux-browser-tabs-stress.webp" loading="lazy" width="1920" height="1080" alt="Linux Mint with 20 browser tabs open">
   </a>
   <figcaption>20 browser tabs open on Linux Mint during the stress test</figcaption>
 </figure>
@@ -417,9 +417,9 @@ loaded.
 > approximately 23 seconds. The stopwatch times above 
 > include the GRUB selection for a real-world comparison.
 
-<figure>
-  <a href="/images/systemd-analyze-output.webp" target="_blank">
-    <img src="/images/systemd-analyze-output.webp" alt="systemd-analyze boot time output">
+<figure class="post-image">
+  <a href="/images/systemd-analyze-output.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/systemd-analyze-output.webp" loading="lazy" width="1179" height="409" alt="systemd-analyze boot time output">
   </a>
   <figcaption>systemd-analyze output showing firmware, loader, kernel, and userspace boot times</figcaption>
 </figure>
@@ -461,9 +461,9 @@ memory overhead.
 That was the entire reason I started this project. The 
 numbers confirmed it.
 
-<figure>
-  <a href="/images/neofetch-output.webp" target="_blank">
-    <img src="/images/neofetch-output.webp" alt="Neofetch system info output">
+<figure class="post-image">
+  <a href="/images/neofetch-output.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/neofetch-output.webp" loading="lazy" width="1920" height="1080" alt="Neofetch system info output">
   </a>
   <figcaption>Neofetch terminal output showing system specs and uptime</figcaption>
 </figure>

@@ -70,9 +70,9 @@ This guide uses progressive disclosure. Each step shows the essential instructio
    ```
    *(Protection Status should now say "Off", but Percentage Encrypted will remain 100%).*
 
-<figure>
-  <a href="/images/s0-bitlocker-collage.webp" target="_blank">
-    <img src="/images/s0-bitlocker-collage.webp" alt="manage-bde output: TPM-only protectors, redacted key creation, Protection Off">
+<figure class="post-image">
+  <a href="/images/s0-bitlocker-collage.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s0-bitlocker-collage.webp" loading="lazy" width="1264" height="2004" alt="manage-bde output: TPM-only protectors, redacted key creation, Protection Off">
   </a>
   <figcaption>Step 0 receipts: inspect, create the key, verify suspension.</figcaption>
 </figure>
@@ -111,9 +111,9 @@ If you are on Windows 11 Home, you likely have "Device Encryption". **Warning:**
    *(This fully disables hibernation and deletes hiberfil.sys, ensuring a clean shutdown)*
 
 
- <figure>
-  <a href="/images/s1-faststartup.webp" target="_blank">
-    <img src="/images/s1-faststartup.webp" alt="Windows System Settings under Power Options: Turn on fast startup is unchecked, while Sleep and Lock remain checked and Hibernation is unchecked.">
+ <figure class="post-image">
+  <a href="/images/s1-faststartup.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s1-faststartup.webp" loading="lazy" width="1200" height="634" alt="Windows System Settings under Power Options: Turn on fast startup is unchecked, while Sleep and Lock remain checked and Hibernation is unchecked.">
   </a>
   <figcaption>The one box that matters: fast startup off. Sleep and lock stay on — you are not disabling power management, only the hybrid shutdown that freezes NTFS.</figcaption>
 </figure>
@@ -144,9 +144,9 @@ When Linux tries to access that partition during dual boot, it can cause file sy
 5. Click **Shrink**
 6. Verify the **Unallocated** space appears
 
-<figure>
-  <a href="/images/s2-diskmgmt-compare.webp" target="_blank">
-    <img src="/images/s2-diskmgmt-compare.webp" alt="Disk Management side by side with red BEFORE and AFTER labels: before, C: is 237.77 GB with no free block; after, C: is 87.77 GB and a 150.00 GB black Unallocated block sits between it and the Recovery partition.">
+<figure class="post-image">
+  <a href="/images/s2-diskmgmt-compare.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s2-diskmgmt-compare.webp" loading="lazy" width="1624" height="435" alt="Disk Management side by side with red BEFORE and AFTER labels: before, C: is 237.77 GB with no free block; after, C: is 87.77 GB and a 150.00 GB black Unallocated block sits between it and the Recovery partition.">
   </a>
   <figcaption>The shrink on real hardware: C: drops to 87.77 GB and the 150 GB unallocated window appears exactly where the installer lays Linux. Black fill is Windows' own "Unallocated" legend; the red labels are added for orientation.</figcaption>
 </figure>
@@ -202,9 +202,9 @@ Windows has **unmovable system files** (pagefile.sys, hiberfil.sys, System Resto
 1. **Pagefile:** Check "Automatically manage paging file size".
 2. **System Protection:** Turn on system protection.
 
-<figure>
-  <a href="/images/s2-unmovable-collage.webp" target="_blank">
-    <img src="/images/s2-unmovable-collage.webp" alt="Annotated four-panel Windows cleanup sequence: Virtual Memory with automatic paging file management boxed and No paging file selected, PowerShell running powercfg -h off, System Protection with Disable system protection and Delete boxed, and Shrink C with available shrink space and entered shrink amount boxed.">
+<figure class="post-image">
+  <a href="/images/s2-unmovable-collage.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s2-unmovable-collage.webp" loading="lazy" width="1221" height="1010" alt="Annotated four-panel Windows cleanup sequence: Virtual Memory with automatic paging file management boxed and No paging file selected, PowerShell running powercfg -h off, System Protection with Disable system protection and Delete boxed, and Shrink C with available shrink space and entered shrink amount boxed.">
   </a>
   <figcaption>The unmovable-file cleanup, in order: release the pagefile, disable hibernation, disable System Protection and delete restore points, then return to Shrink Volume with a larger available-shrink number. Red boxes mark the controls to change.</figcaption>
 </figure>
@@ -239,27 +239,27 @@ A torrent downloads the file in small pieces from multiple peers simultaneously.
 
 1. Download qBittorrent from the [official site](https://www.qbittorrent.org/) ONLY. *(Fake installers carrying malware are common on third-party sites).*
 
-    <figure>
-      <a href="/images/s3-qb-acq-collage.webp" target="_blank">
-        <img src="/images/s3-qb-acq-collage.webp" alt="Annotated four-panel qBittorrent acquisition path: green box on the homepage download arrow, the    official download page with its PGP signing block and a red box on the stable v5.2.4 link while the v5.3.0rc1 beneath it is left unmarked, green box on Latest Version 64_setup.exe on SourceForge, and the setup.exe download bubble marked scanned for malware.">
+    <figure class="post-image">
+      <a href="/images/s3-qb-acq-collage.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s3-qb-acq-collage.webp" loading="lazy" width="1600" height="1206" alt="Annotated four-panel qBittorrent acquisition path: green box on the homepage download arrow, the    official download page with its PGP signing block and a red box on the stable v5.2.4 link while the v5.3.0rc1 beneath it is left unmarked, green box on Latest Version 64_setup.exe on SourceForge, and the setup.exe download bubble marked scanned for malware.">
       </a>
       <figcaption>The colored boxes are the route: official homepage arrow, then the stable v5.2.4 link — the release candidate below it deliberately unmarked — then SourceForge's Latest Version, then the malware-scanned setup.exe. This is what "official source only" looks like click by click, with the decoy rc build visibly declined.</figcaption>
     </figure>
 
 2. Install and open qBittorrent. Approve administrator access *only* for the installer if Windows requests it, and click through any post-installation wizards using default settings.
 
-    <figure>
-      <a href="/images/s3-qb-install-collage.webp" target="_blank">
-        <img src="/images/s3-qb-install-collage.webp" alt="Four-panel installer sequence: the qBittorrent 5.2.4 x64 welcome screen, the Nullsoft progress bar extracting at 44 percent, the completion screen with Launch qBittorrent ticked, and the freshly opened empty client showing DHT at 90 nodes.">
+    <figure class="post-image">
+      <a href="/images/s3-qb-install-collage.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s3-qb-install-collage.webp" loading="lazy" width="1600" height="1206" alt="Four-panel installer sequence: the qBittorrent 5.2.4 x64 welcome screen, the Nullsoft progress bar extracting at 44 percent, the completion screen with Launch qBittorrent ticked, and the freshly opened empty client showing DHT at 90 nodes.">
       </a>
       <figcaption>Next, Next, Finish — the wizard adds nothing you didn't ask for. The last panel is the prize: a clean, empty client with a live DHT count, ready for the .torrent you are about to feed it.</figcaption>
     </figure>
 
 3. Download the Linux Mint `.torrent` file from the Mint download page.
 
-    <figure>
-      <a href="/images/s3-mint-torrent.webp" target="_blank">
-        <img src="/images/s3-mint-torrent.webp" alt="Linux Mint download page Information block with the 64-bit torrent link boxed in red and a red arrow labeling it 28.5KB - click this, beside the Size 2.8GB, Installation Guide, Release Announcement and Release Notes links.">
+    <figure class="post-image">
+      <a href="/images/s3-mint-torrent.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s3-mint-torrent.webp" loading="lazy" width="1200" height="776" alt="Linux Mint download page Information block with the 64-bit torrent link boxed in red and a red arrow labeling it 28.5KB - click this, beside the Size 2.8GB, Installation Guide, Release Announcement and Release Notes links.">
       </a>
       <figcaption>The torrent is the 28.5 KB line, not the 2.8 GB one. The red box marks the metadata file you actually pull into qBittorrent; the 2.8 GB figure above it is the ISO itself, which the torrent then fetches.</figcaption>
     </figure>
@@ -267,26 +267,26 @@ A torrent downloads the file in small pieces from multiple peers simultaneously.
 4. **Add the torrent to qBittorrent:** Open the qBittorrent app. Click the **"+" (Add Torrent File) icon** on the top toolbar (or go to **File > Add Torrent File**). Browse to your Downloads folder, select the `.torrent` file, and click **Open**.
 5. A "New Torrent" dialogue menu will appear. Leave it on default settings and click **OK**. The download starts.
 
-    <figure>
-      <a href="/images/s3-dialog.webp" target="_blank">
-        <img src="/images/s3-dialog.webp" alt="qBittorrent New Torrent dialog for linuxmint-22.3-xfce-64bit.iso with every option at its default - Start torrent checked, content layout Original, save path set to the Downloads folder - and a red annotation reading Defaults - click OK with an arrow pointing at the OK button.">
+    <figure class="post-image">
+      <a href="/images/s3-dialog.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s3-dialog.webp" loading="lazy" width="1200" height="947" alt="qBittorrent New Torrent dialog for linuxmint-22.3-xfce-64bit.iso with every option at its default - Start torrent checked, content layout Original, save path set to the Downloads folder - and a red annotation reading Defaults - click OK with an arrow pointing at the OK button.">
       </a>
       <figcaption>Leave it alone and click OK. The red mark is the whole instruction: default settings, no tweaking, Start torrent already ticked so the pull begins the moment you confirm.</figcaption>
     </figure>
 
 6. *(Note on Seeding: After reaching 100%, you are uploading (seeding) to others. On metered or capped data, right-click the file → Pause. On unmetered connections, leaving it seeding for a while keeps the torrent alive for the next person in your region).*
 
-    <figure>
-      <a href="/images/s3-progress.webp" target="_blank">
-        <img src="/images/s3-progress.webp" alt="qBittorrent mid-download: linuxmint-22.3 xfce 64-bit at 26.2 percent, status Downloading, 90 seeds and 3 peers, 5.3 MiB/s on the row and 6.7 MiB/s aggregate, ETA 8 minutes, 764.3 MiB received so far.">
+    <figure class="post-image">
+      <a href="/images/s3-progress.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s3-progress.webp" loading="lazy" width="1200" height="635" alt="qBittorrent mid-download: linuxmint-22.3 xfce 64-bit at 26.2 percent, status Downloading, 90 seeds and 3 peers, 5.3 MiB/s on the row and 6.7 MiB/s aggregate, ETA 8 minutes, 764.3 MiB received so far.">
       </a>
       <figcaption>A healthy pull on a flaky link: 90 seeds feeding 3 peers, speed holding in the MiB/s range, ETA under ten minutes. This is the resilience the torrent method buys you when a mirror stalls.</figcaption>
     </figure>
 
 
-    <figure>
-      <a href="/images/s3-complete.webp" target="_blank">
-        <img src="/images/s3-complete.webp" alt="qBittorrent showing linuxmint-22.3 xfce 64-bit at 100 percent Completed but stopped, with 0 seeds and 0 peers connected, 0 B/s both directions, and cumulative counters of 2.85 GiB received and 848 KiB sent.">
+    <figure class="post-image">
+      <a href="/images/s3-complete.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s3-complete.webp" loading="lazy" width="1200" height="632" alt="qBittorrent showing linuxmint-22.3 xfce 64-bit at 100 percent Completed but stopped, with 0 seeds and 0 peers connected, 0 B/s both directions, and cumulative counters of 2.85 GiB received and 848 KiB sent.">
       </a>
       <figcaption>The finish line, paused: 100% and stopped rather than seeding — the state the step-6 note describes for metered or capped connections. The bottom counters (2.85 GiB down, 848 KiB up) are the proof the pull was real.</figcaption>
     </figure>
@@ -303,9 +303,9 @@ If the download is stalling or painfully slow:
    * **Global Maximum Number of Uploaded slots:** 4  
    *(DHT and PeX are enabled by default. No action needed there).*
 
-<figure>
-  <a href="/images/s3-connection-tab.webp" target="_blank">
-    <img src="/images/s3-connection-tab.webp" alt="qBittorrent Connection options with the four limits enabled and set to 250 global connections, 60 per torrent, 4 global upload slots and 4 per-torrent upload slots; the Apply button is greyed out, confirming the values were saved.">
+<figure class="post-image">
+  <a href="/images/s3-connection-tab.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s3-connection-tab.webp" loading="lazy" width="970" height="778" alt="qBittorrent Connection options with the four limits enabled and set to 250 global connections, 60 per torrent, 4 global upload slots and 4 per-torrent upload slots; the Apply button is greyed out, confirming the values were saved.">
   </a>
   <figcaption>The tuned tab: 250 / 60 / 4, all four boxes ticked. The greyed-out Apply is the receipt — these are committed values, not typed-and-abandoned.</figcaption>
 </figure>
@@ -333,9 +333,9 @@ Windows has a built-in tool to verify the ISO without needing third-party softwa
    * **If they match exactly:** Your download is perfect.
    * **If even a single character is different:** The download is corrupted. Delete it and download again.
 
-<figure>
-  <a href="/images/s3-verify-compare.webp" target="_blank">
-    <img src="/images/s3-verify-compare.webp" alt="Split receipt: top, a Command Prompt certutil run printing a SHA256 hash for the xfce ISO, labeled Your output; bottom, the official sha256sum.txt in a browser where the third line, xfce-64bit.iso, carries the identical hash, labeled Official - must match.">
+<figure class="post-image">
+  <a href="/images/s3-verify-compare.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s3-verify-compare.webp" loading="lazy" width="1200" height="493" alt="Split receipt: top, a Command Prompt certutil run printing a SHA256 hash for the xfce ISO, labeled Your output; bottom, the official sha256sum.txt in a browser where the third line, xfce-64bit.iso, carries the identical hash, labeled Official - must match.">
   </a>
   <figcaption>The match that matters is the third line — xfce-64bit.iso. Your certutil output and that official string are character‑for‑character identical, which is the only acceptable result. Cinnamon and MATE readers: your edition is a different line in the same file, and the same equality rule applies to it.</figcaption>
 </figure>
@@ -401,9 +401,9 @@ Your laptop is running 64-bit Windows 11 in UEFI mode. GPT is the correct partit
 
 At this point the USB drive is ready. It will contain a small Ventoy system partition (usually hidden) and a large open partition where you will place ISO files.
 
-<figure>
-  <a href="/images/s4-ventoy-compare.webp" target="_blank">
-    <img src="/images/s4-ventoy-compare.webp" alt="Annotated two-stage Ventoy install: red BEFORE over an explorer window listing a single drive, Local Disk C, with the Ventoy installer still on its form; red AFTER over an explorer now listing two drives, the second being Ventoy D, with the installer advanced to a green ready state.">
+<figure class="post-image">
+  <a href="/images/s4-ventoy-compare.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s4-ventoy-compare.webp" loading="lazy" width="1624" height="443" alt="Annotated two-stage Ventoy install: red BEFORE over an explorer window listing a single drive, Local Disk C, with the Ventoy installer still on its form; red AFTER over an explorer now listing two drives, the second being Ventoy D, with the installer advanced to a green ready state.">
   </a>
   <figcaption>The install, measured by what Windows sees: before, the stick is not a usable volume and the explorer counts one drive; after, Ventoy writes its layout and a second volume, Ventoy (D:), appears. The green ready state is the installer confirming it, but the drive count is the receipt you check on your own screen.</figcaption>
 </figure>
@@ -438,9 +438,9 @@ Copying can introduce corruption. Always verify the file that is actually sittin
 6. Wait 1–5 minutes while the hash is calculated. The window may appear frozen — this is normal.
 7. Compare the resulting hash string with the official checksum on [linuxmint.com/verify.php](https://linuxmint.com/verify.php).
 
-<figure>
-  <a href="/images/s4-certutil-ventoy.webp" target="_blank">
-    <img src="/images/s4-certutil-ventoy.webp" alt="Command Prompt running certutil -hashfile on D:\linuxmint-22.3-xfce-64bit.iso, returning SHA256 45a835b5dddaf40e84d776549e0b19b3fbd49673b6cc6434ebddbfcd217df776 and CertUtil: -hashfile command completed successfully.">
+<figure class="post-image">
+  <a href="/images/s4-certutil-ventoy.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s4-certutil-ventoy.webp" loading="lazy" width="1200" height="290" alt="Command Prompt running certutil -hashfile on D:\linuxmint-22.3-xfce-64bit.iso, returning SHA256 45a835b5dddaf40e84d776549e0b19b3fbd49673b6cc6434ebddbfcd217df776 and CertUtil: -hashfile command completed successfully.">
   </a>
   <figcaption>Re-hash the copy, not just the download. The path is D: — the same Ventoy volume that appeared in the figure above — so this proves the bytes survived the trip onto the stick. The string matches the official xfce hash character for character, and the success line is the closer.</figcaption>
 </figure>
@@ -501,9 +501,9 @@ If MOK Enrollment fails, disable Secure Boot as a last resort.
 3. At the GRUB menu, select **Start Linux Mint Xfce 22.3 64-bit** *(or your downloaded edition's name, e.g., Cinnamon)*.
 4. Wait for the live desktop to load.
 
-    <figure>
-      <a href="/images/s6-live-collage.webp" target="_blank">
-        <img src="/images/s6-live-collage.webp" alt="Four-panel boot chain: Ventoy selecting linuxmint-22.3-xfce-64bit.iso, Ventoy boot mode menu with Boot in normal mode selected, GNU GRUB 2.12 with Start Linux Mint 22.3 Xfce 64-bit selected, and the Linux Mint live desktop appearing after boot.">
+    <figure class="post-image">
+      <a href="/images/s6-live-collage.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s6-live-collage.webp" loading="lazy" width="1624" height="933" alt="Four-panel boot chain: Ventoy selecting linuxmint-22.3-xfce-64bit.iso, Ventoy boot mode menu with Boot in normal mode selected, GNU GRUB 2.12 with Start Linux Mint 22.3 Xfce 64-bit selected, and the Linux Mint live desktop appearing after boot.">
       </a>
       <figcaption>The path from stick to live session: Ventoy loads the ISO, normal boot mode is selected, GRUB launches Linux Mint 22.3 Xfce 64-bit, and the live desktop appears. This is the moment the machine is testing Mint without installing it yet.</figcaption>
     </figure>
@@ -524,9 +524,9 @@ Do **not** enable home-folder encryption on Intel Pentium, Celeron, or older dua
 3. Connect to WiFi → Check **Install multimedia codecs** → Continue.
 4. If prompted about mounted partitions, click **Yes** to unmount.
 
-    <figure>
-      <a href="/images/s7-preinstall-collage.webp" target="_blank">
-        <img src="/images/s7-preinstall-collage.webp" alt="Two-by-two pre-install run: Welcome with English selected, Keyboard layout with English (US) selected, Multimedia codecs with the Install multimedia codecs checkbox ticked and red-boxed, and the Unmount partitions that are in use dialog on /dev/sda with Yes red-boxed.">
+    <figure class="post-image">
+      <a href="/images/s7-preinstall-collage.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s7-preinstall-collage.webp" loading="lazy" width="1624" height="1251" alt="Two-by-two pre-install run: Welcome with English selected, Keyboard layout with English (US) selected, Multimedia codecs with the Install multimedia codecs checkbox ticked and red-boxed, and the Unmount partitions that are in use dialog on /dev/sda with Yes red-boxed.">
       </a>
       <figcaption>The four screens before the partitioning choice. Pick your language and keyboard as usual; the two red boxes are the only forced calls here — tick Install multimedia codecs so video and sites render, and when the installer asks to unmount the in-use /dev/sda, answer Yes so it can lay out the unallocated window you freed in Step 2.</figcaption>
     </figure>
@@ -540,9 +540,9 @@ Do **not** enable home-folder encryption on Intel Pentium, Celeron, or older dua
    >  
    > **DO NOT select "Erase disk and install Linux Mint".** That option removes Windows and all existing data. If "Install alongside" is missing, stop and back up your data.
 
-    <figure>
-      <a href="/images/s7-alongside.webp" target="_blank">
-        <img src="/images/s7-alongside.webp" alt="Installation type screen headed This computer currently has Windows Boot Manager on it, with Install Linux Mint alongside Windows Boot Manager selected and red-boxed THIS ONE, Erase disk and install Linux Mint struck with a red X and NEVER, and Something else unmarked; Advanced features shows None selected.">
+    <figure class="post-image">
+      <a href="/images/s7-alongside.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s7-alongside.webp" loading="lazy" width="1200" height="892" alt="Installation type screen headed This computer currently has Windows Boot Manager on it, with Install Linux Mint alongside Windows Boot Manager selected and red-boxed THIS ONE, Erase disk and install Linux Mint struck with a red X and NEVER, and Something else unmarked; Advanced features shows None selected.">
       </a>
       <figcaption>The header is the proof the installer found your Windows — without that line, the alongside option would not appear, so if your screen differs, stop and read before clicking. The red marks settle the choice: alongside is THIS ONE; Erase disk, which wipes every file on every OS, is NEVER. Leave Advanced features at None selected and continue.</figcaption>
     </figure>
@@ -550,9 +550,9 @@ Do **not** enable home-folder encryption on Intel Pentium, Celeron, or older dua
 5. Select **Install Linux Mint alongside Windows Boot Manager**.
 6. Create your user account.
 
-    <figure>
-      <a href="/images/s7-account.webp" target="_blank">
-        <img src="/images/s7-account.webp" alt="Who are you screen with empty name, computer-name, username, password and confirm fields, Require my password to log in selected over Log in automatically, and the Encrypt my home folder checkbox red-boxed with a red arrow reading Leave unchecked on low end.">
+    <figure class="post-image">
+      <a href="/images/s7-account.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s7-account.webp" loading="lazy" width="1200" height="774" alt="Who are you screen with empty name, computer-name, username, password and confirm fields, Require my password to log in selected over Log in automatically, and the Encrypt my home folder checkbox red-boxed with a red arrow reading Leave unchecked on low end.">
       </a>
       <figcaption>Fill the fields and leave Require my password to log in as the default. The one trap the red box flags: Encrypt my home folder. It looks like free security, but on low-end hardware the home-directory encryption tax is real CPU and RAM on every file access — leave it unchecked, exactly as the mark says.</figcaption>
     </figure>
@@ -572,18 +572,18 @@ Do **not** enable home-folder encryption on Intel Pentium, Celeron, or older dua
 1. Restart the laptop.
 2. The **GRUB menu** should appear automatically.
 
-    <figure>
-      <a href="/images/s8-grub.webp" target="_blank">
-        <img src="/images/s8-grub.webp" alt="GNU GRUB 2.12 boot menu listing Linux Mint 22.3 Xfce as the highlighted default entry, Advanced options for Linux Mint 22.3 Xfce, Windows Boot Manager on /dev/sda1, and UEFI Firmware Settings, with the arrow-key help footer.">
+    <figure class="post-image">
+      <a href="/images/s8-grub.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s8-grub.webp" loading="lazy" width="1200" height="617" alt="GNU GRUB 2.12 boot menu listing Linux Mint 22.3 Xfce as the highlighted default entry, Advanced options for Linux Mint 22.3 Xfce, Windows Boot Manager on /dev/sda1, and UEFI Firmware Settings, with the arrow-key help footer.">
       </a>
       <figcaption>The menu the finished install hands you at power-on: Linux Mint and Windows Boot Manager both listed, Mint as the default. Arrow down and Enter reaches Windows; the /dev/sda1 tag names the EFI partition Windows was installed to. Both operating systems, one switch, no USB stick required anymore.</figcaption>
     </figure>
 
 3. Select **Linux Mint** → verify it boots to the desktop.
 
-    <figure>
-      <a href="/images/s8-welcome.webp" target="_blank">
-        <img src="/images/s8-welcome.webp" alt="Linux Mint Welcome window on a fresh install: sidebar with Welcome selected plus First Steps, Documentation, Help and Contribute; body greeting Welcome to your new operating system with a green Let's go button; footer logo reading Linux Mint 22.3 Xfce 64-bit and an unchecked Show this dialog at startup box.">
+    <figure class="post-image">
+      <a href="/images/s8-welcome.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/s8-welcome.webp" loading="lazy" width="1200" height="821" alt="Linux Mint Welcome window on a fresh install: sidebar with Welcome selected plus First Steps, Documentation, Help and Contribute; body greeting Welcome to your new operating system with a green Let's go button; footer logo reading Linux Mint 22.3 Xfce 64-bit and an unchecked Show this dialog at startup box.">
       </a>
       <figcaption>The first thing the new system shows after the reboot: a welcome screen, version-locked to 22.3 Xfce 64-bit, with the startup nag left off. Let's go! opens the guided first-run. Nothing here is required — it is the machine saying it is alive and yours.</figcaption>
     </figure>
@@ -617,17 +617,17 @@ grep -q '/swapfile' /etc/fstab && echo "Already present" || echo '/swapfile none
 
 
 
-<figure>
-  <a href="/images/s8-updates.webp" target="_blank">
-    <img src="/images/s8-updates.webp" alt="Update Manager window with a blue banner asking Do you want to switch to a local mirror, noting local mirrors are usually faster than packages.linuxmint.com, offering Yes and No; a package list with Upgrade boxes ticked and New Version strings; status bar reading 186 updates selected (566 MB).">
+<figure class="post-image">
+  <a href="/images/s8-updates.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s8-updates.webp" loading="lazy" width="1200" height="866" alt="Update Manager window with a blue banner asking Do you want to switch to a local mirror, noting local mirrors are usually faster than packages.linuxmint.com, offering Yes and No; a package list with Upgrade boxes ticked and New Version strings; status bar reading 186 updates selected (566 MB).">
   </a>
   <figcaption>The Run updates row, executed: 186 updates, 566 MB, queued and selected. The mirror prompt at the top is the same latency lever the download step relied on — a local mirror is what keeps a flaky link from stalling the update run.</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/s8-neofetch.webp" target="_blank">
-    <img src="/images/s8-neofetch.webp" alt="neofetch on the demo machine: asus@asus-VivoBook-ASUS-Laptop-X509UA, Linux Mint 22.3 x86_64, kernel 6.14.0-37-generic, Intel i3-7020U, 701MiB of 3794MiB used, 1280x720, Xfce 4.18, 1907 packages.">
+<figure class="post-image">
+  <a href="/images/s8-neofetch.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/s8-neofetch.webp" loading="lazy" width="1200" height="896" alt="neofetch on the demo machine: asus@asus-VivoBook-ASUS-Laptop-X509UA, Linux Mint 22.3 x86_64, kernel 6.14.0-37-generic, Intel i3-7020U, 701MiB of 3794MiB used, 1280x720, Xfce 4.18, 1907 packages.">
   </a>
   <figcaption>The Run neofetch row, executed: the starting XI's own receipt — three minutes into its first Mint session, the ASUS that ran every step of this guide idles at 701 MiB on 4 GB. The weaker box's numbers live in the narrative series; this frame is the demo machine testifying for itself.</figcaption>
 </figure>
@@ -636,9 +636,9 @@ grep -q '/swapfile' /etc/fstab && echo "Already present" || echo '/swapfile none
 One more validation, from the bench: this same guide was also run end-to-end on the HP 15-bs0xx — the Pentium box that barely runs Windows and stars in the four-part narrative series. Its finish line:
 
 
-<figure>
-  <a href="/images/author-workspace.webp" target="_blank">
-    <img src="/images/author-workspace.webp" alt="king@king-HP-Laptop-15-bs0xx: neofetch shows Linux Mint 22.3 Xfce on an Intel Pentium N3710 with 692MiB of 7840MiB used, and lsblk shows sda5 mounted at / beside intact Windows partitions.">
+<figure class="post-image">
+  <a href="/images/author-workspace.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/author-workspace.webp" loading="lazy" width="800" height="352" alt="king@king-HP-Laptop-15-bs0xx: neofetch shows Linux Mint 22.3 Xfce on an Intel Pentium N3710 with 692MiB of 7840MiB used, and lsblk shows sda5 mounted at / beside intact Windows partitions.">
   </a>
   <figcaption>The substitute's call-up: the weaker HP, dual-booted by this same guide, Windows partitions untouched. Its full story and its own benchmarks live in the narrative series; here it only testifies that the guide generalizes past the demo box.</figcaption>
 </figure>
@@ -682,25 +682,25 @@ These measurements were taken at the 3-minute mark after a fresh boot with no ap
 On constrained hardware, that extra gigabyte prevents aggressive background swapping. Linux Mint (XFCE baseline) consumes roughly half the idle RAM of Windows 11. Cinnamon and MATE will use slightly more RAM at idle, but the installation workflow and the performance benefits over Windows remain identical.
 
 
-<figure>
-  <a href="/images/perf-win.webp" target="_blank">
-    <img src="/images/perf-win.webp" alt="Windows 11 Task Manager Performance tab at up time 0:00:03:06: CPU 1% at 1.18 GHz on an Intel i3-7020U, Memory 2.1/3.9 GB (54%), 151 processes, both disks and the GPU idle; taskbar clock reads 05/10/2026.">
+<figure class="post-image">
+  <a href="/images/perf-win.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/perf-win.webp" loading="lazy" width="1200" height="675" alt="Windows 11 Task Manager Performance tab at up time 0:00:03:06: CPU 1% at 1.18 GHz on an Intel i3-7020U, Memory 2.1/3.9 GB (54%), 151 processes, both disks and the GPU idle; taskbar clock reads 05/10/2026.">
   </a>
   <figcaption>The demo machine at rest under Windows 11: three minutes in, over half of its usable RAM is already spoken for — 54% — with the CPU idling at 1%. This is the baseline the next figure is measured against: same box, same idle mark, nothing else running.</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/perf-mint.webp" target="_blank">
-    <img src="/images/perf-mint.webp" alt="Xfce Task Manager on Linux Mint at the same idle mark: CPU 7%, 212 processes, Memory 24% (923.3 MiB of 3.7 GiB), with the per-process RSS list showing each daemon's individual footprint.">
+<figure class="post-image">
+  <a href="/images/perf-mint.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/perf-mint.webp" loading="lazy" width="1200" height="610" alt="Xfce Task Manager on Linux Mint at the same idle mark: CPU 7%, 212 processes, Memory 24% (923.3 MiB of 3.7 GiB), with the per-process RSS list showing each daemon's individual footprint.">
   </a>
   <figcaption>Same machine, same three-minute mark, Mint XFCE: 923 MiB of 3.7 GiB — 24%, less than half of Windows' 54%. And note the process count, 212 against 151: more daemons, far less weight. Process count is not memory footprint; the RSS column is where you check each service's share for yourself.</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/perf-systemd.webp" target="_blank">
-    <img src="/images/perf-systemd.webp" alt="Terminal on asus@asus-VivoBook-ASUS-Laptop-X509UA running systemd-analyze: startup finished in 2.506s firmware + 6.152s loader + 2.617s kernel + 13.862s userspace = 25.139s; graphical.target reached after 13.804s in userspace.">
+<figure class="post-image">
+  <a href="/images/perf-systemd.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/perf-systemd.webp" loading="lazy" width="1200" height="802" alt="Terminal on asus@asus-VivoBook-ASUS-Laptop-X509UA running systemd-analyze: startup finished in 2.506s firmware + 6.152s loader + 2.617s kernel + 13.862s userspace = 25.139s; graphical.target reached after 13.804s in userspace.">
   </a>
   <figcaption>One representative boot, itemized: firmware 2.5s, loader 6.2s, kernel 2.6s, userspace 13.9s — 25.1s to a graphical session. The table's ~25.6s is the three-run stopwatch average; this frame is the single run that shows where those seconds actually live, reproducible by any reader with one command.</figcaption>
 </figure>
@@ -737,9 +737,9 @@ This is a field report from one machine, not a diagnosis of Ubiquity, parted, ex
 1. **Initial Setup:** I shrunk Windows to 87.8 GiB, leaving an unallocated window of ~150 GiB (sectors 184,303,616–498,878,463) for Linux Mint.
 2. **Automated Failure:** Selecting "Install alongside Windows Boot Manager" halted the installer at the filesystem-creation step. The exact dialog: *"Failed to create a file system — The ext4 file system creation in partition #5 of SCSI1 (0,0,0) (sda) failed."*
 
-    <figure>
-      <a href="/images/ir-trigger.webp" target="_blank">
-        <img src="/images/ir-trigger.webp" alt="Ubiquity installer on the Where are you? timezone screen with Lagos entered, overlaid by the failure dialog: Failed to create a file system — The ext4 file system creation in partition #5 of SCSI1 (0,0,0) (sda) failed.">
+    <figure class="post-image">
+      <a href="/images/ir-trigger.webp" target="_blank" rel="noopener noreferrer">
+        <img src="/images/ir-trigger.webp" loading="lazy" width="1200" height="926" alt="Ubiquity installer on the Where are you? timezone screen with Lagos entered, overlaid by the failure dialog: Failed to create a file system — The ext4 file system creation in partition #5 of SCSI1 (0,0,0) (sda) failed.">
       </a>
       <figcaption>The trigger, verbatim: ext4 creation failed on partition #5, mid-install, over the timezone screen. Everything in this report starts at this dialog.</figcaption>
     </figure>
@@ -759,9 +759,9 @@ This is a field report from one machine, not a diagnosis of Ubiquity, parted, ex
 **Observed pattern, stated as observation only:** every failed creation spanned beyond the 200 GB decimal mark; the single clean creation did not. The clean creation was also the only journal-less one, so end-offset and journal presence are confounded in the data. I did not separate those variables, and I am not claiming to.
 
 
-<figure>
-  <a href="/images/ir-mkfs-collage.webp" target="_blank">
-    <img src="/images/ir-mkfs-collage.webp" alt="Three stacked live-session terminals: mkfs.ext4 -F on the 94GB-100% span failing at discard then at the final superblock write; the same span with -E nodiscard dying at the identical line; and the 94GB-248GB nodiscard attempt dying there too — three different filesystem UUIDs, one identical death.">
+<figure class="post-image">
+  <a href="/images/ir-mkfs-collage.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/ir-mkfs-collage.webp" loading="lazy" width="575" height="1307" alt="Three stacked live-session terminals: mkfs.ext4 -F on the 94GB-100% span failing at discard then at the final superblock write; the same span with -E nodiscard dying at the identical line; and the 94GB-248GB nodiscard attempt dying there too — three different filesystem UUIDs, one identical death.">
   </a>
   <figcaption>The three identical deaths, table rows 2 through 4 on screen: different spans, different flags, three distinct UUIDs — and every one of them dying at the same final superblock write. The first panel even shows the discard failure that preceded them. Same last line, three times, is not a coincidence; it is a pattern.</figcaption>
 </figure>
@@ -776,9 +776,9 @@ While attempting to resize partitions, I ran `parted /dev/sda resizepart 5 100GB
 - Partition collapsed to **110 4k blocks**; `resize2fs` refused with "The containing partition (or device) is only 110 (4k) blocks."
 - A later `resizepart 5 95GiB` produced a partition of **489,728 blocks (1.9 GiB)**.
 
-<figure>
-  <a href="/images/ir-geometry.webp" target="_blank">
-    <img src="/images/ir-geometry.webp" alt="fdisk -l on the collapsed disk: sda1 EFI 100M, sda2 Microsoft reserved 16M, sda3 Windows 87.8G, sda4 recovery 604M, and sda5 Linux filesystem at 1.9G spanning sectors 195311616-199229439; Partition table entries are not in disk order; opening fdisk prints the red warning that the disk is currently in use and repartitioning is probably a bad idea.">
+<figure class="post-image">
+  <a href="/images/ir-geometry.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/ir-geometry.webp" loading="lazy" width="634" height="451" alt="fdisk -l on the collapsed disk: sda1 EFI 100M, sda2 Microsoft reserved 16M, sda3 Windows 87.8G, sda4 recovery 604M, and sda5 Linux filesystem at 1.9G spanning sectors 195311616-199229439; Partition table entries are not in disk order; opening fdisk prints the red warning that the disk is currently in use and repartitioning is probably a bad idea.">
   </a>
   <figcaption>The collapsed table, read straight off the disk: partition 5 at 1.9 GiB — 3,917,824 sectors, which times 512 is exactly the 2,005,925,888 bytes blockdev reported two figures earlier — entries out of disk order, Windows partitions untouched beside the wreckage, and fdisk's red warning that the disk is in use. This is the state the rewrite started from.</figcaption>
 </figure>
@@ -786,9 +786,9 @@ While attempting to resize partitions, I ran `parted /dev/sda resizepart 5 100GB
 - `e2fsck` then reported the superblock/device mismatch: *"The filesystem size... is 20971520 blocks / The physical size of the device is 489728 blocks... Either the superblock or the partition table is likely to be corrupt!"*
 
 
-<figure>
-  <a href="/images/ir-crisis.webp" target="_blank">
-    <img src="/images/ir-crisis.webp" alt="Live-session terminal: e2fsck -b 32768 -y /dev/sda5 deleting an invalid journal, then reporting the filesystem size as 20971520 blocks against a physical device of 489728 blocks; blockdev --getsize64 returns 2005925888 bytes — exactly 489728 4k blocks.">
+<figure class="post-image">
+  <a href="/images/ir-crisis.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/ir-crisis.webp" loading="lazy" width="1200" height="851" alt="Live-session terminal: e2fsck -b 32768 -y /dev/sda5 deleting an invalid journal, then reporting the filesystem size as 20971520 blocks against a physical device of 489728 blocks; blockdev --getsize64 returns 2005925888 bytes — exactly 489728 4k blocks.">
   </a>
   <figcaption>The mismatch, with its arithmetic proof: the superblock claims 20,971,520 blocks, the device holds 489,728 — and blockdev confirms it in bytes, 2,005,925,888, which is 489,728 × 4096. Even the backup-superblock repair path ran into the same wall.</figcaption>
 </figure>
@@ -797,9 +797,9 @@ While attempting to resize partitions, I ran `parted /dev/sda resizepart 5 100GB
 - One collapse was performed from inside the booted installation, on the partition mounted as `/`. After it, even running tools failed: `sudo: unable to execute /usr/sbin/e2fsck: Input/output error`. **Do not repair a partition table from an operating system booted off that table.**
 
 
-<figure>
-  <a href="/images/ir-diag-collage.webp" target="_blank">
-    <img src="/images/ir-diag-collage.webp" alt="Four-panel diagnostic sweep: GParted showing the 150 GiB partition typed unknown with a warning flag beside the 87.77 GiB Windows partition and a 1.11 MiB unallocated sliver; a resizepart 5 100% attempt whose resize2fs dies with an Input/output error; a live-session e2fsck -f -y scroll deleting the journal and reporting the 20971520-versus-489728 mismatch; and the booted install where even sudo e2fsck -n fails with Unable to execute /usr/sbin/e2fsck: Input/output error.">
+<figure class="post-image">
+  <a href="/images/ir-diag-collage.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/ir-diag-collage.webp" loading="lazy" width="1600" height="1206" alt="Four-panel diagnostic sweep: GParted showing the 150 GiB partition typed unknown with a warning flag beside the 87.77 GiB Windows partition and a 1.11 MiB unallocated sliver; a resizepart 5 100% attempt whose resize2fs dies with an Input/output error; a live-session e2fsck -f -y scroll deleting the journal and reporting the 20971520-versus-489728 mismatch; and the booted install where even sudo e2fsck -n fails with Unable to execute /usr/sbin/e2fsck: Input/output error.">
   </a>
   <figcaption>Every probe, same verdict: the table the installer left — 150 GiB typed unknown, a 1.11 MiB sliver — then resize attempts dying on I/O errors from the live session and from the booted system alike, until the booted system could not even run its own repair tool. This sweep is the evidence behind the report's hardest lesson: never repair a partition table from an OS booted off it.</figcaption>
 </figure>
@@ -816,17 +816,17 @@ While attempting to resize partitions, I ran `parted /dev/sda resizepart 5 100GB
 4. **Verified:** `sudo e2fsck -f -y /dev/sda5` passed clean.
 
 
-<figure>
-  <a href="/images/ir-recovery-collage.webp" target="_blank">
-    <img src="/images/ir-recovery-collage.webp" alt="Four-panel recovery chain: the journal-less mkfs on the 100GB-200GB span ending in Writing superblocks done; the fdisk rewrite creating partition 5 at 90.6 GiB with the ext4-signature warning answered N; then two e2fsck -b 32768 passes fixing orphaned inodes, block bitmaps, and group counts, ending FILE SYSTEM WAS MODIFIED.">
+<figure class="post-image">
+  <a href="/images/ir-recovery-collage.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/ir-recovery-collage.webp" loading="lazy" width="1600" height="1206" alt="Four-panel recovery chain: the journal-less mkfs on the 100GB-200GB span ending in Writing superblocks done; the fdisk rewrite creating partition 5 at 90.6 GiB with the ext4-signature warning answered N; then two e2fsck -b 32768 passes fixing orphaned inodes, block bitmaps, and group counts, ending FILE SYSTEM WAS MODIFIED.">
   </a>
   <figcaption>The chain that worked, mid-work: the single clean journal-less creation, the fdisk rewrite that kept the ext4 signature by answering N, and the backup-superblock fsck rebuilding group metadata count by count. Every panel here ends closer to alive than the last — the opposite of the mkfs collage above.</figcaption>
 </figure>
 
 
-<figure>
-  <a href="/images/ir-resolution.webp" target="_blank">
-    <img src="/images/ir-resolution.webp" alt="Terminal: the backup-superblock e2fsck closing with FILE SYSTEM WAS MODIFIED at 2395500/20971520 blocks; resize2fs growing /dev/sda5 to 23750000 (4k) blocks; then a final e2fsck -f -y running all five passes with no Fix prompts, ending 482657/5939200 files and 2439190/23750000 blocks.">
+<figure class="post-image">
+  <a href="/images/ir-resolution.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/ir-resolution.webp" loading="lazy" width="1200" height="841" alt="Terminal: the backup-superblock e2fsck closing with FILE SYSTEM WAS MODIFIED at 2395500/20971520 blocks; resize2fs growing /dev/sda5 to 23750000 (4k) blocks; then a final e2fsck -f -y running all five passes with no Fix prompts, ending 482657/5939200 files and 2439190/23750000 blocks.">
   </a>
   <figcaption>Resolution, in three movements: the repair pass closes with the filesystem modified at its old size; resize2fs grows it to exactly 23,750,000 blocks; and the final forced e2fsck runs all five passes without asking a single question — the first check in this entire report with nothing left to answer yes to.</figcaption>
 </figure>

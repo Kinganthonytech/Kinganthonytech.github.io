@@ -86,3 +86,5 @@ figure img { height: auto; max-width: 100%; border-radius: 8px; border: 1px soli
 figcaption { font-size: 0.85em; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
 
 hr { border: none; border-top: 2px solid var(--code-bg); margin: 2.6rem 0; }
+
+.post-image img { max-width: 100%; height: auto; }
