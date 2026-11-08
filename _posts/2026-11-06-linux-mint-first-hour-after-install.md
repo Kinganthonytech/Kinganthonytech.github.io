@@ -275,6 +275,13 @@ Linux Mint includes a **Driver Manager** (Menu → Driver Manager) for proprieta
 
 Neither laptop used for this guide ever showed anything in Driver Manager, on a fresh install or on any later check: *"No drivers needed — Your computer does not need any additional drivers."* That's not a malfunction — it almost always means your hardware is already fully supported by Mint's default, open-source drivers, which is the common case for most mainstream laptop hardware. An empty Driver Manager is a good sign, not a missing step.
 
+<figure class="post-image">
+  <a href="/images/pkg-driver-manager-empty.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/pkg-driver-manager-empty.webp" loading="lazy" width="642" height="529" alt="Driver Manager window, subtitle Additional and proprietary drivers, showing a large checkmark over the bold line No drivers needed and the muted line Your computer does not need any additional drivers — no entries listed.">
+  </a>
+  <figcaption>The good sign, on screen: an empty Driver Manager is not a malfunction. For most mainstream hardware — both laptops here included — the default open-source drivers already cover everything, so this blank window is the correct result. The populated case (an Nvidia card listing an Install option) is the one state I never saw on either machine, which is why the section points you to the official docs for it instead of guessing at a flow I didn't run.</figcaption>
+</figure>
+
 If you do have hardware that needs a proprietary driver — an Nvidia GPU is the most common case — Driver Manager will list it with a clear "Install" option. I haven't personally walked through that flow on either test machine, so rather than guess at steps I've never run, here's where to go instead:
 
 - [Linux Mint User Guide](https://linuxmint.com/documentation.php) — official documentation
