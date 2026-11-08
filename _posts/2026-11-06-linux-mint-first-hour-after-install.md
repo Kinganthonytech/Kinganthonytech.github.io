@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Linux Mint: The First Hour After Install (Mirrors, Software, TimeShift, Updates, Tethering)"
-date: 2026-11-06 12:00:00 +0100
+date: 2026-11-06 15:00:00 +0100
 categories: [Linux, Hardware]
 tags: [linux-mint, post-install, timeshift, flatpak, tutorial]
 ---
@@ -31,8 +31,12 @@ Mirrors are the software servers that host Linux Mint's packages. Picking a fast
 5. Repeat for the **Base repository**, then **Apply**.
 6. Click the **green refresh icon** to update the cache. Give it a few minutes.
 
-![The Software Sources speed test ranking mirrors, the Apply button, and a completed cache refresh](/assets/images/first-hour/step01-mirror-speedtest.png)
-*Figure 1: The speed test ranks mirrors by response time. Apply, then refresh the cache.*
+<figure class="post-image">
+  <a href="/images/step01-mirror-speedtest.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step01-mirror-speedtest.webp" loading="lazy" width="1209" height="561" alt="Two-panel collage. Left: the Select a mirror speed-test dialog ranking Liquid Telecom at 359 kB/s above University of Free State, Cicku, Dimension Data, Retention Range, Linux Mint, and an unreachable cloud.mu. Right: the Software Sources window with Main (zena) on mirrors.cicku.me, Base (noble) on archive.ubuntu.com, optional sources off, and the green Click here to update the APT cache button.">
+  </a>
+  <figcaption>Figure 1: The two screens that bracket the operation. The speed test ranks mirrors by how fast they answer — Liquid Telecom on top here, cloud.mu unreachable — and once both repositories are Applied, the green button is what kicks off the cache refresh in step 6.</figcaption>
+</figure>
 
 > **Note:** The speed test ranks mirrors by how fast they *answer*, not how long they can *carry a download*. The top pick is usually right — but if a refresh ever stalls, the fix is simply taking the next mirror down the list.
 
@@ -43,11 +47,25 @@ On a bad network day, that final cache refresh can lock up — sometimes for hal
 
 A stalled mirror fetch does not mean your system is broken. It means the connection somewhere stopped delivering mid-download, and Mint's GUI is holding the line open — politely, forever. It's rare, but on unreliable networks it happens. The recovery path below goes from least to most invasive. Stop the moment the GUI frees.
 
+<figure class="post-image">
+  <a href="/images/step01-cache-updating.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step01-cache-updating.webp" loading="lazy" width="802" height="549" alt="Software Sources window greyed out mid-refresh: every control disabled, the Main and Base mirror fields frozen, and a blue Updating cache progress bar stretched across the bottom with no movement.">
+  </a>
+  <figcaption>The frozen window: controls greyed, the cache bar stretched, no error and no timeout. This is the state the recovery path below assumes — a fetch that stopped delivering while the GUI holds the line open.</figcaption>
+</figure>
+
 **1. Read the red shield correctly.**
 If the Update Manager shield turned red, you saw this:
-> *"Could not refresh the list of updates — Your APT configuration is corrupt. Do not install or upgrade anything — doing so could break your operating system! To switch to a different Linux Mint mirror and solve this problem, click OK."*
+> *"Could not refresh the list of updates — Your APT configuration is corrupt. Do not install or update anything — doing so could break your operating system! To switch to a different Linux Mint mirror and solve this problem, click OK."*
 
 **Translation:** This is Mint's standard reaction to a failed mirror fetch. It clears the moment a refresh succeeds. It is not a verdict on your system.
+
+<figure class="post-image">
+  <a href="/images/step01-shield-warning.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step01-shield-warning.webp" loading="lazy" width="509" height="112" alt="The blue desktop notification, cropped: Could not refresh the list of updates — Your APT configuration is corrupt. Do not install or update anything - doing so could break your operating system! To switch to a different Linux Mint mirror and solve this problem, click OK.">
+  </a>
+  <figcaption>The notification itself: alarming wording, harmless meaning. Mint is reporting a failed fetch, not a broken system — and the line that matters is the last one, which is the actual fix.</figcaption>
+</figure>
 
 **2. Wait before touching anything.**
 Freezes often resolve on their own — in my testing they cleared in 2–6 minutes, and the longest ran 23 minutes. One freeze outlasted 30 and I ended it with a shutdown; that story's in [the incident report](#a1-mirror-freeze).
@@ -58,6 +76,13 @@ Open a terminal and run:
 ps aux | grep apt
 ```
 Read what's actually listed. The holder's name depends on the door: on Mint 22.3 the GUI's fetch runs through a Python script named **`aptk`** (`/usr/sbin/aptk`); a terminal update runs through `apt-get`. Kill what `ps` shows — not what you remember. Ignore the tourists: `grep` matches substrings, so unrelated lines like `--adaptive` will appear in the output too.
+
+<figure class="post-image">
+  <a href="/images/step01-ps-anatomy.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step01-ps-anatomy.webp" loading="lazy" width="641" height="472" alt="ps aux | grep apt on the ASUS: the holder is a root python3 running /usr/sbin/aptk; four _apt workers run methods/http, methods/gpgv and methods/store; the tourists are the avahi and thermald lines, matched only because the hostname Laptop and the flag adaptive contain the substring apt; the final line is the grep catching itself.">
+  </a>
+  <figcaption>The anatomy, live: one holder (aptk), four workers, and the tourists that match on substring rather than on being apt. Read this before you kill anything — the frame is the lesson, and it is the same output the prose walks through line for line.</figcaption>
+</figure>
 
 **4. Kill the holder.**
 In every capture taken for this guide, the GUI's holder answered to `aptk` — so:

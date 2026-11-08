@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Install Linux Mint (All Editions) on a Windows 11 Laptop"
-date: 2026-11-06 12:00:00 +0100
+date: 2026-11-06 17:00:00 +0100
 categories: [Linux, Hardware]
 tags: [linux-mint, dual-boot, windows-11, tutorial, guide]
 image: /images/featured-lsblk.jpg
