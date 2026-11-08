@@ -389,8 +389,12 @@ Updates patch security holes and keep your kernel and drivers current. Two equiv
 5. Let it run.
 6. When it's done, the shield reads **"Your system is up to date."**
 
-![Update Manager showing the list of available updates and the up-to-date shield](/assets/images/first-hour/step04-update-manager.png)
-*Figure 7: The Update Manager list — and the shield when you're current.*
+<figure class="post-image">
+  <a href="/images/step04-update-manager.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/step04-update-manager.webp" loading="lazy" width="889" height="984" alt="Two-panel Update Manager collage. Top: the available-updates list with the toolbar (Clear, Select All, Refresh, Install Updates active), columns Type / Upgrade / Name / New Version, and three ticked rows — brotli 1.1.0-2ubuntu0.1, xapp 3.2.4+mint22.3, xapp-thumbnailers 1.2.10 — over the Information / Packages / Changelog tabs and a footer reading 3 updates selected (886 KB). Bottom: the same window after the run, Install Updates greyed, a large checkmark over the bold line Your system is up to date.">
+  </a>
+  <figcaption>Figure 7: the two states the GUI walks you through. The list appears at step 2 — three logical rows here, each a ticked checkbox you can untick — and the shield closes at step 6 once the batch is applied. The footer's 3 updates / 886 KB is the GUI's own tally; the terminal counts the same work differently, and that gap is the field note's subject, not this step's.</figcaption>
+</figure>
 
 #### Method 2: The Terminal
 
