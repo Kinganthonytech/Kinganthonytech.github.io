@@ -437,7 +437,7 @@ Sometimes Wi-Fi just dies — a bad driver, a kernel update, a fight with your w
           <a href="/images/step05-android-tether.webp" target="_blank" rel="noopener noreferrer">
             <img src="/images/step05-android-tether.webp" loading="lazy" width="720" height="791" alt="Phone screenshot, cropped to the USB settings panel: under USB controlled by, This device is selected; under Use USB for, five radio options are listed — Transferring files / Android Auto (currently selected), USB tethering, MIDI, Transferring images, Charging phone only.">
           </a>
-          <figcaption>The Android door, open. USB tethering is one option in this list — not the selected one yet (file-transfer is lit here), so this is the screen where you *choose* it. The lesson is in the words, not the pixels: pick USB tethering from this list after mobile data is on, and Mint takes it from there.</figcaption>
+          <figcaption>The Android door, open. USB tethering is one option in this list — not the selected one yet (file-transfer is lit here), so this is the screen where you <em>choose</em> it. The lesson is in the words, not the pixels: pick USB tethering from this list after mobile data is on, and Mint takes it from there.</figcaption>
         </figure>
 
 4. Linux Mint detects it automatically as a wired connection. No terminal, no setup. If your phone has mobile data, you're online.
@@ -514,6 +514,13 @@ The initial post-install mirror selection ran clean on both test machines (HP Pe
 
 #### Machine 1 — HP (the 23-minute hold)
 Routine maintenance: switched the Main repository mirror, clicked Apply, hit the cache refresh. The refresh froze completely — no progress, no error, no timeout. Exactly 23 minutes later, it released on its own.
+
+<figure class="post-image">
+  <a href="/images/a1-hp-mirror-freeze.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a1-hp-mirror-freeze.webp" loading="lazy" width="1920" height="1080" alt="Full desktop capture on the HP workspace: the dark-green branded Linux Mint wallpaper, the same backdrop as the article's opening image. Centered, the Software Sources window is greyed mid-refresh — controls disabled, an Updating cache bar stretched along the bottom. A red shield sits in the system tray beside a blue desktop notification reading: Could not refresh the list of updates / Your APT configuration is corrupt. / Do not install or update anything - doing so could break your operating system! / To switch to a different Linux Mint mirror and solve this problem, click OK.">
+  </a>
+  <figcaption>The HP freeze, whole: cache window locked mid-refresh, red shield, and the corrupt-config notification — the same standard warning the Step 1 crop isolates, here shown in context. The surrounding desktop is the author's established workspace, the same branded backdrop as the opening image, which is why the capture ships uncropped: the wallpaper is the proof this is the article's own machine.</figcaption>
+</figure>
 
 The moment the freeze began, the Update Manager shield went red with the standard warning: *"Your APT configuration is corrupt. Do not install or upgrade anything…"* The moment the freeze released, the shield returned to normal and showed the standard pending-updates indicator. Nothing was ever corrupt — the shield was reporting a failed fetch, not a broken system.
 
