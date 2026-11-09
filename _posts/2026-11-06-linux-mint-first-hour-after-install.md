@@ -723,6 +723,13 @@ Num  Name                Tags  Description
 
 **One technical note from setup:** Timeshift is single-instance — the GUI and the terminal share one lock. Trying to run a CLI snapshot while the GUI is open gets refused outright: `Another instance of this application is running`. Close the GUI first.
 
+<figure class="post-image">
+  <a href="/images/a3-single-instance.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a3-single-instance.webp" loading="lazy" width="1280" height="720" alt="Terminal over the dark Linux Mint desktop on the ASUS: sudo timeshift --list and the first sudo timeshift --create --comments drill-second are both refused with Another instance of this application is running (PID=2572); the third attempt succeeds — Mounted /dev/sda5, Creating new snapshot (RSYNC), Linking from snapshot 2026-10-25_22-00-01, RSYNC Snapshot saved successfully (102s), Tagged snapshot 2026-10-25_22-49-51: ondemand. A desktop notification top-right echoes RSYNC Snapshot saved successfully (102s); the clock reads 22:51, 2026-10-25. The final line is a benign /tmp/timeshift-… line 10: status artifact after the success.">
+  </a>
+  <figcaption>The single-instance lock, live. Two refusals while the GUI held the lock, then success the moment it was closed — 102 seconds, echoed by the desktop notification. The stray /tmp line at the bottom is a harmless post-success script hiccup the drill ignored; the snapshot itself saved clean.</figcaption>
+</figure>
+
 #### The Space Truth, Measured Three Ways
 
 Before breaking anything, I checked the disk usage numbers — and got my own prediction wrong on the first try.
@@ -755,6 +762,13 @@ sudo du -sh /timeshift/snapshots/2026-10-25_22-49-51
 ```
 Same snapshot. Different question. Run combined, it cost 4.2G. Run solo, it contains 8.4G. Both numbers are true — `du` combined tells you what a snapshot *cost*, `du` solo tells you what it *contains*, and `df` settles what the disk actually *holds*. I predicted 11–12G for the solo figure and got 8.4G instead — lower than expected, because files already deleted since the Oct 15 baseline (old caches, rotated logs, removed packages) only exist inside the *older* snapshots now. That's also the real argument for keeping more than one snapshot: older ones aren't redundant copies — they're the only remaining holders of history the newer ones no longer carry.
 
+<figure class="post-image">
+  <a href="/images/a3-threeway.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a3-threeway.webp" loading="lazy" width="663" height="476" alt="ASUS terminal: the timeshift --list header (Device /dev/sda5, Mode RSYNC, Status OK, 3 snapshots, 61.5 GB free) above the three-row table ending in the drill-second entry; then df -h / reporting /dev/sda5 at 89G size, 27G used, 58G avail, 32%; then sudo du -sh across all snapshots returning 7.5G, 412M, 4.2G; then sudo du -sh on the single 2026-10-25_22-49-51 snapshot returning 8.4G.">
+  </a>
+  <figcaption>Three questions, three true answers, one screen. df settles what the disk holds (27G); du across all snapshots settles what each cost (7.5G, 412M, 4.2G); du on one alone settles what it contains (8.4G). The numbers that look like a contradiction are the same disk answering different questions.</figcaption>
+</figure>
+
 #### The Wound
 
 With the baseline established, I opened a terminal and deleted a real system file:
@@ -777,6 +791,37 @@ I deliberately bypassed the terminal for the fix and used the Timeshift GUI inst
 The very first line of the repair plan: **`Create /etc/motd`**. Timeshift wasn't guessing — it compared the live system to the snapshot and named the wound first.
 
 Below it, roughly 49 minutes of ordinary system drift — firmware metadata, NetworkManager state, SMART disk logs, systemd timer stamps — all queued to be restored or recreated alongside the one file I actually cared about. None of it was `/home` — the exclusion held, exactly as configured. But `/boot/efi` needs a correction, and the correction is the lesson: the Confirm Actions screen showed no `/boot/efi` rows, and I first read that as "the ESP was left alone." It wasn't. The restore log shows `Re-installing GRUB2 bootloader... Installing for x86_64-efi platform` — a separate post-restore step that writes into the ESP, which the file plan never enumerates. The warning dialog had listed `/dev/sda1 → /boot/efi` under "devices where data will be modified" before I clicked anything. The file list was one layer of the process; the bootloader re-install was the second. Absence in one screen is not absence in the operation.
+
+<figure class="post-image">
+  <a href="/images/a3-target-device.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a3-target-device.webp" loading="lazy" width="500" height="526" alt="The Timeshift Select Target Device dialog: / mapped to sda5 ~ ext4 (95 GB), /boot set to Keep on Root Device, /boot/efi mapped to sda1 ~ vfat (101 MB), /home set to Keep on Root Device, with a Bootloader Options (Advanced) button below and Previous / Next / Cancel at the foot.">
+  </a>
+  <figcaption>The ESP's first naming. Before any warning and long before any log line, the restore wizard's target screen lists /boot/efi → sda1 as a device files will be restored to, pre-selected. The file plan's silence about the ESP was never the operation's silence.</figcaption>
+</figure>
+
+
+<figure class="post-image">
+  <a href="/images/a3-dry-run-counts.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a3-dry-run-counts.webp" loading="lazy" width="500" height="526" alt="The Timeshift Comparing Files (Dry Run) dialog: a progress bar at 00:00:00 remaining above Files and directory counts — No Change: 531,400, Created: 3, Deleted: 0, Changed: 35 — and a Changed items breakdown of Checksum 0, Size 14, Timestamp 21, Permissions 0, Owner 0, Group 0, with a Cancel button.">
+  </a>
+  <figcaption>The drift, counted. Against 531,400 untouched files, the restore plans to touch 38 — three created, including the wounded /etc/motd, and 35 changed, mostly timestamps. This is what "it undoes everything since that snapshot" looks like as a number: a rounding error of history, your one file inside it.</figcaption>
+</figure>
+
+
+<figure class="post-image">
+  <a href="/images/a3-warning-devices.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a3-warning-devices.webp" loading="lazy" width="500" height="526" alt="The Timeshift Warning dialog: under Data will be modified on following devices, a table listing /dev/sda5 mounted at / and /dev/sda1 mounted at /boot/efi; then Please save your work and close all applications, System will reboot after files are restored; then the Disclaimer paragraph — This software comes without absolutely NO warranty and the author takes no responsibility for any damage arising from the use of this program — with Previous greyed, Next, and Cancel at the foot.">
+  </a>
+  <figcaption>The ESP's second naming, and the disclaimer upstream ships with the tool. The warning lists /dev/sda1 → /boot/efi among devices to be modified before a single click — the layer the Confirm Actions file plan never enumerated, stated plainly one screen earlier.</figcaption>
+</figure>
+
+
+<figure class="post-image">
+  <a href="/images/a3-restore-log.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a3-restore-log.webp" loading="lazy" width="1280" height="720" alt="The restore's terminal log on the ASUS: an rsync tail (sent 65,761,211 bytes, total size is 8,180,385,287, speedup 124.39), then Re-installing GRUB2 bootloader... / Installing for x86_64-efi platform. / Installation finished. No error reported., then Updating GRUB menu... finding both linux images (7.0.0-38 and 6.14.0-37) and Found Windows Boot Manager on /dev/sda1@/EFI/Microsoft/Boot/bootmgfw.efi, ending at Syncing file systems...">
+  </a>
+  <figcaption>The ESP's third naming — the write itself. The log's GRUB2 re-install for the x86_64-efi platform is the post-restore step that touches the ESP the file plan never listed, and the Windows Boot Manager line confirms the same partition still carries Windows' loader afterward. Target screen named it, warning named it, log wrote it: absence in one screen was never absence in the operation.</figcaption>
+</figure>
 
 That drift is the honest cost of a restore: **it doesn't undo one thing. It undoes everything since that snapshot.** Confirm, and the warning screen is explicit about what's about to happen — right down to carrying over upstream's own disclaimer verbatim:
 
@@ -820,10 +865,14 @@ $
 ```
 That `$` is `cat -A`'s way of marking a newline character. One byte, present, correct, photographed.
 
-<!-- CONDITIONAL IMAGE (include only if the original capture exists — do not recreate):
-![Terminal output of cat -A /etc/motd showing a single $ character](/assets/images/first-hour/a3-cat-a-motd.png)
-*Figure 10: The entire restored file — one byte, one newline, original timestamp intact.*
--->
+
+<figure class="post-image">
+  <a href="/images/a3-verify-trio.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a3-verify-trio.webp" loading="lazy" width="655" height="438" alt="ASUS terminal, three commands in sequence: cat/etc/motd returning bash: cat/etc/motd: No such file or directory (the missing-space typo); ls -l /etc/motd returning -rw-r--r-- 1 root root 1 Jan 8 2026 /etc/motd; and cat -A /etc/motd returning a lone $ — cat -A's marker for a newline byte.">
+  </a>
+  <figcaption>Existence plus metadata, in three lines. The bash: prefix exposes the typo as a shell error, not a restore failure; the ls line proves a regular file, one byte, carrying its original Jan 8 timestamp through the wound and the restore; and the lone $ photographs the invisible byte itself. Three checks, one screen, no trust required.</figcaption>
+</figure>
+
 
 #### Scorecard
 
