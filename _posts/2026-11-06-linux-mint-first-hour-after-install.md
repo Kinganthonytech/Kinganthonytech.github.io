@@ -430,19 +430,43 @@ Sometimes Wi-Fi just dies — a bad driver, a kernel update, a fight with your w
 
 **Android:**
 1. Connect your phone to the laptop with a USB data cable (not a charge-only cable).
-2. On the phone, enable **USB Tethering** — usually in the notification shade, or under **Settings → Network & Internet → Hotspot & Tethering** *(on Samsung phones: Settings → Connections → Mobile Hotspot and Tethering)*.
-3. Linux Mint detects it automatically as a wired connection. No terminal, no setup. If your phone has mobile data, you're online.
+2. Turn **mobile data on**
+3. Enable **USB Tethering** — usually in the notification shade, or under **Settings → Network & Internet → Hotspot & Tethering** *(on Samsung phones: Settings → Connections → Mobile Hotspot and Tethering)*.
+
+    <figure class="post-image">
+          <a href="/images/step05-android-tether.webp" target="_blank" rel="noopener noreferrer">
+            <img src="/images/step05-android-tether.webp" loading="lazy" width="720" height="791" alt="Phone screenshot, cropped to the USB settings panel: under USB controlled by, This device is selected; under Use USB for, five radio options are listed — Transferring files / Android Auto (currently selected), USB tethering, MIDI, Transferring images, Charging phone only.">
+          </a>
+          <figcaption>The Android door, open. USB tethering is one option in this list — not the selected one yet (file-transfer is lit here), so this is the screen where you *choose* it. The lesson is in the words, not the pixels: pick USB tethering from this list after mobile data is on, and Mint takes it from there.</figcaption>
+        </figure>
+
+4. Linux Mint detects it automatically as a wired connection. No terminal, no setup. If your phone has mobile data, you're online.
 
 **iPhone:**
-1. On the phone, go to **Settings → Personal Hotspot** and turn it on.
-2. Connect the iPhone to the laptop with a USB cable.
-3. The phone will prompt **"Trust This Computer?"** — tap **Trust**, and enter your passcode if asked.
-4. Check the network icon in the Mint taskbar — it switches to a wired/ethernet icon once connected.
+1. Turn **mobile data on**
+2. Go to **Settings → Personal Hotspot** and switch it on *(The hotspot shares the phone's mobile connection over the cable — with data off the link forms but no internet flows, and Mint's wired icon won't finish the handshake.)*
+
+      <figure class="post-image">
+          <a href="/images/step05-iphone-hotspot.webp" target="_blank" rel="noopener noreferrer">
+            <img src="/images/step05-iphone-hotspot.webp" loading="lazy" width="1037" height="971" alt="Phone screenshot, cropped to the first Settings group: Airplane Mode (toggle off), WLAN (Not Connected), Bluetooth (On), Mobile Service, Personal Hotspot, and Battery, each with its icon and a chevron.">
+          </a>
+          <figcaption>Where the hotspot lives on iOS — the Personal Hotspot row in the first Settings group. Switch it on here, after mobile data, and the cable handshake completes on its own; Mint ships the iPhone driver, so there is no terminal step waiting behind this screen.</figcaption>
+        </figure>
+
+3. Connect the iPhone to the laptop with a USB cable.
+4. The phone will prompt **"Trust This Computer?"** — tap **Trust**, and enter your passcode if asked.
+
+    <figure class="post-image">
+          <a href="/images/step05-iphone-trust.webp" target="_blank" rel="noopener noreferrer">
+            <img src="/images/step05-iphone-trust.webp" loading="lazy" width="630" height="403" alt="Close-up of the Trust This Computer? dialog over a thin margin of dimmed screen: the dialog reads Your settings and data will be accessible from this computer when connected wirelessly or using a cable, with Don't Trust and Trust buttons, neither pressed.">
+          </a>
+          <figcaption>The gate, on screen. Tap Trust and enter your passcode; declining it is the most common way tethering fails silently on your own laptop. The dialog is the whole instruction — there is no confirmation screen after it, just the wired icon in Mint's tray once the link forms.</figcaption>
+        </figure>
+
+5. Check the network icon in the Mint taskbar — it switches to a wired/ethernet icon once connected.
 
 > **Always tap Trust.** There's no reason to decline it on your own laptop, and skipping it is the most likely way this fails silently.
 
-![The iPhone Trust prompt and the Linux Mint taskbar showing a wired connection icon](/assets/images/first-hour/step05-iphone-trust-wired.png)
-*Figure 8: Tap Trust, and the taskbar icon goes wired.*
 
 This isn't a permanent fix — it's a bridge to get you online long enough to actually solve the Wi-Fi problem. Speaking of which:
 
@@ -454,13 +478,17 @@ If Wi-Fi was working fine and then vanished right after a routine update, the ne
 **The fix, if this is what happened to you:**
 1. Reboot the laptop.
 2. At the GRUB boot screen, select **Advanced options for Linux Mint**.
-3. Choose the **previous kernel version** — anything below the newest one at the top of the list.
+3. Choose the **previous kernel version** — the plain entry, **not** recovery mode. *(Recovery mode boots a minimal repair shell, not a normal desktop, so it won't bring your Wi-Fi back the way a regular older kernel will. Any plain entry below the newest one works.)*  
+
+    <figure class="post-image">
+          <a href="/images/step05-grub-advanced.webp" target="_blank" rel="noopener noreferrer">
+            <img src="/images/step05-grub-advanced.webp" loading="lazy" width="2541" height="756" alt="Phone photo of the GNU GRUB boot menu, cropped to the menu strip: the top entry, Linux Mint 22.3 Xfce with Linux 7.0.0-38-generic, is highlighted with an asterisk as the default; below it every kernel appears twice — a plain line and a (recovery mode) twin — running 7.0.0-38, 7.0.0-34, 7.0.0-31, 7.0.0-28, 6.17.0-35, and 6.14.0-37.">
+          </a>
+          <figcaption>The menu the fallback walks you through. The starred line at the top is the newest kernel — the one that broke Wi-Fi — and it is already selected, so do not press Enter here. Arrow down to a plain older entry (7.0.0-34 is the one that revived the connection in the kernel-war report) and avoid every line marked (recovery mode): those boot a minimal repair shell, not a desktop, so they will not bring your Wi-Fi back. The pairs are the trap this step warns about, visible.</figcaption>
+        </figure>
+
 4. Boot into it, and check whether Wi-Fi reconnects.
 
-<!-- OPTIONAL IMAGE (add if you capture the GRUB screen):
-![The GRUB boot menu highlighting Advanced options for Linux Mint](/assets/images/first-hour/step05-grub-advanced-options.jpg)
-*Figure 9: The previous kernel lives under Advanced options.*
--->
 
 If it does, you're not stuck. You can keep using that older kernel while a fix lands, or dig further yourself.
 
