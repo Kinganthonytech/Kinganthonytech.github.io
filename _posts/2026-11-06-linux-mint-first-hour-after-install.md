@@ -909,13 +909,37 @@ Routine update cycle on both machines, same three-command habit: `sudo apt updat
 
 The ASUS numbers matched end to end — no kernel in the batch, nothing for the two tools to disagree about. The HP numbers split on both axes at once: package count *and* download size. Same cause, two symptoms.
 
+<figure class="post-image">
+  <a href="/images/a4-asus-cycle.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a4-asus-cycle.webp" loading="lazy" width="1280" height="651" alt="ASUS terminal running the three-command habit top to bottom: sudo apt update with its Get/Hit mirror lines and 12 packages can be upgraded; a bare sudo apt install with no target returning 0 upgraded, 0 newly installed, 0 to remove and 12 not upgraded; then sudo apt upgrade listing twelve packages (gir1.2-xapp-1.0, libbrotli1, libxapp1, python3-brotli and eight xapp thumbnailer entries) and ending 12 upgraded, 0 newly installed, Need to get 886 kB of archives, After this operation 0 B of additional disk space, Do you want to continue? [Y/n].">
+  </a>
+  <figcaption>The habit that produced the matched column: update for the catalog, a bare install as a status check — no target, just the shallow count — then upgrade for the real tally. On this machine the GUI and the terminal agree on both count and size, because nothing in the batch needed resolving.</figcaption>
+</figure>
+
 #### Why the Numbers Never Lied
 
 **The GUI groups by logical unit, not by package.** One row — `xapp`, say — can represent a dozen individual `.deb`s underneath it: `libxapp1`, `gir1.2-xapp-1.0`, `xapps-common`, and a run of thumbnailer plugins. The GUI shows the headline; the terminal shows everything the headline is made of.
 
+
+<figure class="post-image">
+  <a href="/images/a4-asus-composite.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a4-asus-composite.webp" loading="lazy" width="882" height="687" alt="Composite: the ASUS terminal's apt upgrade tail — the twelve-package list, 12 upgraded, Need to get 886 kB, 0 B of additional disk space, the [Y/n] prompt — layered over the top of the light-grey Update Manager window below, which shows three ticked rows (brotli 1.1.0-2ubuntu0.1, xapp 3.2.4+mint22.3, xapp-thumbnailers 1.2.10) and a footer reading 3 updates selected (886 KB).">
+  </a>
+  <figcaption>The grouping thesis in one frame. Twelve packages in the terminal, three rows in the GUI, one identical 886 KB on both: the GUI folds a dozen .debs into three headlines, the terminal shows what the headlines are made of. The counts disagree; the bytes never do.</figcaption>
+</figure>
+
 **Both the "not upgraded" count and the GUI's price tag are computed from the same shallow pass.** They only know about packages that are already installed and simply need a version bump — the 15 (or 12) packages visible *before* any resolver has run. Neither figure has met the kernel's real dependency chain yet.
 
 **The kernel is the one update that can't be priced in advance.** A kernel bump isn't a version swap of something that already exists — it's the installation of an entirely new, independently versioned set of packages: image, headers, modules, tools, plus any DKMS rebuilds for things like webcam or ZFS drivers. That cost is invisible until `apt upgrade` runs a full dependency resolution and those new packages surface for the first time — bringing their package count *and* their download weight with them. That's where the HP's extra 8 packages came from, and it's the same resolution step that took the price from 893 KB to 216 MB. One mechanism, two numbers moving at once.
+
+
+<figure class="post-image">
+  <a href="/images/a4-hp-kernel-composite.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a4-hp-kernel-composite.webp" loading="lazy" width="802" height="1028" alt="Two-panel montage of the HP's kernel-inclusive update. Top: the dark-themed Update Manager with four ticked rows — brotli (highlighted), Linux kernel 7.0.0-42.42~24.04.1, xapp, xapp-thumbnailers — and a footer reading 4 updates selected (893 KB). Bottom: the HP terminal after sudo apt upgrade, opening with The following NEW packages will be installed: and eight linux-* entries (headers, hwe-headers, hwe-tools, image, v4l2loopback modules, zfs modules, modules, tools for 7.0.0-42-generic), then the upgrade list, then 15 upgraded, 8 newly installed, Need to get 216 MB of archives, After this operation 355 MB of additional disk space, [Y/n].">
+  </a>
+  <figcaption>The HP column's two rulers, stacked. The GUI quotes 893 KB for four rows, the kernel among them as a single headline; the terminal, after full dependency resolution, prices the same batch at 216 MB — and the eight NEW linux-* packages between the two numbers are exactly the fan-out the GUI could not see in advance. Same update, roughly 240 times apart, neither tool lying.</figcaption>
+</figure>
+
 
 #### The Lesson
 
