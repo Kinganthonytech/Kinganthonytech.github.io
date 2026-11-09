@@ -574,24 +574,53 @@ Reconstructed from `last -x reboot`:
 - **23:21 → 23:40** — Boot into the previous kernel (`7.0.0-34-generic`). Connection restored within two minutes.
 - **Oct 21, 07:39 onward** — Back on the newest kernel. No recurrence since.
 
+<figure class="post-image">
+  <a href="/images/a2-last-reboot.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a2-last-reboot.webp" loading="lazy" width="817" height="332" alt="last -x reboot | head -15 on the HP: fifteen rows of boot records, each beginning reboot system boot 7.0.0-3x-generic, with dates and times spanning Oct 19 to Oct 26 2026 — including the 7.0.0-38 boot from Oct 19 that ran until Oct 21 09:03 (still running), the 7.0.0-34 boot on Oct 26 13:22, and the 7.0.0-38 boot on Oct 24 21:41. The kernel column encodes the Confound matrix without the reader having to compute it.">
+  </a>
+  <figcaption>The four bullets of the Timeline, on the screen that reconstructed them. Each row is a boot with its kernel version in the rightmost column, so the reader can see the 38/34 alternations the prose describes without having to trust the reconstruction. The kernel column is what encodes the Confound matrix for free.</figcaption>
+</figure>
+
 #### What Didn't Change
 
 `/var/log/apt/history.log` for October 20 records no kernel, no firmware, and no network-stack changes — an `acpi` install at 14:44 and a handful of small upgrades at 14:46 (`cifs-utils`, `git`, `python3-jwt`, and friends). The failing kernel had been installed five weeks earlier, on September 14. Whatever sprang at 20:31, it was not a fresh package landing under the machine. The trigger was state, not installation — which is precisely why the diagnosis never closed.
+
+<figure class="post-image">
+  <a href="/images/a2-history-oct20.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a2-history-oct20.webp" loading="lazy" width="1049" height="400" alt="grep -A8 '^Start-Date: 2026-10-20' /var/log/apt/history.log on the HP: two red Start-Date: 2026-10-20 blocks — the first at 14:44:29 with install acpi, the second at 14:46:14 with an aptkit Upgrade of cifs-utils, git, python3-jwt and friends — followed by a third Start-Date: 2026-10-21 07:58:47 block, confirming the incident night has no kernel, firmware, or network-stack changes in the log.">
+  </a>
+  <figcaption>The night the Wi-Fi died, in the apt log. Two red blocks on Oct 20 — acpi at 14:44, a small aptkit upgrade at 14:46 — and then nothing else until Oct 21 07:58. The failing kernel had been installed Sep 14, five weeks earlier. Whatever sprang at 20:31, it was not a fresh package landing under the machine.</figcaption>
+</figure>
+
+
+<figure class="post-image">
+  <a href="/images/a2-boot-roster.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a2-boot-roster.webp" loading="lazy" width="657" height="434" alt="ls -lh /boot/vmlinuz-* && uname -r on the HP: six -rw------- root root 17M /boot/vmlinuz-... files listed by date — Nov 20 2025, May 26, Jul 1, Aug 10, Sep 4, and Sep 14 — with the last line alone reading 7.0.0-38-generic. The Sep 14 mtime on vmlinuz-7.0.0-38-generic proves the failing kernel was installed five weeks earlier, not that night.">
+  </a>
+  <figcaption>The five-weeks claim, proven by mtime. Six kernels in /boot, with vmlinuz-7.0.0-38-generic dated Sep 14 16:28 — the failing kernel was already on disk when the incident happened. The roster also matches the six pairs in the GRUB menu from Step 5's fallback, so a reader can cross-reference the two.</figcaption>
+</figure>
 
 #### The Void
 
 `journalctl` from the dead window shows the driver initializing correctly at boot — the hardware itself was never the problem. What failed was the authentication handshake, on a 30-second retry loop, for two straight hours:
 
 ```text
-Oct 20 20:33:07 wpa_supplicant: wlo1: SME: Trying to authenticate with [AP-MAC] (SSID='Galaxy A07 ecff' freq=2412 MHz)
-Oct 20 20:33:07 kernel: wlo1: send auth to [AP-MAC] (try 1/3)
-Oct 20 20:33:09 kernel: wlo1: send auth to [AP-MAC] (try 2/3)
-Oct 20 20:33:11 kernel: wlo1: send auth to [AP-MAC] (try 3/3)
-Oct 20 20:33:11 kernel: wlo1: authentication with [AP-MAC] timed out
+Oct 20 20:33:07 wpa_supplicant: wlo1: SME: Trying to authenticate with 16:1a:64:2f:42:5b (SSID='Galaxy A07 ecff' freq=2412 MHz)
+Oct 20 20:33:07 kernel: wlo1: send auth to 16:1a:64:2f:42:5b (try 1/3)
+Oct 20 20:33:09 kernel: wlo1: send auth to 16:1a:64:2f:42:5b (try 2/3)
+Oct 20 20:33:11 kernel: wlo1: send auth to 16:1a:64:2f:42:5b (try 3/3)
+Oct 20 20:33:11 kernel: wlo1: authentication with 16:1a:64:2f:42:5b timed out
 Oct 20 20:33:32 NetworkManager: <warn> device (wlo1): Activation: (wifi) association took too long; failing activation
 ```
 
 This block repeated, almost unchanged, every ~30 seconds until the 22:37 reboot. The shape of the failure is important: initialization succeeded, operation failed. This was never a missing driver — it was a driver that loaded and then couldn't finish a handshake it used to complete without issue.
+
+<figure class="post-image">
+  <a href="/images/a2-void-loop.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a2-void-loop.webp" loading="lazy" width="1473" height="876" alt="sudo journalctl --since '2026-10-20 20:32' --until '2026-10-20 23:20' | grep -iE 'NetworkManager|wlo1|rtl8188|rtlwifi|firmware|dhcp' | head -40 on the HP. Output shows Config: added 'ssid' 'Galaxy A07 ecff', 'psk' value '<hidden>', 'scan_ssid', 'bgscan', 'key_mgmt' 'WPA-PSK', 'auth_alg' 'OPEN'; SME: Trying to authenticate with 16:1a:64:2f:42:5b (SSID='Galaxy A07 ecff' freq=2412 MHz); kernel: wlo1: send auth to 16:1a:64:2f:42:5b (try 1/3) (try 2/3) (try 3/3); kernel: wlo1: authentication with 16:1a:64:2f:42:5b timed out; wpa_supplicant: wlo1: CTRL-EVENT-DISCONNECTED bssid=16:1a:64:2f:42:5b reason=4 locally_generated=1; NetworkManager: state change: config -> failed (reason 'ssid-not-found'); NetworkManager state is now DISCONNECTED; then a second retry beginning at 20:33:37 with auto-activating connection 'Galaxy A07 ecff' and the frame cuts off mid-second-attempt.">
+  </a>
+  <figcaption>The two-hour loop, in one scroll. The first full cycle shows the config being added, the SME auth attempt against 16:1a:64:2f:42:5b, the three tries, the timeout, the ssid-not-found reason, the DISCONNECTED state, and then the second attempt starting at 20:33:37. This frame shows cycle one; the prose owns the claim that it repeated until 22:37.</figcaption>
+</figure>
 
 #### The Relic
 
@@ -601,7 +630,22 @@ At 23:08 — thirteen minutes before the rescue boot — a configuration file wa
 options rtl8188ee fswconn=0 ips=0 swenc=1
 ```
 
+<figure class="post-image">
+  <a href="/images/a2-relic-file.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a2-relic-file.webp" loading="lazy" width="1161" height="553" alt="Three commands on the HP. grep -H rtl8188ee /etc/modprobe.d/*.conf prints /etc/modprobe.d/rtl8188ee.conf:options rtl8188ee fswconn=0 ips=0 swenc=1 in red. grep -H . /etc/NetworkManager/conf.d/*.conf prints four lines of existing drop-ins. ls -l --time-style=long-iso on /etc/modprobe.d and /etc/NetworkManager/conf.d shows the file listings — rtl8188ee.conf dated 2026-10-20 23:08, the NetworkManager drop-ins dated 2024 and 2026-09-30, both predating the incident.">
+  </a>
+  <figcaption>The Relic's file, with its metadata. grep finds the three options in /etc/modprobe.d/rtl8188ee.conf; ls shows that file dated 2026-10-20 23:08 — thirteen minutes before the rescue boot. The NetworkManager drop-ins beside it are dated 2024 and 2026-09-30, so the only config that changed that night was the relic.</figcaption>
+</figure>
+
+
 Two of these are real, documented fixes for this exact chip: `ips=0` disables idle power save, and `swenc=1` forces software encryption instead of hardware crypto — both known workarounds for RTL8188EE handshake failures on forums going back years. The third, `fswconn=0`, is not a real parameter for this driver at all. It's been silently ignored by the kernel at every boot since — `unknown parameter 'fswconn' ignored`, logged and forgotten, a dead instruction carried for days without doing anything.
+
+<figure class="post-image">
+  <a href="/images/a2-relic-ignored.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a2-relic-ignored.webp" loading="lazy" width="1289" height="876" alt="sudo journalctl --since '2026-10-20 23:21' --until '2026-10-20 23:40' | grep -iE 'NetworkManager|wlo1|rtl8188|rtlwifi|firmware|dhcp' | head -30 on the HP. The first output line is kernel: rtl8188ee: unknown parameter 'fswconn' ignored, followed by rtl8188ee driver loaded, Power Save off, Using firmware rtlwifi/rtl8188efw.bin, renamed from wlan0 to wlo1, NetworkManager plugin-load lines, ending interfaces file /etc/network/interfaces doesn't exist.">
+  </a>
+  <figcaption>The kernel's own confession, in the first line of the rescue boot's log: unknown parameter 'fswconn' ignored. The Scorecard's 'confirmed dead end' on screen. Then the firmware loads, the rename from wlan0 to wlo1, and the init succeeding — the same driver that failed for two hours was initializing cleanly on the older kernel.</figcaption>
+</figure>
 
 #### The Handshake, Restored
 
@@ -610,12 +654,19 @@ Booting into the older kernel (`7.0.0-34-generic`) at 23:21, the first connectio
 ```text
 Oct 20 23:23:07 kernel: wlo1: authenticated
 Oct 20 23:23:07 kernel: wlo1: associated
-Oct 20 23:23:07 wpa_supplicant: wlo1: WPA: Key negotiation completed with [AP-MAC] [PTK=CCMP GTK=CCMP]
+Oct 20 23:23:07 wpa_supplicant: wlo1: WPA: Key negotiation completed with 16:1a:64:2f:42:5b [PTK=CCMP GTK=CCMP]
 Oct 20 23:23:08 NetworkManager: <info> manager: NetworkManager state is now CONNECTED_SITE
 Oct 20 23:23:10 NetworkManager: <info> manager: NetworkManager state is now CONNECTED_GLOBAL
 ```
 
 Same chip. Same access point. Same night. One kernel change, plus the config file dropped thirteen minutes earlier.
+
+<figure class="post-image">
+  <a href="/images/a2-handshake-wall.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a2-handshake-wall.webp" loading="lazy" width="569" height="689" alt="sudo journalctl --since '2026-10-20 23:21' --until '2026-10-20 23:40' | grep -iE 'NetworkManager|wlo1|rtl8188|rtlwifi|firmware|dhcp' | tail -12 on the HP. Output shows wpa_supplicant: wlo1: Associated with 16:1a:64:2f:42:5b, kernel: wlo1: 4-way handshake completed, wpa_supplicant: wlo1: WPA: Key negotiation completed with 16:1a:64:2f:42:5b [PTK=CCMP GTK=CCMP], wpa_supplicant: wlo1: CTRL-EVENT-CONNECTED - Connection to 16:1a:64:2f:42:5b completed [id=0 id_str=], Connected to wireless network 'Galaxy A07 ecff', DHCP lease 10.116.236.172, NetworkManager: NetworkManager state is now CONNECTED_SITE, then NetworkManager state is now CONNECTED_GLOBAL.">
+  </a>
+  <figcaption>The handshake restored. The fence's five lines inside their chain: Associated with 16:1a:64:2f:42:5b, 4-way handshake completed, Key negotiation, CTRL-EVENT-CONNECTED, DHCP lease 10.116.236.172, CONNECTED_SITE, CONNECTED_GLOBAL. Same chip, same AP, same night — one kernel change later.</figcaption>
+</figure>
 
 #### The Confound
 
@@ -630,7 +681,6 @@ Two variables changed in the window between the failure and the fix: the kernel 
 
 #### External Corroboration
 
-<!-- If you still have the Kernel Bugzilla / CachyOS / Superuser URLs, link them inline here. -->
 
 The RTL8188EE has a long paper trail of exactly this failure pattern: open complaints on Kernel Bugzilla describing dropped connections across kernel versions, forum reports of the same "authentication timed out" signature appearing on newer kernels while older LTS kernels stay stable, and descriptions elsewhere of a reboot reviving the card "for a few minutes" before it degrades again. None of this proves what happened on this specific machine, this specific night — but it confirms the failure class is real, known, and not unique to this hardware.
 
@@ -640,6 +690,13 @@ The RTL8188EE has a long paper trail of exactly this failure pattern: open compl
 - **Suspected:** either the driver options file, the kernel downgrade, or both together resolved the handshake failure
 - **Unresolved, and staying that way:** which single variable (or combination) was actually responsible · whether the newest kernel alone, without the options file, would have failed indefinitely or eventually recovered on its own
 - **Confirmed dead end:** the `fswconn=0` parameter does nothing — it isn't a real option for this driver, and the kernel has silently ignored it since the night it was written
+
+<figure class="post-image">
+  <a href="/images/a2-epilogue-nmcli.webp" target="_blank" rel="noopener noreferrer">
+    <img src="/images/a2-epilogue-nmcli.webp" loading="lazy" width="657" height="434" alt="nmcli device status on the HP showing enxcaec2a9ca74b ethernet connected to Wired connection 2 and wlo1 wifi connected to Galaxy A07 ecff, followed by nmcli radio wifi off && curl -sI https://linuxmint.com returning HTTP/2 200 with date: Mon, 26 Oct 2026, then a NetworkManager status table showing connected full enabled disabled missing enabled, and finally nmcli radio wifi on. The curl succeeds with Wi-Fi off because the USB ethernet adapter is the control path.">
+  </a>
+  <figcaption>Six days on. The device table shows wlo1 connected to Galaxy A07 ecff and the USB ethernet as Wired connection 2; the curl returns HTTP/2 200 with Wi-Fi radio off, because the USB adapter is the control path; the status table shows connectivity full; then radio wifi on. The Timeline's last bullet — 'no recurrence since Oct 21' — on screen.</figcaption>
+</figure>
 
 #### The Transferable Lesson
 
