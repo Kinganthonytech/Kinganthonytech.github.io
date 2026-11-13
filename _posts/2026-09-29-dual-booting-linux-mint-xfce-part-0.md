@@ -70,6 +70,20 @@ I figured it out anyway.
 
 ---
 
+## The Hard Limit
+
+Windows 11 was never a supported upgrade on this machine — and it
+fails by exactly one requirement. The TPM checks out. Secure Boot
+works. RAM and storage qualify. But the Pentium N3710 isn't on
+Microsoft's supported-processor list, and that list is not advisory.
+After I replaced the hard drive with an SSD, an engineer deployed
+Windows 11 Pro onto it from a pre-configured image on a dedicated
+flash drive. I never saw an installer or a hardware check. The laptop
+came back running an OS Microsoft says it was never meant to have.
+
+It worked. But on 8GB of RAM it idled at around 3GB before I opened a
+single application, and that was never going to change. Linux was the
+next thing to try.
 
 ---
 
