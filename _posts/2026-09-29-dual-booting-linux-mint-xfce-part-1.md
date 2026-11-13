@@ -74,6 +74,10 @@ the tools I already had.
 
 **Why not downgrade to Windows 10?**
 
+Worth stating plainly: Windows 10 was this laptop's previous operating
+system — the one it shipped with effectively, the one the engineer
+installed after repairs. I wasn't considering a theoretical downgrade.
+I was considering going back to what I had.
 Windows 10 reached end of support on October 14, 2025. Even 
 if it would have run lighter than Windows 11, installing it 
 now would mean moving onto an operating system that
@@ -121,7 +125,10 @@ editions, each with a different desktop environment:
 |---|---|---|---|
 | **Cinnamon** | Cinnamon | 1.2GB - 1.5GB | Best visuals, heaviest on resources |
 | **MATE** | MATE | 900MB - 1.2GB | Balanced, but still heavier than necessary for my hardware |
-| **XFCE** | XFCE | 500MB - 900MB | Lightest, fewer visual effects, maximum efficiency |
+| **XFCE** | XFCE | ~1.0GB(measured) | Lightest, fewer visual effects, maximum efficiency |
+
+*Cinnamon and MATE figures are from published benchmarks, not my
+hardware. The XFCE figure is my own measurement on this laptop.*
 
 Cinnamon relies on GPU compositing for its visual effects. 
 On a Pentium N3710 with integrated Intel HD 405 graphics, 
@@ -175,9 +182,13 @@ second operating system on the SSD.
 
 My laptop has a 256GB SSD, but like most storage devices, 
 the full marketed number is not what you see as usable space 
-in the operating system. After accounting for system 
-partitions and storage formatting, what I actually had to 
-work with was approximately 238GB.
+in the operating system. 
+The missing gigabytes were never lost — they were an accounting
+artifact. Drive manufacturers count in decimal: 256GB is
+256,000,000,000 bytes. Windows counts in binary: it divides by 1024
+three times and calls the result gigabytes, so 256 billion bytes
+becomes roughly 238 GiB. Same bytes, two conventions. The "missing"
+18GB was marketing arithmetic, not a hardware defect.
 
 I used the built-in Windows **Disk Management** tool to 
 shrink the main Windows partition and create space for Linux.
@@ -218,6 +229,11 @@ later. Linux Mint XFCE is much lighter and doesn't need
 anywhere near that much space for a basic installation, so 
 117GB gave it more than enough breathing room.
 
+
+Worth stating plainly: Windows 10 was this laptop's previous operating
+system — the one it shipped with effectively, the one the engineer
+installed after repairs. I wasn't considering a theoretical downgrade.
+I was considering going back to what I had.
 At this stage, I wasn't manually creating Linux partitions 
 yet. I was simply preparing empty, unallocated space for the 
 installer to detect later.
@@ -384,7 +400,7 @@ I performed the verification from Windows using the built-in
 Downloads folder.
 
 
-```
+```cmd
 certutil -hashfile "C:\Users\HP\Downloads\linuxmint-22.3-xfce-64bit.iso" SHA256
 ```
 
@@ -491,17 +507,31 @@ gets wiped during setup.
 
 
 My external HDD had important files on it, and I had nowhere 
-else to move them safely at the time. Using it would have 
+else to move them safely at the time.
+
+The 1TB external drive I rejected was not just any storage device — it
+was the laptop's original hard drive, pulled when the SSD went in, now
+living in an enclosure. Everything from the Windows 10 era of this
+machine lived on it, with no backup anywhere else. Ventoy's installer
+warned it would format the entire target device. One misclick on the
+wrong drive letter and the archive was gone. That risk was not
+theoretical enough for me. 
+Using it would have 
 meant sacrificing real data just to create boot media, and 
 that was not a reasonable trade.
 
 So the 1TB HDD was out.
 
+
 ### Pivoting to the SD Card
 
 I had a **16GB SD card** I could afford to clear, so I 
 formatted it and ran Ventoy on it instead. Ventoy recognized 
-the card and prepared it successfully. The SD card was now a 
+the card and prepared it successfully. 
+Everything happened through the phone — installing Ventoy to the card,
+copying the ISO onto it, even the hash check afterward. No card reader
+existed in my setup at this point.
+The SD card was now a 
 boot device ready to accept ISO files.
 
 <figure class="post-image">
@@ -515,7 +545,7 @@ boot device ready to accept ISO files.
 ### Using My Tecno T455 as a Transfer Bridge
 
 At that point, I still did not have a dedicated SD card 
-reader. What I had was my **Tecno T455 phone**, which had an 
+reader. What I had was my **Tecno T455** — a T9 keypad feature phone, not a smartphone, which had an 
 SD card slot.
 
 So I inserted the SD card into the phone, connected the 
