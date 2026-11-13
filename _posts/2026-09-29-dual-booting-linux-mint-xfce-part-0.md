@@ -85,6 +85,7 @@ It worked. But on 8GB of RAM it idled at around 3GB before I opened a
 single application, and that was never going to change. Linux was the
 next thing to try.
 
+
 ---
 
 ## What This Series Is About
