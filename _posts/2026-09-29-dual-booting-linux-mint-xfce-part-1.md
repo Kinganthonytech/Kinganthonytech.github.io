@@ -25,9 +25,60 @@ hardware. So I had to change the software.
 
 ---
 
+### The Road to This Project
+
+This laptop cost ₦50,000, bought used through a friend who deals in
+second-hand machines. It arrived with faults — an engineer repaired it
+and installed Windows 10, and for a while, it did everything I needed.
+
+Then Microsoft set Windows 10's end-of-support date: October 14, 2025.
+I asked the same engineer about moving to Windows 11. His answer was
+blunt: this machine would not handle Windows 11. Too weak. So I did the
+responsible thing and started saving for a replacement — I had ₦200,000
+put aside out of the ₦250,000–₦300,000 a decent new laptop would cost.
+
+Life had other plans. My phone, a Samsung SM-A04e, was stolen. After a
+miserable stretch falling back on a 2016 SM-J3, I bought a Galaxy A07
+(SM-A075F) — paid for out of the laptop fund. The replacement plan was
+bleeding.
+
+The SSD was my last-ditch move. I had the engineer swap the hard drive
+for an SSD, and this time he said Windows 11 was possible — and put it
+on the machine from his own prepared drive. I was genuinely excited.
+The excitement didn't survive contact with the machine. The hardware
+limitations caught up with me everywhere I turned, right as I was
+trying to choose a direction.
+
+Around the same period, I was circling a career decision. I sampled
+data analysis through an IBM SkillsBuild badge, bounced off
+cybersecurity, and built toward IT support — headset bought, webcam
+planned, a curriculum of Professor Messer, PowerCert and Jason Dion
+videos — before accent bias, unstable power and hardware costs pushed
+me off that path too.
+
+The field that finally fit was Microsoft 365 administration.
+
+Linux arrived as a recommendation I was deeply skeptical of. Everything
+I knew about it came from school — it was a name on a list of operating
+system types, not a tool I had ever touched — never part of my
+technical reality.
+
+By then, all my cards were on the table. I couldn't afford a new
+laptop. I couldn't go back to Windows 10 — it was heading for
+end-of-support. And I couldn't optimize past Windows 11's overhead;
+the OS itself was the weight. Linux was the last shot. The alternative
+was giving up on the laptop completely.
+
+The last hardware change before this project — and the first one I did
+myself — was opening the laptop, confirming the memory situation with
+CPU-Z and a physical look at the board, and upgrading the RAM from 4GB
+to 8GB.
+
+---
+
 ### The Hardware I Was Working With
 
-This is the  machine I was making these decisions on.
+This is the machine I was making these decisions on.
 
 <figure class="post-image">
   <a href="/images/hp-laptop-physical.webp" target="_blank" rel="noopener noreferrer">
@@ -74,14 +125,9 @@ the tools I already had.
 
 **Why not downgrade to Windows 10?**
 
-Worth stating plainly: Windows 10 was this laptop's previous operating
-system — the one it shipped with effectively, the one the engineer
-installed after repairs. I wasn't considering a theoretical downgrade.
-I was considering going back to what I had.
-Windows 10 reached end of support on October 14, 2025. Even 
+Windows 10 reached end of support. Even 
 if it would have run lighter than Windows 11, installing it 
-now would mean moving onto an operating system that
- no longer recieves security updates.
+now would mean moving onto an operating system that no longer receives security updates.
 I wasn't willing to trade a performance 
 problem for a security problem later.
 
@@ -230,15 +276,19 @@ anywhere near that much space for a basic installation, so
 117GB gave it more than enough breathing room.
 
 
-Worth stating plainly: Windows 10 was this laptop's previous operating
-system — the one it shipped with effectively, the one the engineer
-installed after repairs. I wasn't considering a theoretical downgrade.
-I was considering going back to what I had.
+*One thing I didn't know to check, and got lucky on: this machine runs
+Windows 11 Pro, which ships with BitLocker. It was never enabled —
+luck, not diligence. Had it been on, resizing the Windows partition
+could have ended at a blue recovery screen demanding a 48-digit key I
+didn't know existed. I only learned what BitLocker was months later —
+and deliberately triggered that screen just to see it. The companion
+guide makes this check Step 0. I skipped it by accident; you shouldn't.*
+
 At this stage, I wasn't manually creating Linux partitions 
 yet. I was simply preparing empty, unallocated space for the 
 installer to detect later.
 
-#### The Fast Startup Detail I Handled Too Late
+### The Fast Startup Detail I Handled Too Late
 
 There is an important step I missed during preparation: I did 
 not disable Windows Fast Startup before my first boot attempts. 
@@ -572,7 +622,7 @@ copied the Linux Mint XFCE 22.3 ISO onto it.
 </figure>
 
 
-The transfer took roughly **100 minutes and more** at speeds 
+The transfer took roughly **over 100 minutes** at speeds 
 fluctuating around **434 KB/s**.
 
 Watching that progress bar crawl for over an hour and a half 
