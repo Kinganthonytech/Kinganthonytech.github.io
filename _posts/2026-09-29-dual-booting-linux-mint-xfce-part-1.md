@@ -47,7 +47,7 @@ for an SSD, and this time he said Windows 11 was possible — and put it
 on the machine from his own prepared drive. I was genuinely excited.
 The excitement didn't survive contact with the machine. The hardware
 limitations caught up with me everywhere I turned, right as I was
-trying to choose a direction.
+trying to choose a direction. 
 
 Around the same period, I was circling a career decision. I sampled
 data analysis through an IBM SkillsBuild badge, bounced off
