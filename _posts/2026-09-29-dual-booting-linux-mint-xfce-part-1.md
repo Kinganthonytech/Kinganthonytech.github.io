@@ -567,6 +567,8 @@ would discover the hard way in the next phase.
 *Continue to Part 2 — [BIOS, Boot Failures and the 
 Troubleshooting]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-2 %})*
 
+*Previous: [Part 0 — Why I Did This]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-0 %})*
+
 ---
 
 ## Resources
