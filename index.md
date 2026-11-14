@@ -7,7 +7,8 @@ title: Home
 
 **M365 Administrator · Technical Documentation · PowerShell**
 
-I make Microsoft 365 environments work — then document them so anyone can understand how. Configuration-as-code or it didn't happen.
+M365 administrator and technical writer based in Nigeria. I break things on purpose
+so you don't have to — then document every step so the work speaks for itself.
 
 - 📝 [Writing](/blog/)
 - 👤 [About](/about/)
