@@ -260,7 +260,7 @@ machine will produce different numbers.
 | Operating System | Idle RAM at 3-Minute Mark |
 |---|---|
 | **Windows 11** | 3.0GB / 7.9GB |
-| **Linux Mint XFCE** | 993.6MiB (~1.04GB) / 7.7GiB |
+| **Linux Mint XFCE** | 993.6MiB (~0.97GiB) / 7.7GiB  |
 
 <figure class="post-image">
   <a href="/images/windows-idle-ram-3min.webp" target="_blank" rel="noopener noreferrer">
@@ -279,13 +279,14 @@ machine will produce different numbers.
 
 
 
-> **A note on units:** Windows reports memory in decimal GB; Linux 
-> System Monitor reports in binary GiB. 7.9GB and 7.7GiB are the 
-> same 8GB of hardware in different units, and 993.6MiB converts to 
-> about 1.04GB. Compared like-for-like, the real idle ratio is 2.9x 
-> — so treat "3x" as a rounded headline, not an inflated one.
+> **A note on units:** both systems actually count in binary — the 
+> difference is labeling. Windows divides by 1024 but prints "GB" 
+> anyway; Linux does the same math and honestly prints "GiB". The 
+> 7.9 and 7.7 figures are the same 8GB stick minus slightly 
+> different hardware reservations, and 993.6MiB is about 0.97 GiB. 
+> Compared like-for-like, the idle ratio is just over 3x.
 
-That is roughly a **3x difference** in idle memory consumption on the 
+That is just over a **3x difference** in idle memory consumption on the 
 exact same hardware. Linux Mint XFCE leaves roughly 2GB more 
 headroom for actual work — browser tabs, development tools, 
 documents, applications — rather than spending a large 
