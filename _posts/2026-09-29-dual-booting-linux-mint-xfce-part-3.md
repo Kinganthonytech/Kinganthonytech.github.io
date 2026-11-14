@@ -42,10 +42,9 @@ was there.
 </figure>
 
 
-The live environment is a fully working Linux session that 
-runs directly from the boot media without installing 
-anything to your drive yet. It lets you test key hardware 
-components before committing to the installation.
+The live environment runs the full system from 
+the boot media without touching the drive — 
+a chance to test the hardware before committing.
 
 After Part 2, I had no interest in blind faith. I wanted 
 proof the system actually worked on my hardware before 
@@ -126,11 +125,9 @@ it could read them. The installer needed to unmount those
 partitions temporarily so it could safely resize and write 
 to the drive without file system conflicts.
 
-This is a standard safety step. Clicking "Yes" does not 
-delete anything. It simply releases the active lock on the 
-partitions so the installer can do its job.
-
-I clicked **Yes**.
+This is a standard safety step — clicking **Yes** 
+deletes nothing; it just releases the lock so the 
+installer can do its job.
 
 ---
 
@@ -182,10 +179,10 @@ Mint in the unallocated space.
 
 There was not much left for me to do except wait. And after 
 everything Part 2 had put me through, watching that progress 
-bar move forward felt deeply rewarding. I couldn't be more 
-relieved knowing that the hardest part was truly behind me 
-and the system I had fought so hard for was finally writing 
-itself onto the drive.
+bar move forward felt deeply rewarding. After everything 
+Part 2 had put me through, watching that progress bar move 
+forward was its own reward.
+
 
 ---
 
@@ -199,12 +196,11 @@ partition setup, this is where it would show up. After Part
 
 Instead, I was met with the **GRUB menu**.
 
-Seeing that boot menu appear on startup felt like the most 
+ that boot menu appear on startup felt like the most 
 important screen I had seen in this entire project. After 
-the frozen logos, the kernel text floods, and the TTY2 dead 
-ends, this was the moment everything finally came together. 
-Both operating systems were listed. Both were accessible. It 
-couldn't have gotten any better than this.
+the frozen logos, After the frozen logos, the kernel text floods, 
+and the TTY2 dead ends, that menu was the moment 
+everything finally came together 
 
 ---
 
@@ -229,16 +225,10 @@ installed desktop.
 Then I restarted and selected Windows. It booted normally 
 into Windows 11.
 
-Both systems worked. Both were accessible from the same GRUB 
-menu every time I turned on the laptop.
-
-That was the proof that the dual-boot setup had actually 
-succeeded.
-
-I now had access to both operating systems on one machine 
-without sacrificing either one. Linux Mint became my main 
-working environment for daily tasks. Windows remained 
-available for Windows-specific work. Exactly the setup I 
+Both systems worked, side by side in the same boot menu. 
+That was the proof: the dual-boot setup had actually succeeded. 
+Linux Mint became my main working environment; Windows stayed
+available for Windows-specific workExactly the setup I 
 had been aiming for.
 
 ---
@@ -266,10 +256,17 @@ To keep the comparison fair, I measured idle RAM usage on
 both operating systems at exactly **3 minutes after a fresh 
 boot**, with no applications open.
 
+First, a disclaimer, because these numbers are about to do a lot of 
+work: this is not a Windows-versus-Linux benchmark. It is one 
+machine, one workload, and one question — which operating system 
+lets *this* laptop do my daily work? I measured both sides as fairly 
+as I knew how, but the sample size is one laptop and one user. Your 
+machine will produce different numbers.
+
 | Operating System | Idle RAM at 3-Minute Mark |
 |---|---|
 | **Windows 11** | 3.0GB / 7.9GB |
-| **Linux Mint XFCE** | 993.6MiB (~1.0GB) / 7.7GiB |
+| **Linux Mint XFCE** | 993.6MiB (~1.04GB) / 7.7GiB |
 
 <figure class="post-image">
   <a href="/images/windows-idle-ram-3min.webp" target="_blank" rel="noopener noreferrer">
@@ -283,17 +280,18 @@ boot**, with no applications open.
   <a href="/images/linux-idle-ram-3min.webp" target="_blank" rel="noopener noreferrer">
     <img src="/images/linux-idle-ram-3min.webp" loading="lazy" width="1920" height="1080" alt="Linux Mint idle RAM usage">
   </a>
-  <figcaption>Linux Mint System Monitor — 993.6MiB idle RAM at the 3-minute mark</figcaption>
+  <figcaption>Linux Mint Task Manager — 993.6MiB idle RAM at the 3-minute mark</figcaption>
 </figure>
 
 
-> **A note on measurement conditions:** Both screenshots 
-> were taken at the 3-minute mark after a fresh boot with no 
-> applications open. This ensures both systems have had 
-> equal time to initialize background services and settle 
-> into their idle state.
 
-That is a **3x difference** in idle memory consumption on the 
+> **A note on units:** Windows reports memory in decimal GB; Linux 
+> System Monitor reports in binary GiB. 7.9GB and 7.7GiB are the 
+> same 8GB of hardware in different units, and 993.6MiB converts to 
+> about 1.04GB. Compared like-for-like, the real idle ratio is 2.9x 
+> — so treat "3x" as a rounded headline, not an inflated one.
+
+That is roughly a **3x difference** in idle memory consumption on the 
 exact same hardware. Linux Mint XFCE leaves roughly 2GB more 
 headroom for actual work — browser tabs, development tools, 
 documents, applications — rather than spending a large 
@@ -333,11 +331,8 @@ load:
 | Metric | Windows 11 | Linux Mint XFCE |
 |---|---|---|
 | **CPU** | **100%** (fully maxed) | **~50%** |
-| **RAM** | 7.2 / 7.9GB (91%) | 6.2 / 7.7GB (80%) |
-| **Committed Memory** | **10.4 / 12.9GB** (exceeds physical RAM) | N/A |
-| **Swap / Pagefile** | Active — committed memory exceeds physical RAM by 2.5GB | **240MB** / 2GB |
-| **Disk Activity** | 2% with unstable spikes | Minimal |
-| **GPU** | **14%** (Intel HD, active rendering) | Lower |
+| **RAM** | 7.2 / 7.9GB (91%) | 6.2 / 7.7GiB (81%) |
+| **Memory pressure** | Committed **10.4 / 12.9GB** — 2.5GB beyond physical RAM | Swap: **240MB** / 2GB |
 | **Thermal** | Hot, overheating | Warm, not hot |
 | **Battery** | Drained so fast I had to plug in to finish the test | Survived the entire test (95% to 45%) |
 
@@ -353,7 +348,7 @@ load:
   <a href="/images/linux-stress-system-monitor.webp" target="_blank" rel="noopener noreferrer">
     <img src="/images/linux-stress-system-monitor.webp" loading="lazy" width="1920" height="1080" alt="Linux System Monitor under stress test">
   </a>
-  <figcaption>Linux System Monitor under stress — 50% CPU, 6.2GB RAM, 240MB swap</figcaption>
+  <figcaption>Linux Mint Task Manager under stress — ~50% CPU, 6.2GiB RAM, 240.8MiB swap</figcaption>
 </figure>
 
 
@@ -375,23 +370,22 @@ load:
 
 Let me be clear about what these numbers mean.
 
-Windows **maxed out the CPU at 100%**. It consumed 91% of 
-available RAM. And the committed memory hit **10.4GB out of 
-a 12.9GB ceiling** — meaning Windows was relying on the 
-pagefile to compensate for the **2.5GB** gap between what it 
-needed and what physical RAM could provide. That is what 
-causes the lag, the heat, and the battery drain. The laptop 
-got hot enough to be uncomfortable, and the battery died so 
-fast I had to plug it in mid-test.
+Windows **maxed out the CPU at 100%** and consumed 91% of 
+available RAM. Committed memory hit **10.4GB against a 12.9GB 
+limit** — Windows had promised running software 2.5GB more memory 
+than the physical RAM installed. Committed memory is a reservation, 
+not a measure of current use — but a reservation beyond physical 
+RAM creates real paging pressure: the system can only honor those 
+promises by pushing pages to disk. Combined with 91% RAM usage, 
+that pressure is where the lag came from. The 100% CPU is where 
+the heat and battery drain came from.
 
-The GPU sat at 14% utilization — proof that the browser tabs 
-were actively rendering WebGL and 4K video content, not just 
-sitting idle in the background.
+(The GPU figure did one job on the Windows side: at 14%, it proved 
+the tabs were actively rendering WebGL and 4K video — the load was 
+real, not idle tabs. GPU and disk activity are not in the table 
+because the two systems report and use those resources differently 
+enough that a side-by-side number would be apples-to-oranges.)
 
-Linux handled the same 20 tabs at **half the CPU usage**. It 
-used less RAM. It barely touched swap — 240MB out of 2GB 
-available. The laptop got warm but never hot. And the 
-battery survived the entire test with 45% remaining.
 
 The same hardware. The same workload. Two completely 
 different experiences.
@@ -410,12 +404,13 @@ loaded.
 | **Windows 11** | 45.5s | 43.7s | 44.7s | **~44.6s** |
 | **Linux Mint XFCE** | 39.8s | 38.6s | 39.0s | **~39.1s** |
 
-> **A note on the Linux boot time:** The `systemd-analyze` 
-> output shows a total of approximately 38 seconds, of which 
-> roughly 9.5 seconds is spent at the GRUB menu waiting for 
-> input. The actual kernel and userspace boot takes 
-> approximately 23 seconds. The stopwatch times above 
-> include the GRUB selection for a real-world comparison.
+> **A note on the Linux boot time:** `systemd-analyze` breaks the 
+> 38.09s total into firmware 5.329s + loader 9.533s + kernel 5.084s 
+> + userspace 18.142s. The loader phase is almost entirely GRUB 
+> waiting for input — the kernel itself took only 5 seconds, and the 
+> desktop (`graphical.target`) was ready 17.603s into userspace. The 
+> stopwatch average of 39.1s includes the power-button press and 
+> POST, so the two methods agree within a second.
 
 <figure class="post-image">
   <a href="/images/systemd-analyze-output.webp" target="_blank" rel="noopener noreferrer">
@@ -425,9 +420,6 @@ loaded.
 </figure>
 
 
-*The output above is from one of three runs. All three 
-produced nearly identical results, with total times ranging 
-from 38.0 to 38.5 seconds.*
 
 The boot time difference is modest — roughly 5.5 seconds 
 faster on Linux. That is noticeable but not dramatic. The 
@@ -440,23 +432,12 @@ daily use.
 
 ### The Bigger Picture
 
-This project was never about declaring one operating system 
-better than the other. Both Windows 11 and Linux Mint have 
-their strengths, and both serve a purpose on this laptop.
-
-The point was finding the right pairing for this specific 
-hardware. Windows 11 is a capable operating system, but its 
-resource demands are designed with modern hardware in mind. 
-On a Pentium N3710 with 8GB of RAM, those demands leave 
-little room for the actual work I need to do. Under heavy 
-load, it maxed out every resource the machine had and still 
-needed more.
-
-Linux Mint XFCE was the better fit for this machine. Not 
-because Windows is bad, but because XFCE was built for 
-exactly this kind of hardware constraint. It managed the 
-same workload at half the CPU cost and a fraction of the 
-memory overhead.
+This project was never about ranking operating systems — it was 
+about finding the right pairing for this specific hardware. 
+Windows 11 is a capable operating system designed with modern 
+hardware in mind; on a Pentium N3710 with 8GB of RAM, its baseline 
+demands left little room for the actual work. XFCE was built for 
+exactly this kind of constraint. The numbers confirmed the pairing.
 
 That was the entire reason I started this project. The 
 numbers confirmed it.
@@ -487,11 +468,14 @@ Here are the main technical lessons I took from it:
 
 - **A file transfer path is not just a detail — it can be 
   the entire problem.**
-  My Tecno T455 transferred files at roughly 434 KB/s. The 
-  same SD card through a dedicated reader hit 7.87 MB/s. 
-  That is an 18x difference from changing nothing except the 
-  connection path. A medium can be suitable for one task and 
-  completely unsuitable for another.
+    The Tecno T455 moved files at 434 KB/s; a dedicated reader 
+  moved the same files from the same card at 7.87 MB/s — an 
+  18x gap from changing nothing except the connection path. 
+  But speed was the symptom, not the cause: as Part 2's 
+  analysis established, what killed the boot was the failed 
+  read requests, not the crawl. A medium can pass a slow 
+  sequential file copy and still fail the sustained 
+  random-access workload of a live boot.
 
 - **Kernel errors are readable if you know what to look 
   for.**
@@ -526,9 +510,10 @@ Here are the main technical lessons I took from it:
   The final solution came from changing one major factor at 
   a time — Secure Boot, Fast Startup, ISO verification, boot 
   device — until the actual point of failure became clear. 
-  The problem was never any single setting. It was the 
-  combination, and the last variable standing was the boot 
-  media path.
+  The failures had two separate causes — Secure Boot first, 
+  then the connection path — and each only became visible after 
+  the one before it was cleared. The last variable standing 
+  was the boot media path.
 
 ---
 
@@ -542,16 +527,20 @@ It changed what I believe is possible on limited hardware.
 I did not think this laptop had much left to give beyond 
 struggling through Windows 11. I definitely did not imagine 
 it could run two operating systems cleanly and still feel 
-significantly better than it did before. Seeing the idle RAM 
-drop from 3.0GB to under 1GB on the same machine was not 
+significantly better than it did before. Seeing the idle 
+RAM drop from 3.0GB to about 1GB on the same machine was not 
 just a technical win. It was proof that the hardware was 
 never the problem — the pairing was.
 
 The SQUASHFS text flood looked like a dying machine until I 
-learned that error -5 just meant the kernel was starving for 
-data. The problem wasn't catastrophic. It was a slow USB 
-connection. Technical problems always look bigger than they 
-are before you understand what they are actually saying.
+learned what `-5` actually was: the kernel's I/O error code. 
+The requests weren't slow — they were failing, fast and 
+repeatedly, because a phone acting as a USB bridge was 
+refusing read requests it was never designed to serve. The 
+problem wasn't catastrophic. It was a bridge being asked to 
+do a job it was never built for. Technical problems always 
+look bigger than they are before you understand what they 
+are actually saying.
 
 And maybe the biggest personal lesson was this:
 
@@ -561,9 +550,10 @@ Sometimes it means getting more creative, asking better
 questions, and extracting more value out of a machine or 
 situation than you initially thought was possible. Using a 
 phone as a file transfer bridge, reading kernel error codes 
-I had never seen before, and diagnosing an 18x speed 
-bottleneck from a USB connection — none of that was in any 
-tutorial I followed. It came from engaging with the problem 
+I had never seen before, and isolating the failure to a 
+USB connection path by changing one variable at 
+a time — none of that was in any tutorial I followed.
+It came from engaging with the problem 
 directly and refusing to stop at the first failure.
 
 That is exactly what this project was for me.
@@ -618,6 +608,3 @@ That Barely Runs Windows]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-pa
 
 - [Linux Mint Official Download](https://linuxmint.com/download.php)
 - [Linux Mint SHA256 Checksums](https://linuxmint.com/verify.php)
-- [qBittorrent Official Site](https://www.qbittorrent.org/)
-- [Ventoy Official Site](https://www.ventoy.net/)
-- [Ventoy GitHub Releases](https://github.com/ventoy/Ventoy/releases)
