@@ -177,12 +177,9 @@ Mint in the unallocated space.
 </figure>
 
 
-There was not much left for me to do except wait. And after 
-everything Part 2 had put me through, watching that progress 
-bar move forward felt deeply rewarding. After everything 
-Part 2 had put me through, watching that progress bar move 
-forward was its own reward.
-
+There was not much left for me to do except wait. 
+And after everything Part 2 had put me through, 
+watching that progress bar move forward felt like a payoff.
 
 ---
 
@@ -195,12 +192,9 @@ partition setup, this is where it would show up. After Part
 2, I was bracing for it.
 
 Instead, I was met with the **GRUB menu**.
-
- that boot menu appear on startup felt like the most 
-important screen I had seen in this entire project. After 
-the frozen logos, After the frozen logos, the kernel text floods, 
+After the frozen logos, the kernel text floods, 
 and the TTY2 dead ends, that menu was the moment 
-everything finally came together 
+everything finally came together.
 
 ---
 
