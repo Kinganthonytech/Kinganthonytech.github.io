@@ -12,7 +12,7 @@ image: /images/featured-lsblk.jpg
 > **Last tested on:**
 > * Linux Mint 22.3 (XFCE)
 > * Ventoy 1.1.17
-> * Windows 11 (21H2)
+> * Windows 11 
 > * Hardware: ASUS VivoBook (i3-7020U) & HP (Pentium N3710)
 
 A complete guide to installing Linux Mint alongside Windows 11. While this guide uses **Linux Mint XFCE** as the primary case study (due to its performance on low-end hardware), these steps apply to **Cinnamon** and **MATE** editions as well. Cinnamon and MATE install identically but want more RAM and GPU headroom. Below 8 GB RAM, or on graphics hardware that struggles with desktop effects, use XFCE.
