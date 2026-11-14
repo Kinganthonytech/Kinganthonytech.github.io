@@ -286,8 +286,9 @@ machine will produce different numbers.
 > different hardware reservations, and 993.6MiB is about 0.97 GiB. 
 > Compared like-for-like, the idle ratio is just over 3x.
 
-That is just over a **3x difference** in idle memory consumption on the 
-exact same hardware. Linux Mint XFCE leaves roughly 2GB more 
+That is just over a **3x difference** in idle memory 
+consumption on the exact same hardware. 
+Linux Mint XFCE leaves roughly 2GB more 
 headroom for actual work — browser tabs, development tools, 
 documents, applications — rather than spending a large 
 portion of system memory on the operating system itself.
