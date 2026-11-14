@@ -47,7 +47,7 @@ for an SSD, and this time he said Windows 11 was possible — and put it
 on the machine from his own prepared drive. I was genuinely excited.
 The excitement didn't survive contact with the machine. The hardware
 limitations caught up with me everywhere I turned, right as I was
-trying to choose a direction. 
+trying to choose a direction.
 
 Around the same period, I was circling a career decision. I sampled
 data analysis through an IBM SkillsBuild badge, bounced off
@@ -171,7 +171,7 @@ editions, each with a different desktop environment:
 |---|---|---|---|
 | **Cinnamon** | Cinnamon | 1.2GB - 1.5GB | Best visuals, heaviest on resources |
 | **MATE** | MATE | 900MB - 1.2GB | Balanced, but still heavier than necessary for my hardware |
-| **XFCE** | XFCE | ~1.0GB(measured) | Lightest, fewer visual effects, maximum efficiency |
+| **XFCE** | XFCE | ~1.0GB (measured) | Lightest, fewer visual effects, maximum efficiency |
 
 *Cinnamon and MATE figures are from published benchmarks, not my
 hardware. The XFCE figure is my own measurement on this laptop.*
@@ -304,9 +304,9 @@ access the drive.
 
 The correct procedure is to disable Fast Startup and perform a 
 complete shutdown before attempting any Linux boot. While I 
-learned that the hard way later in the process, getting it out 
-of the way during preparation ensures a clean handoff between 
-operating systems.
+learned that the hard way later in the process, getting it 
+out of the way during preparation prevents those 
+conflicts from ever forming.
 
 With the disk space unallocated and the Windows side prepared, 
 the next problem was downloading the Linux Mint ISO.
@@ -403,8 +403,8 @@ That is fairly normal with torrents. At the beginning, the
 client still needs to discover enough peers sharing the 
 file. As more peers become available, speed usually improves.
 
-I made a few adjustments to the client's connection settings 
-and added additional trackers to improve peer discovery. 
+I added additional public trackers to the torrent — 
+more sources, same file.
 After that, the download improved.
 
 <figure class="post-image">
@@ -477,22 +477,6 @@ and I could move on to creating the boot media.
 
 ---
 
-### Why This Step Was Worth Doing
-
-A lot of people skip checksum verification entirely. That is 
-understandable but risky. Large installation files can be 
-corrupted silently, and when something goes wrong later 
-during boot, it becomes much harder to tell whether the 
-problem came from the file, the boot media, the BIOS 
-settings, or the hardware.
-
-For me, this was one of those small steps that looked 
-optional at first but turned out to be extremely useful 
-later when I needed to eliminate the ISO as a suspect during 
-troubleshooting.
-
----
-
 ### Preparing Boot Media with Ventoy
 
 With a verified ISO file ready, the next step was getting it 
@@ -504,8 +488,10 @@ bootable media tool that prepares a USB drive or SD card so
 you can boot ISO files directly from it without repeatedly 
 reflashing the device.
 
-Ventoy works differently from the more common bootable
-media tools.
+Ventoy works differently from the more common 
+bootable media tools — it prepares the drive once, 
+then lets you copy ISO files onto it like regular files 
+and boot them from a menu.
 
 | Tool | How it works | Best for |
 |---|---|---|
@@ -513,11 +499,6 @@ media tools.
 | **Balena Etcher** | Flashes one ISO with a simpler interface | Beginner-friendly single-ISO setup |
 | **Ventoy** | Prepares the drive once, then lets you copy ISO files onto it normally | Reusable boot media and multi-ISO flexibility |
 
-What made Ventoy more suitable for me was the flexibility. 
-Once the drive is prepared, you can copy ISO files onto it 
-like regular files and boot them from a menu. That is a 
-cleaner long-term option than reflashing the same device 
-every time you want to try another ISO.
 
 <figure class="post-image">
   <a href="/images/ventoy-interface.webp" target="_blank" rel="noopener noreferrer">
@@ -562,10 +543,10 @@ else to move them safely at the time.
 The 1TB external drive I rejected was not just any storage device — it
 was the laptop's original hard drive, pulled when the SSD went in, now
 living in an enclosure. Everything from the Windows 10 era of this
-machine lived on it, with no backup anywhere else. Ventoy's installer
-warned it would format the entire target device. One misclick on the
+machine lived on it, with no backup anywhere else. One misclick on the 
 wrong drive letter and the archive was gone. That risk was not
 theoretical enough for me. 
+
 Using it would have 
 meant sacrificing real data just to create boot media, and 
 that was not a reasonable trade.
@@ -622,7 +603,7 @@ copied the Linux Mint XFCE 22.3 ISO onto it.
 </figure>
 
 
-The transfer took roughly **over 100 minutes** at speeds 
+The transfer took **over 100 minutes** at speeds 
 fluctuating around **434 KB/s**.
 
 Watching that progress bar crawl for over an hour and a half 
@@ -630,8 +611,6 @@ on an unstable connection was its own kind of quiet
 punishment. I just sat there knowing this was the only path 
 that still had a chance of working.
 
-Routing the file through a phone introduced extra overhead and a less 
-efficient data path — a problem I would not fully understand until Part 2.
 
 At this point, the setup was technically ready. The 
 preparation phase was complete.
