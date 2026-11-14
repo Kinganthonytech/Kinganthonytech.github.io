@@ -222,7 +222,7 @@ into Windows 11.
 Both systems worked, side by side in the same boot menu. 
 That was the proof: the dual-boot setup had actually succeeded. 
 Linux Mint became my main working environment; Windows stayed
-available for Windows-specific workExactly the setup I 
+available for Windows-specific work. Exactly the setup I 
 had been aiming for.
 
 ---
