@@ -53,17 +53,22 @@ So I selected it.
 </figure>
 
 
-Then it failed immediately.
+Then it failed. Blue screen, one word at the top: **ERROR**.
+`Verification failed: (0x1A) Security Violation`. No Ventoy menu, no
+GRUB.
 
-There was no Linux boot screen. No Ventoy menu. No GRUB. 
-Nothing meaningful to work with. The attempt stopped almost 
-as soon as it began.
+I pressed a key, and the error gave way to a menu with three options:
+**Continue boot**, **Enroll key from disk**, **Enroll hash from disk**.
+I had no vocabulary for any of it. *Continue* was the only word I
+understood, so I chose it. The machine retried, hit the same wall, and
+showed me the same blue screen. Whatever that menu had been offering,
+I had just declined it without knowing what it was.
 
 <figure class="post-image">
   <a href="/images/bios-boot-decline.webp" target="_blank" rel="noopener noreferrer">
-    <img src="/images/bios-boot-decline.webp" loading="lazy" width="4036" height="2290" alt="Boot failure screen">
+    <img src="/images/bios-boot-decline.webp" loading="lazy" width="4036" height="2290" alt="Secure Boot verification failure screen (0x1A)">
   </a>
-  <figcaption>Boot failure screen after selecting the Tecno T455</figcaption>
+  <figcaption>shim's Secure Boot rejection — "Verification failed: (0x1A) Security Violation." Pressing a key here opened the MOK Manager: the enrollment tool I opened, couldn't read, and walked away from.</figcaption>
 </figure>
 
 
@@ -93,6 +98,24 @@ failed.
 That was the moment I realized I was no longer in 
 ordinary Windows troubleshooting territory.
 
+Here's the part that stings in hindsight: that three-option menu was
+the **MOK Manager** — a one-time tool for adding a new trusted key to
+the machine. **Enroll key from disk** was the entire fix: point it at
+the certificate on the Ventoy partition
+(`ENROLL_THIS_KEY_IN_MOKMANAGER.cer`), confirm, reboot, and Ventoy
+boots with Secure Boot still enabled. About thirty seconds, once, and
+the security feature stays on.
+
+I was standing inside the tool, with the fix as option two on the
+menu, and I chose **Continue boot** — which changes nothing, retries
+the same load, and fails the same way. Not because I was careless, but
+because the fix was written in vocabulary I didn't have yet. So I
+retreated into the BIOS and turned the whole feature off. It worked,
+and I'd make the same trade again at that knowledge level. But the
+surgical fix existed the entire time, one menu option away. (The full
+enrollment procedure — and why it beats disabling Secure Boot — is in
+the [companion guide]({% post_url 2026-11-06-linux-mint-install %}).)
+
 ---
 
 ### Entering BIOS Settings to Troubleshoot
@@ -108,14 +131,16 @@ That is useful for security, but it can also interfere with
 some Linux boot setups depending on how the boot media is 
 prepared and how the firmware behaves.
 
-Specifically, Secure Boot was not rejecting Linux Mint 
-itself — Mint's bootloader is signed by Microsoft's UEFI 
-Certificate Authority. Secure Boot was rejecting Ventoy's 
-unsigned bootloader. With Secure Boot enabled, my HP 
-firmware refused to hand control to Ventoy before it could 
-even display the menu. That is why the device was visible in 
-BIOS but failed to boot — the firmware saw an unsigned 
-bootloader and blocked it at the gate.
+Secure Boot wasn't rejecting Linux Mint — Mint's bootloader carries a
+Microsoft signature. What got rejected was one step inside Ventoy's
+boot chain. Ventoy's first stage, **shim**, is Microsoft-signed, which
+is exactly why the machine got as far as it did: the firmware verified
+shim and ran it. Shim then tried to load Ventoy's second-stage menu,
+which is signed with Ventoy's own key — a key this laptop had never
+seen. Verification failed, and shim put the reason on screen:
+**Verification failed: (0x1A) Security Violation**. 0x1A is the UEFI
+status code for a security policy violation — a trusted stage refusing
+to hand control to an untrusted one.
 
 So the plan was simple: disable Secure Boot and try again.
 
@@ -278,6 +303,15 @@ completely stalled. Eventually, I couldn't tell the
 difference between patience and wasted time. I forced a 
 reboot.
 
+What I know now that I didn't know then: the frozen logo
+was not a dead machine. Behind that splash screen, 
+the system had booted almost completely, and the display manager 
+was crash-looping on a file it couldn't read, restarting and dying 
+in a cycle that would have run forever. 
+The logo wasn't the system refusing to work. 
+It was the system working as hard as it could 
+and losing the same fight every few seconds.
+
 ---
 
 ### Attempting Compatibility Mode
@@ -312,7 +346,7 @@ already finished failing.
   <a href="/images/kernel-text-flood-squashfs.webp" target="_blank" rel="noopener noreferrer">
     <img src="/images/kernel-text-flood-squashfs.webp" loading="lazy" width="4096" height="2776" alt="SQUASHFS kernel errors">
   </a>
-  <figcaption>Kernel text flood showing repeated SQUASHFS I/O read errors</figcaption>
+  <figcaption>Kernel text flood showing SQUASHFS read errors interleaved with systemd failing to start lightdm (the display manager) — the crash loop that hid behind the frozen logo</figcaption>
 </figure>
 
 
@@ -325,7 +359,9 @@ understand what it was saying.
 
 One error kept repeating across almost every line:
 
-> [ 275.067930] SQUASHFS error: failed to read block 0x3b4f48: -5
+```text
+[  275.067930] SQUASHFS error: Failed to read block 0x3b4f4f48: -5
+```
 
 I had already verified the ISO with SHA256, so I suspected 
 this was a hardware read failure, not a corrupt file. But 
@@ -348,16 +384,20 @@ secondary, text-only virtual terminal called **TTY2**.
 
 I was staring at a login prompt:
 
-> Linux Mint 22.3 Zena mint tty2
-> mint login:
+```text
+Linux Mint 22.3 Zena mint tty2
+mint login:
+```
 
-And even there, the error messages kept interrupting the 
-screen:
+And even there, the error messages kept interrupting the screen —
+typing directly over the login prompt:
 
-> [ 449.024896] I/O error, dev loop0, sector 331360
-> [ 449.025680] SQUASHFS error: Failed to read block 0x65201256: -5
-> [ 449.025850] SQUASHFS error: Unable to read fragment cache entry
-> [ 449.026073] SQUASHFS error: Unable to read page, block 65201256
+```text
+mint login: [  449.024896] I/O error, dev loop0, sector 3313680 op 0x0:(READ) flags 0x800 phys_seg 6 prio class 2
+[  449.025603] SQUASHFS error: Failed to read block 0x65201256: -5
+[  449.025850] SQUASHFS error: Unable to read fragment cache entry [65201256]
+[  449.026073] SQUASHFS error: Unable to read page, block 65201256, size 5ef0
+```
 
 The same I/O read failures. The same SQUASHFS errors.
 
@@ -383,11 +423,11 @@ At this point, I had two failed boot attempts and no working
 Linux environment. The instinct was to question everything.
 
 Was the ISO file corrupted? Had something gone wrong during 
-the 90-minute transfer to the SD card? Was the file sitting 
+the over-100-minute transfer to the SD card? Was the file sitting 
 on the Ventoy device actually intact?
 
 I went back into Windows and ran the same `certutil` SHA256 check 
-from part 1 against both the orginal ISO in my Downloads folder
+from Part 1 against both the original ISO in my Downloads folder
 and the copy on the Ventoy SD card.
 
 <figure class="post-image">
@@ -419,6 +459,14 @@ exactly. As I covered in Part 1, this ruled out file
 corruption entirely. The ISO was clean. The problem had to 
 be elsewhere.
 
+One detail worth stating plainly: the card was still 
+inside the phone when I ran that second check. The same bridge that 
+couldn't keep a kernel fed had just read the entire 2.82GB back to 
+Windows, and the hash matched. A slow, sequential read is the gentlest 
+workload a storage device can face. A live boot is one of the 
+harshest: sustained, and driven by the kernel's demands. 
+The phone passed the gentle test and failed the harsh one.
+
 ---
 
 ### Isolating the Last Variable
@@ -432,7 +480,8 @@ At this stage, I had worked through most of the checklist:
 I also finally disabled Fast Startup — a step I had missed 
 back in Part 1. To be clear, Fast Startup was not the cause 
 of the boot failures I experienced in this phase. Those were 
-hardware connection issues. But leaving it enabled could 
+the phone's USB bridge failing read requests — nothing to do with 
+Windows' shutdown state. But leaving it enabled could 
 have caused NTFS file system conflicts once Linux was 
 actually installed, so it needed to be addressed before 
 going any further.
@@ -441,9 +490,8 @@ The only variable left untested was the **boot media device
 path**.
 
 Every failed attempt had run through the Tecno T455 phone 
-acting as a bridge over a USB Type-C cable. That path was 
-never engineered for continuous, high-throughput operating 
-system boot operations.
+acting as a bridge over a USB Type-C cable. That path was never 
+engineered to serve a live operating system's sustained read workload.
 
 So I obtained a dedicated **SD card reader**.
 
@@ -492,12 +540,14 @@ excited to see a desktop background.
 That successful boot changed the diagnosis instantly. With 
 Secure Boot already handled and Fast Startup disabled, the 
 fact that the exact same SD card booted cleanly through a 
-dedicated reader proved where the bottleneck had been all 
-along: **the Tecno T455 as a boot device**.
+dedicated reader proved where the failure had been 
+all along: **the Tecno T455 as a boot device**.
 
-The phone was capable of transferring files, but it could 
-not present the storage to the laptop's firmware reliably 
-enough to support a live boot sequence.
+The phone could transfer files, and it could even carry the machine
+through the BIOS handoff, Ventoy and GRUB. It failed exactly where the
+workload became serious: a live kernel issuing sustained reads. The
+card reader didn't fix the data — it removed the failing bridge
+between the data and the machine.
 
 ---
 
@@ -506,28 +556,51 @@ enough to support a live boot sequence.
 *Now that the machine was working, I wanted to understand 
 what all those intimidating errors had actually meant.*
 
+
 #### What Did the SQUASHFS Errors Mean?
 
-SQUASHFS is a compressed, read-only filesystem format that 
-Linux live distributions use to run an operating system 
-directly from RAM and boot media without installing it to 
-disk.
+SQUASHFS is a compressed, read-only filesystem. A live session doesn't
+copy itself to disk — the kernel pulls compressed blocks from the boot
+media on demand and decompresses them into RAM. Every service started,
+every binary loaded, means more reads from the media.
 
-The error code `-5` is a kernel-level **Input/Output (I/O) 
-error**. It meant the CPU was requesting compressed data 
-blocks from the live media, but the Tecno phone's USB 
-connection could not sustain the continuous data throughput 
-the kernel required, likely due to protocol overhead and 
-transfer instability. The kernel wasn't crashing because of 
-bad code; it was starving for data it couldn't read.
+The `-5` at the end of every line is **`EIO`**, the kernel's generic
+"the device could not complete this read" code. Not returned late. Not
+returned wrong. Failed. The SQUASHFS messages are the filesystem
+reporting, one level up, that a block it asked for never arrived.
 
-#### The Speed Test That Proved It
+That killed my first theory — that the connection was simply too slow,
+and the kernel was starving. Slow storage doesn't produce I/O errors.
+It produces a slow boot: the kernel waits, the data eventually
+arrives, everything crawls but nothing crashes. People boot live
+sessions from genuinely ancient hardware. What produces `EIO` is a
+device that fails the request. And the timestamps show these requests
+were failing *fast* — multiple errors per second, for minutes. The
+bridge wasn't choking quietly. It was actively refusing.
 
-This diagnosis was confirmed when I tested the transfer 
-speeds afterward. The same 2.82GB ISO copied through the 
-Tecno T455 moved at roughly **434 KB/s**. Through a 
-dedicated card reader, it hit **7.87 MB/s** — an **18x 
-increase** from changing nothing except the connection path.
+The photo captured something I couldn't see at the time: the boot was
+*almost working*. The system reached `multi-user.target` — most of the
+operating system loaded fine. What kept failing was **lightdm**, the
+display manager, the component whose entire job is to replace the
+splash screen with a desktop. Every attempt to start it hit a block
+that wouldn't read, crashed, and was restarted by systemd, which
+crashed it again. Same story for `rsyslog`, the logging service. Even
+`casper-md5check` — the live session's built-in media integrity check
+— died from read errors before it could check anything.
+
+The same handful of block addresses repeat through the log:
+`0x3b4f4f48`, `0x64abfb2e`, `0x647b5702`. That's not the whole card
+failing. Every read that succeeded was cached in RAM and never
+requested again — successful reads are invisible in this log. The only
+entries are the reads that *never* succeeded, re-attempted every time
+systemd restarted a crashed service.
+
+And the card was innocent, proven twice: the SHA256 of the ISO *on the
+card* matched the official checksum, and the same card booted
+flawlessly the moment it moved to a dedicated reader. The data never
+had a problem. The bridge did.
+
+#### The Speed Test
 
 <figure class="post-image">
   <a href="/images/tecno-transfer-speed-comparison.webp" target="_blank" rel="noopener noreferrer">
@@ -541,23 +614,30 @@ increase** from changing nothing except the connection path.
   <a href="/images/card-reader-transfer-speed.webp" target="_blank" rel="noopener noreferrer">
     <img src="/images/card-reader-transfer-speed.webp" loading="lazy" width="561" height="365" alt="Card reader file transfer">
   </a>
-  <figcaption>File transfer via dedicated card reader — 7.87 MB/s, 7 minutes</figcaption>
+  <figcaption>File transfer via dedicated card reader — 7.87 MB/s</figcaption>
 </figure>
 
+The numbers quantify how badly matched the bridge was: 2.82GB at
+**434 KB/s** through the phone versus **7.87 MB/s** through the reader
+— an **18x** difference from changing nothing except the connection
+path.
 
+But the speed is not what killed the boot. The failed reads are. The
+number only measures how far outside its design envelope the phone was
+operating: a T9 keypad feature phone presenting its SD card over USB
+as a secondary function, asked to serve a live kernel's sustained
+random-access read workload across two long boot attempts. It could
+hand a file to Windows if you let it crawl. It could not keep a kernel
+fed.
 
-At 434 KB/s, the phone simply could not feed data to the 
-kernel fast enough to sustain a live boot. At 7.87 MB/s, the 
-card reader had no such problem. The SQUASHFS errors were 
-not a software bug. They were a bandwidth starvation issue 
-caused by an improvised hardware connection.
 
 #### What Was TTY2?
 
 Linux systems run multiple virtual consoles simultaneously. 
-**TTY1** is typically reserved for the graphical display 
-manager (the desktop interface). **TTY2 through TTY6** are 
-text-only terminal sessions running in the background.
+The graphical session runs on one virtual console — which 
+one varies by distribution and display manager. 
+**TTY2 through TTY6** are text-only terminal 
+sessions running in the background.
 
 When a graphical environment fails to launch, pressing 
 **Ctrl + Alt + F2** drops you directly into TTY2. For an 
@@ -575,22 +655,28 @@ low-level access to the machine.
 Looking back, the path from failure to success followed a 
 clear diagnostic methodology:
 
-1. **First failure:** Device recognized but refused to boot. 
-   *Resolution: Disabled Secure Boot in BIOS, which was 
-   blocking Ventoy's unsigned bootloader.*
+1. **First failure:** Device recognized, then rejected with
+   `Verification failed: (0x1A) Security Violation` — Secure Boot
+   blocking Ventoy's second-stage loader. The next screen, the MOK
+   Manager, offered the enrollment fix directly; not knowing what
+   "enroll key from disk" meant, I chose "Continue boot," which
+   retried the identical load and failed identically. *Resolution:
+   Disabled Secure Boot in BIOS. The cleaner fix was one menu option
+   away the whole time.*
 2. **Second failure:** Stalled at logo; repeated SQUASHFS 
    I/O read errors under compatibility mode. 
-   *Resolution: Diagnosed as hardware read instability.*
+   *Resolution: Diagnosed as a failing connection path, 
+   based on I/O errors rather than slowness.*
 3. **Integrity verification:** Re-calculated SHA256 checksum 
    on the Ventoy media to rule out file corruption. 
    *Result: Clean match.*
-4. **Environment cleanup:** Disabled Windows Fast Startup to 
-   ensure a clean hardware handoff.
+4. **Environment cleanup:** Disabled Windows Fast Startup
+    to prevent NTFS hibernation conflicts during installation.
 5. **Variable isolation:** Kept the SD card, Ventoy setup, 
    and ISO constant while swapping only the connection 
    device (phone to card reader).
-6. **Resolution:** Clean live boot on the first attempt with 
-   an 18x throughput increase.
+6. **Resolution:** Clean live boot on the first attempt once the 
+   failing bridge was removed — same card, same ISO.
 
 > **The Diagnostic Pattern That Actually Worked**
 > 
