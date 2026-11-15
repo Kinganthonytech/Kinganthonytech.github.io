@@ -52,8 +52,8 @@ dual boot setup.
 
 Not as a total replacement of Windows but alongside it. 
 Because regardless of the suffocation, I still had real use for it. 
-Linux was to be my intended main
-operating system while Windows was to be on standby for 
+Linux was intended to be my main
+operating system while Windows stayed on standby for 
 Windows-specific operations alone — things Linux won't be 
 able to do or simulate.
 

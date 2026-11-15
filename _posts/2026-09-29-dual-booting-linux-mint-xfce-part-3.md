@@ -433,7 +433,7 @@ about finding the right pairing for this specific hardware.
 Windows 11 is a capable operating system designed with modern 
 hardware in mind; on a Pentium N3710 with 8GB of RAM, its baseline 
 demands left little room for the actual work. XFCE was built for 
-exactly this kind of constraint. The numbers confirmed the pairing.
+exactly this kind of constraint.
 
 That was the entire reason I started this project. The 
 numbers confirmed it.

@@ -210,9 +210,7 @@ Some tasks still require Windows, and wiping it completely
 would have left me with no fallback if the Linux 
 installation went wrong on my only machine.
 
-Linux Mint would be my primary working environment. Windows 
-11 would stay on standby for Windows-specific work. A 
-virtual machine wasn't an option either. Running one 
+A virtual machine wasn't an option either. Running one 
 operating system inside another on 8GB of RAM would have 
 recreated the exact performance problem I was trying to 
 escape.
@@ -557,13 +555,9 @@ So the 1TB HDD was out.
 ### Pivoting to the SD Card
 
 I had a **16GB SD card** I could afford to clear, so I 
-formatted it and ran Ventoy on it instead. Ventoy recognized 
-the card and prepared it successfully. 
-Everything happened through the phone — installing Ventoy to the card,
-copying the ISO onto it, even the hash check afterward. No card reader
-existed in my setup at this point.
-The SD card was now a 
-boot device ready to accept ISO files.
+formatted it and ran Ventoy on it instead. 
+Ventoy recognized the card and prepared it successfully.
+The SD card was now a boot device ready to accept ISO files.
 
 <figure class="post-image">
   <a href="/images/sd-card-16gb.webp" target="_blank" rel="noopener noreferrer">
@@ -576,7 +570,12 @@ boot device ready to accept ISO files.
 ### Using My Tecno T455 as a Transfer Bridge
 
 At that point, I still did not have a dedicated SD card 
-reader. What I had was my **Tecno T455** — a T9 keypad feature phone, not a smartphone, which had an 
+reader.
+Everything happened through the phone — installing Ventoy to
+the card, copying the ISO onto it, even the hash check
+afterward. 
+What I had was my **Tecno T455** — a T9 keypad feature phone, 
+not a smartphone, which had an 
 SD card slot.
 
 So I inserted the SD card into the phone, connected the 

@@ -493,7 +493,9 @@ Every failed attempt had run through the Tecno T455 phone
 acting as a bridge over a USB Type-C cable. That path was never 
 engineered to serve a live operating system's sustained read workload.
 
-So I obtained a dedicated **SD card reader**.
+So I obtained a dedicated **SD card reader** — a small USB adapter
+I picked up from a local computer accessories shop for a few
+thousand naira.
 
 <figure class="post-image">
   <a href="/images/sd-card-reader.webp" target="_blank" rel="noopener noreferrer">
@@ -548,6 +550,10 @@ through the BIOS handoff, Ventoy and GRUB. It failed exactly where the
 workload became serious: a live kernel issuing sustained reads. The
 card reader didn't fix the data — it removed the failing bridge
 between the data and the machine.
+
+The machine was working. But I couldn't move on without
+understanding what it had been trying to tell me during those
+two failed boots.
 
 ---
 
