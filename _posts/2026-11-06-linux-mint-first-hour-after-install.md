@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Linux Mint: The First Hour After Install (Mirrors, Software, TimeShift, Updates, Tethering)"
+title: "Linux Mint: The First Hour After Install"
+headline: "Linux Mint: The First Hour After Install (Mirrors, Software, TimeShift, Updates, Tethering)"
 date: 2026-11-06 15:00:00 +0100
 categories: [Linux, Hardware]
 tags: [linux-mint, post-install, timeshift, flatpak, tutorial]

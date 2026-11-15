@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Dual Booting Linux on a Machine That Barely Runs Windows — Part 1: From Windows Frustration to a Verified ISO"
+title: "Part 1: From Windows Frustration to a Verified ISO"
+headline: "Dual Booting Linux on a Machine That Barely Runs Windows — Part 1: From Windows Frustration to a Verified ISO"
 date: 2026-09-28
 description: "Disk partitioning, mirror failures, torrent pivots, and SHA256 checksum verification on unstable Nigerian internet."
 tags: [linux, dual-boot, linux-mint, sha256, torrent]
