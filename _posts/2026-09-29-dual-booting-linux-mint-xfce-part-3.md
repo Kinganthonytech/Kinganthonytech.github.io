@@ -4,6 +4,7 @@ title: "Dual Booting Linux on a Machine That Barely Runs Windows — Part 3: Ins
 date: 2026-09-28
 description: "The installation, dual-boot GRUB menu, and real performance numbers: 3.0GB vs 993MB idle RAM on the same hardware."
 tags: [linux, dual-boot, performance, grub, benchmark]
+image: /images/og-card.png
 ---
 
 # Dual Booting Linux on a Machine That Barely Runs Windows

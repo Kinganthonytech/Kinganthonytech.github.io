@@ -4,6 +4,7 @@ title: "Dual Booting Linux on a Machine That Barely Runs Windows — Part 1: Fro
 date: 2026-09-28
 description: "Disk partitioning, mirror failures, torrent pivots, and SHA256 checksum verification on unstable Nigerian internet."
 tags: [linux, dual-boot, linux-mint, sha256, torrent]
+image: /images/og-card.png
 ---
 
 # Dual Booting Linux on a Machine That Barely Runs Windows

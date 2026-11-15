@@ -4,6 +4,7 @@ title: "Dual Booting Linux on a Machine That Barely Runs Windows — Part 2: BIO
 date: 2026-09-28
 description: "Secure Boot, SQUASHFS kernel errors, TTY2 dead ends, and how a Tecno phone bridge became the root cause of every boot failure."
 tags: [linux, dual-boot, troubleshooting, bios, squashfs]
+image: /images/og-card.png
 ---
 
 # Dual Booting Linux on a Machine That Barely Runs Windows
