@@ -5,7 +5,7 @@ headline: "Linux Mint: The First Hour After Install (Mirrors, Software, TimeShif
 date: 2026-11-06 15:00:00 +0100
 categories: [Linux, Hardware]
 tags: [linux-mint, post-install, timeshift, flatpak, tutorial]
-image: /images/og-card.png
+image: /images/og-first-hour.png
 description: "Mirrors, software, TimeShift, updates and phone tethering: the first hour after a Linux Mint install, with receipts."
 ---
 
