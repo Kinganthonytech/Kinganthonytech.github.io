@@ -51,8 +51,8 @@ I installed Linux Mint XFCE 22.3 alongside Windows 11 as a
 dual boot setup.
 
 Not as a total replacement of Windows but alongside it. 
-Because regardless of the suffocation, I still had very much 
-use for it. Linux was to be my intended main
+Because regardless of the suffocation, I still had real use for it. 
+Linux was to be my intended main
 operating system while Windows was to be on standby for 
 Windows-specific operations alone — things Linux won't be 
 able to do or simulate.
@@ -137,7 +137,6 @@ producing.
 
 ---
 
-*Continue to [Part 1 — From Windows Frustration to a 
-Verified ISO]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-1 %})*
+*Continue to [Part 1 — From Windows Frustration to a Verified ISO]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-1 %})*
 
-*[Part 2]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-2 %}) | [Part 3]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-3 %})*
+*Also in this series: [Part 2]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-2 %}) · [Part 3]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-3 %})*

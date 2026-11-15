@@ -694,10 +694,9 @@ the SSD.
 
 ---
 
-*Previous: [Part 1 — From Windows Frustration to a Verified 
-ISO]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-1 %})*  
-*Continue to Part 3 — [Installation, GRUB and the 
-Performance Verdict]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-3 %})*
+*Previous: [Part 1 — From Windows Frustration to a Verified ISO]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-1 %})*
+
+*Continue to [Part 3 — Installation, GRUB and the Performance Verdict]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-3 %})*
 
 ---
 

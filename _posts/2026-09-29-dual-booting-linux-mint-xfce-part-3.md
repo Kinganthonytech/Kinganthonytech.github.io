@@ -593,10 +593,9 @@ step-by-step walkthrough.
 
 ---
 
-*Previous: [Part 2 — BIOS, Boot Failures and the 
-Troubleshooting]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-2 %})*  
-*Back to the series intro: [Dual Booting Linux on a Machine 
-That Barely Runs Windows]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-0 %})*
+*Previous: [Part 2 — BIOS, Boot Failures and the Troubleshooting]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-2 %})*
+
+*Back to the start: [Part 0 — Why I Did This]({% post_url 2026-09-29-dual-booting-linux-mint-xfce-part-0 %})*
 
 ---
 
