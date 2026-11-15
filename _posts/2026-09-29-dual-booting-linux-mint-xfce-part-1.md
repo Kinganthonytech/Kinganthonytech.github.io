@@ -609,7 +609,7 @@ fluctuating around **434 KB/s**.
 Watching that progress bar crawl for over an hour and a half 
 on an unstable connection was its own kind of quiet 
 punishment. I just sat there knowing this was the only path 
-that still had a chance of working.
+that still had a chance of working. 
 
 
 At this point, the setup was technically ready. The 
