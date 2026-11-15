@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why I Dual-Boot Linux on a Laptop That Barely Runs Windows"
+title: "Dual-Boot Linux on a Laptop That Barely Runs"
 headline: "Dual Booting Linux on a Machine That Barely Runs Windows — Part 0: A Series Introduction"
 date: 2026-09-28
 description: "Why I dual booted Linux Mint XFCE on a Pentium N3710 laptop in Nigeria, and what the process actually felt like."

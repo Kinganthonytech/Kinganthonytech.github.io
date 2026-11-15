@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Part 3: Installation, GRUB and the Performance Verdict"
+title: "Part 3: Install, GRUB, Performance Verdict"
 headline: "Dual Booting Linux on a Machine That Barely Runs Windows — Part 3: Installation, GRUB and the Performance Verdict"
 date: 2026-09-28
 description: "The installation, dual-boot GRUB menu, and real performance numbers: 3.0GB vs 993MB idle RAM on the same hardware."

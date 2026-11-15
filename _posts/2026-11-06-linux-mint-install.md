@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "How to Install Linux Mint on a Windows 11 Laptop"
+title: "Install Linux Mint on a Windows 11 Laptop"
 headline: "How to Install Linux Mint (All Editions) on a Windows 11 Laptop"
 date: 2026-11-06 17:00:00 +0100
 categories: [Linux, Hardware]
 tags: [linux-mint, dual-boot, windows-11, tutorial, guide]
 image: /images/og-card.png
+description: "A complete Linux Mint install guide beside Windows 11, tested on two real laptops — XFCE, Cinnamon and MATE covered."
 ---
 
 # How to Install Linux Mint (All Editions) on a Windows 11 Laptop
