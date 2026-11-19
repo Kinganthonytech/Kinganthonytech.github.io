@@ -106,21 +106,21 @@ in mind too.
 
 ## What You Will Find in Each Part
 
-**Part 0 — Why I Did This** *(You are here)*
+**Part 0 — Why I Did This:** *(You are here)*
 The context, the constraints, and the decision to stop 
 complaining and start acting.
 
-**Part 1 — From Windows Frustration to a Verified ISO** :
+**Part 1 — From Windows Frustration to a Verified ISO:**
 The decision to switch, the hardware context, disk 
 partitioning, downloading Linux Mint through torrent, 
 Ventoy setup, and verifying the ISO with a SHA256 checksum.
 
-**Part 2 — BIOS, Boot Failures and the Troubleshooting** :
+**Part 2 — BIOS, Boot Failures and the Troubleshooting:**
 Using unconventional boot media, entering BIOS 
 for the first time, two boot failures, kernel errors, and 
 how I diagnosed the actual problem.
 
-**Part 3 — Installation, GRUB and the Performance Verdict** :
+**Part 3 — Installation, GRUB and the Performance Verdict:**
 Booting into the live environment, the installation process, 
 the GRUB dual boot menu, and the real performance numbers — 
 what changed and whether it was worth it.
