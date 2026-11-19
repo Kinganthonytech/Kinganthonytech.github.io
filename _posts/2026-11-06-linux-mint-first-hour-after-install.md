@@ -421,9 +421,8 @@ Updates your Flatpaks. `apt` can't see them (see [the Installing Software step](
 
 Kernel updates don't delete their predecessors — each retired version leaves its image, headers, and modules on disk. On the HP, the update to kernel 7.0.0-42 left nine packages of the retired 7.0.0-38 behind, roughly 355MB — coincidentally the same 355MB the new kernel cost (see [the Field Note](#a4-update-mismatch)). Pruning the old one is how you get it back.
 
-**The automatic way:** Update Manager → **Edit → Preferences → Automation** → enable **Remove obsolete kernels and dependencies** (it asks for your password). Mint prunes retired kernels by itself from then on, and you never have to think about this section again.
 
-**The manual way** — same sweep, by hand. The right moment is *after* a kernel update has landed and you've rebooted into the new kernel: you want the old one on the GRUB menu until the new one has proven it boots you fine. Then:
+The right moment is *after* a kernel update has landed and you've rebooted into the new kernel: you want the old one on the GRUB menu until the new one has proven it boots you fine. Then:
 
 ```bash
 sudo apt autoremove
