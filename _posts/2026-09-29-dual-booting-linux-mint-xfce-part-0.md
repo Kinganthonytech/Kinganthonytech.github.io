@@ -112,11 +112,11 @@ complaining and start acting.
 
 **Part 1 — From Windows Frustration to a Verified ISO**
 The decision to switch, the hardware context, disk 
-partitioning, downloading Linux Mint through torrent, and 
-verifying the ISO with a SHA256 checksum.
+partitioning, downloading Linux Mint through torrent, 
+Ventoy setup, and verifying the ISO with a SHA256 checksum.
 
 **Part 2 — BIOS, Boot Failures and the Troubleshooting**
-Ventoy setup, using unconventional boot media, entering BIOS 
+Using unconventional boot media, entering BIOS 
 for the first time, two boot failures, kernel errors, and 
 how I diagnosed the actual problem.
 
