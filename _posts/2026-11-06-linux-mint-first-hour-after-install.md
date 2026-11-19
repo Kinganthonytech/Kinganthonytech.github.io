@@ -428,7 +428,7 @@ Kernel updates don't delete their predecessors — each retired version leaves i
 ```bash
 sudo apt autoremove
 ```
-It never removes anything silently — it prints the full list and waits for your `Y`. What you want to see: `linux-image`, `linux-headers`, and `linux-modules` entries carrying a version older than the one you booted. What you will never see: the kernel you're running right now — apt won't offer it. On a fresh install the answer is usually `0 to remove`; that's not a failure, it's a system with nothing stale yet. If the list ever names something you recognize and still use, answer `N`. The same command also sweeps orphaned dependencies that `apt remove` leaves behind — same list, same read-before-`Y` rule.
+It never removes anything silently — it prints the full list and waits for your `Y`. What you want to see: `linux-image`, `linux-headers`, and `linux-modules` entries carrying a version older than the one you booted. What you will never see: the kernel you're running right now — apt won't offer it. On a fresh install the answer is usually `0 to remove`; that's not a failure, it's a system with nothing stale yet. If the list ever names something you recognize and still use, answer `N`. The same command also sweeps orphaned dependencies that `apt remove` leaves behind — same list, same read-before-`Y` rule. 
 
 *The GUI said 893 KB once. The terminal said 216 MB for the exact same update. Neither was wrong — they just don't use the same ruler. The full breakdown — two machines, two kinds of mismatch, one shared cause — is in the [Field Note](#a4-update-mismatch) at the end of this guide. Purely optional.*
 
