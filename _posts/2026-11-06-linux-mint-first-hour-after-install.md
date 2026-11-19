@@ -177,12 +177,6 @@ Neither system is "better." Most users end up with a mix of both, and Mint's too
    sudo apt remove <package-name>
    ```
 
-5. To clean up leftover dependencies nothing needs anymore:
-   ```bash
-   sudo apt autoremove
-   ```
-
-> **`autoremove` is not a kernel pruner.** On both test machines — before *and* after a fresh kernel install — it swept nothing. Old kernels pile up quietly, and the deliberate tool for trimming them is Update Manager's **Linux Kernels** window. Removing kernels is the one housekeeping act that can strand your boot path; leave it alone until you know what you're cutting.
 
 > **Package names are case-sensitive and must be exact.** `sudo apt install Firefox` will fail. `sudo apt install firefox` will work. If you're unsure of the exact name, search for it first with `apt search <keyword>` or check the Software Manager.
 
@@ -422,6 +416,19 @@ flatpak update
 Updates your Flatpaks. `apt` can't see them (see [the Installing Software step](#step-2-installing-software)), so a terminal-only routine needs both commands. The Update Manager handles both kinds in one list — one reason its totals rarely match the terminal's.
 
 > **Note:** The terminal has no checkbox screen — `sudo apt upgrade` updates everything by default. To update a single package without touching the rest, use `sudo apt install --only-upgrade <package>`. It may bring tightly tied companions along — upgrading `firefox` also upgraded `firefox-locale-en` on the test machine — but everything else stays exactly where it was.
+
+#### Prune What Updates Leave Behind
+
+Kernel updates don't delete their predecessors — each retired version leaves its image, headers, and modules on disk. On the HP, the update to kernel 7.0.0-42 left nine packages of the retired 7.0.0-38 behind, roughly 355MB — coincidentally the same 355MB the new kernel cost (see [the Field Note](#a4-update-mismatch)). Pruning the old one is how you get it back.
+
+**The automatic way:** Update Manager → **Edit → Preferences → Automation** → enable **Remove obsolete kernels and dependencies** (it asks for your password). Mint prunes retired kernels by itself from then on, and you never have to think about this section again.
+
+**The manual way** — same sweep, by hand. The right moment is *after* a kernel update has landed and you've rebooted into the new kernel: you want the old one on the GRUB menu until the new one has proven it boots you fine. Then:
+
+```bash
+sudo apt autoremove
+```
+It never removes anything silently — it prints the full list and waits for your `Y`. What you want to see: `linux-image`, `linux-headers`, and `linux-modules` entries carrying a version older than the one you booted. What you will never see: the kernel you're running right now — apt won't offer it. On a fresh install the answer is usually `0 to remove`; that's not a failure, it's a system with nothing stale yet. If the list ever names something you recognize and still use, answer `N`. The same command also sweeps orphaned dependencies that `apt remove` leaves behind — same list, same read-before-`Y` rule.
 
 *The GUI said 893 KB once. The terminal said 216 MB for the exact same update. Neither was wrong — they just don't use the same ruler. The full breakdown — two machines, two kinds of mismatch, one shared cause — is in the [Field Note](#a4-update-mismatch) at the end of this guide. Purely optional.*
 
